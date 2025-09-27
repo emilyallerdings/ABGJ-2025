@@ -216,7 +216,7 @@ upper_fade = 0.0016008287
 lower_fade = 0.00025504405
 script = ExtResource("19_wwh7d")
 textMerger = ExtResource("20_mdu65")
-textures = [NodePath("MugSubviewport/MugImageA"), NodePath("MugSubviewport/MugImageB")]
+textures = [NodePath("MugSubviewport/MugImageB"), NodePath("MugSubviewport/MugImageA")]
 targetLabel = NodePath("MugSubviewport/MugLabel")
 targetViewport = NodePath("MugSubviewport")
 

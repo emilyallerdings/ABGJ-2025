@@ -39,10 +39,6 @@ var keyCorruptOrder : Array
 var keyLookup : Dictionary
 
 func _ready() -> void:
-	#Corruption
-	get_tree().get_first_node_in_group("Office").new_corruption_level.connect(corrupt_keys)
-	keyCorruptOrder = keyLookup.keys().duplicate()
-	keyCorruptOrder.shuffle()
 	#Key Indexing
 	for keyIndex in KEYS.values().size():
 		var eachKey : String = KEYS.values()[keyIndex]
@@ -57,6 +53,11 @@ func _ready() -> void:
 			keyVis.position += Vector3.RIGHT + Vector3.FORWARD * (keyIndex - 9.8 * 1)
 		else:
 			keyVis.position += (Vector3.RIGHT * 2) + Vector3.FORWARD * (keyIndex - 18.5 * 1)
+	
+	#Corruption
+	get_tree().get_first_node_in_group("Office").new_corruption_level.connect(corrupt_keys)
+	keyCorruptOrder = keyLookup.keys().duplicate()
+	keyCorruptOrder.shuffle()
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventKey and event.is_pressed():
@@ -64,8 +65,7 @@ func _input(event: InputEvent) -> void:
 			keyLookup[event.keycode].press()
 
 func corrupt_keys(lerpAmount : float):
-	var keysToCorrupt := int(keyCorruptOrder.size() / lerpAmount)
+	var keysToCorrupt := int(keyCorruptOrder.size() * lerpAmount)
 	for eachKey in keysToCorrupt:
 		var keyToUse = Office.CorruptText[eachKey % Office.CorruptText.length()]
-		print(keyToUse)
 		keyLookup[keyCorruptOrder[eachKey]].set_key(keyToUse)

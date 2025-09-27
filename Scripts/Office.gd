@@ -10,6 +10,6 @@ signal new_corruption_level(outCorrupt)
 var progressionLevel : float
 
 func timer_bump():
-	progressionLevel += 0.1
+	progressionLevel += 0.01
 	progressionLevel = clamp(progressionLevel, 0, 1)
 	new_corruption_level.emit(progressionLevel)
