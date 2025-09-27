@@ -76,7 +76,6 @@ theme_override_fonts/font = ExtResource("2_jsu5s")
 theme_override_font_sizes/font_size = 16
 theme_override_styles/normal = ExtResource("3_dhqo6")
 theme_override_styles/pressed = ExtResource("4_h6wl3")
-theme_override_styles/hover = ExtResource("3_dhqo6")
 text = "AudSec Co."
 icon = ExtResource("4_dhqo6")
 

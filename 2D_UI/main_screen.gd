@@ -1,6 +1,4 @@
 extends Control
 
-func _input(event: InputEvent) -> void:
-	#if event is InputEventMouseMotion:
-	#	$Cursor.position += event.screen_relative
-	pass
+func _process(delta: float) -> void:
+	$Cursor.position = get_local_mouse_position()
