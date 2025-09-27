@@ -11,14 +11,18 @@ func _ready() -> void:
 	print(aabb)
 
 func mouse_input(_camera: Node, event: InputEvent, event_position: Vector3, _normal: Vector3, _shape_idx: int) -> void:
-	#print(event.position)
 	var relX = (event_position.y - aabb.position.y) / aabb.size.y
 	var relY = (event_position.z - aabb.position.z) / aabb.size.z
 	var relVec = Vector2(1 - relY, 1 - relX)
 	moveMouse.move_to(relVec)
 	if event is InputEventMouseMotion:
 		event.position = RESOLUTION * relVec
-		print(event.position)
+	elif event is InputEventMouseButton:
+		event.position = RESOLUTION * relVec
 	subviewport.push_input(event, true)
-	print(relVec)
-	pass # Replace with function body.
+
+func mouse_entered() -> void:
+	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
+
+func mouse_exited() -> void:
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE

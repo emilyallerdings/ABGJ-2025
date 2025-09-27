@@ -152,5 +152,7 @@ size = Vector3(6.5, 6.5, 11)
 data = ExtResource("4_32u8q")
 
 [connection signal="input_event" from="BasicPC/PcScreen/PCScreen/StaticBody3D" to="BasicPC/PcScreen/PCScreen" method="mouse_input"]
+[connection signal="mouse_entered" from="BasicPC/PcScreen/PCScreen/StaticBody3D" to="BasicPC/PcScreen/PCScreen" method="mouse_entered"]
+[connection signal="mouse_exited" from="BasicPC/PcScreen/PCScreen/StaticBody3D" to="BasicPC/PcScreen/PCScreen" method="mouse_exited"]
 
 [editable path="BasicPC/PcScreen"]
