@@ -136,7 +136,6 @@ disable_3d = true
 size = Vector2i(640, 480)
 
 [node name="MainScreen" parent="GameInput" instance=ExtResource("6_gnkyl")]
-script = null
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.23557025, 3.1893559, 2.7285345)
