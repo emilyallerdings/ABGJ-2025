@@ -1,0 +1,80 @@
+[gd_scene load_steps=9 format=3 uid="uid://2tmp6fu334qg"]
+
+[ext_resource type="PackedScene" uid="uid://giyx4wkbs4f1" path="res://Models/BasicPC.blend" id="1_um8f5"]
+[ext_resource type="VoxelGIData" uid="uid://bumd5m3febnay" path="res://Lightmaps/Office.LightmapProbe_data.res" id="2_ccyme"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_ccyme"]
+size = Vector3(1, 0.2, 3)
+
+[sub_resource type="SphereMesh" id="SphereMesh_4f0fq"]
+height = 0.5
+is_hemisphere = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_um8f5"]
+size = Vector3(3, 0.2, 8)
+
+[sub_resource type="QuadMesh" id="QuadMesh_um8f5"]
+size = Vector2(1.6, 1.6)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_um8f5"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ccyme"]
+resource_local_to_scene = true
+albedo_texture = SubResource("ViewportTexture_um8f5")
+emission_enabled = true
+emission_texture = SubResource("ViewportTexture_um8f5")
+
+[node name="Node3D" type="Node3D"]
+
+[node name="LevelGeometry" type="Node3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="LevelGeometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6743373, 0.56027853)
+gi_mode = 2
+mesh = SubResource("BoxMesh_ccyme")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="LevelGeometry"]
+transform = Transform3D(1, 0, 0, 0, 0.7, 0, 0, 0, 0.75, 0.03703952, 0.5656718, -1.6459932)
+gi_mode = 2
+mesh = SubResource("SphereMesh_4f0fq")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="LevelGeometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.92374516, 0.4699874, 0)
+gi_mode = 2
+mesh = SubResource("BoxMesh_um8f5")
+skeleton = NodePath("../..")
+
+[node name="BasicPC" parent="." instance=ExtResource("1_um8f5")]
+transform = Transform3D(1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, -1.5, 2.301, 0)
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="BasicPC"]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0.4216416, 0, 0)
+gi_mode = 2
+mesh = SubResource("QuadMesh_um8f5")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_ccyme")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-4.371139e-08, -0.20791169, 0.97814757, 0, 0.97814757, 0.20791169, -1, 9.088108e-09, -4.2756188e-08, 2.187303, 2.1324441, 0)
+
+[node name="SubViewport" type="SubViewport" parent="."]
+disable_3d = true
+
+[node name="ColorRect" type="ColorRect" parent="SubViewport"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 1, 1)
+
+[node name="LightmapGI" type="LightmapGI" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+interior = true
+
+[node name="LightmapProbe" type="VoxelGI" parent="."]
+size = Vector3(10, 10, 10)
+data = ExtResource("2_ccyme")
