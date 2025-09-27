@@ -1,17 +1,28 @@
+<<<<<<< Updated upstream
 [gd_scene load_steps=18 format=3 uid="uid://2tmp6fu334qg"]
+=======
+[gd_scene load_steps=19 format=3 uid="uid://2tmp6fu334qg"]
+>>>>>>> Stashed changes
 
+[ext_resource type="PackedScene" uid="uid://c3xwy2s3ckihp" path="res://Resources/WorldKeyboard.tscn" id="1_0d164"]
 [ext_resource type="PackedScene" uid="uid://giyx4wkbs4f1" path="res://Models/BasicPC.blend" id="1_um8f5"]
+[ext_resource type="Script" uid="uid://8pgamyrptrvo" path="res://Scripts/MouseShift.gd" id="2_t43tj"]
 [ext_resource type="Texture2D" uid="uid://dkph6nb1r3npo" path="res://Textures/WallOff.png" id="3_4f0fq"]
 [ext_resource type="Script" uid="uid://ck8s0ixkgnfrd" path="res://Scripts/3dCam.gd" id="4_0d164"]
 [ext_resource type="VoxelGIData" uid="uid://b0arf755jcb5a" path="res://Lightmaps/Office.VoxelGI_data.res" id="4_32u8q"]
 [ext_resource type="Texture2D" uid="uid://c6obaj57reroy" path="res://Textures/WallOffNormal.png" id="4_k8msm"]
+<<<<<<< Updated upstream
 [ext_resource type="PackedScene" uid="uid://3e3fqavddmny" path="res://2D_UI/main_screen.tscn" id="5_0d164"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_ccyme"]
 size = Vector3(1, 0.2, 3)
+=======
+[ext_resource type="PackedScene" uid="uid://3e3fqavddmny" path="res://2D_UI/main_screen.tscn" id="6_gnkyl"]
+>>>>>>> Stashed changes
 
 [sub_resource type="SphereMesh" id="SphereMesh_4f0fq"]
-height = 0.5
+radius = 0.25
+height = 0.25
 is_hemisphere = true
 
 [sub_resource type="BoxMesh" id="BoxMesh_um8f5"]
@@ -50,20 +61,20 @@ emission_texture = SubResource("ViewportTexture_um8f5")
 
 [sub_resource type="Environment" id="Environment_4f0fq"]
 background_mode = 1
+ambient_light_source = 2
 
 [node name="Main" type="Node3D"]
 
 [node name="LevelGeometry" type="Node3D" parent="."]
 
-[node name="Keyboard" type="MeshInstance3D" parent="LevelGeometry"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6743373, 0.56027853)
-mesh = SubResource("BoxMesh_ccyme")
-skeleton = NodePath("../..")
+[node name="Keyboard" parent="LevelGeometry" instance=ExtResource("1_0d164")]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -0.25, 0.674, 1.1)
 
 [node name="Mouse" type="MeshInstance3D" parent="LevelGeometry"]
 transform = Transform3D(1, 0, 0, 0, 0.7, 0, 0, 0, 0.75, 0.03703952, 0.5656718, -1.6459932)
 mesh = SubResource("SphereMesh_4f0fq")
 skeleton = NodePath("../..")
+script = ExtResource("2_t43tj")
 
 [node name="Table" type="MeshInstance3D" parent="LevelGeometry"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2375202, 0.4699874, 0.5004437)
@@ -115,18 +126,27 @@ transform = Transform3D(-4.371139e-08, 0, 0.99999994, 0, 0.99999994, 0, -1, 0, -
 fov = 60.0
 far = 10.0
 script = ExtResource("4_0d164")
+typeTiltEnabled = null
+typingRot = null
+typingFov = null
+staticRot = null
+staticFov = null
 
 [node name="GameInput" type="SubViewport" parent="."]
 disable_3d = true
 size = Vector2i(640, 480)
 
+<<<<<<< Updated upstream
 [node name="MainScreen" parent="GameInput" instance=ExtResource("5_0d164")]
+=======
+[node name="MainScreen" parent="GameInput" instance=ExtResource("6_gnkyl")]
+>>>>>>> Stashed changes
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.23557025, 3.1893559, 2.7285345)
 visible = false
 light_color = Color(1, 0, 0, 1)
-light_energy = 0.2
+light_energy = 0.05
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_4f0fq")
