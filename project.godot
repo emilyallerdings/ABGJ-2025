@@ -10,10 +10,10 @@ config_version=5
 
 [application]
 
-config/name="ABGJ-2025"
+config/name="Click"
 run/main_scene="uid://cvesfiaojmsh6"
 config/features=PackedStringArray("4.5", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="uid://bqbwmvp0i6k3l"
 
 [autoload]
 
@@ -23,6 +23,7 @@ Persist="*res://Scripts/PersistantData.gd"
 
 window/size/viewport_width=1024
 window/size/viewport_height=768
+mouse_cursor/custom_image="uid://sy1jjot44q75"
 
 [file_customization]
 
@@ -51,6 +52,7 @@ Debug={
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":96,"key_label":0,"unicode":96,"location":0,"echo":false,"script":null)
 ]
 }
+
 [physics]
 
 common/physics_interpolation=true

@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://2tmp6fu334qg"]
+[gd_scene load_steps=52 format=3 uid="uid://2tmp6fu334qg"]
 
 [ext_resource type="PackedScene" uid="uid://c3xwy2s3ckihp" path="res://Resources/WorldKeyboard.tscn" id="1_0d164"]
 [ext_resource type="Script" uid="uid://cxc75gjqku8hw" path="res://Scripts/Office.gd" id="1_mdu65"]
@@ -16,6 +16,7 @@
 [ext_resource type="Resource" uid="uid://ba26qola388cy" path="res://Resources/TextMerges/PowerLight.tres" id="6_kp12w"]
 [ext_resource type="Script" uid="uid://30bc51xwx0i2" path="res://Scripts/PhysicalScreen.gd" id="7_chwbs"]
 [ext_resource type="Resource" uid="uid://bl2r6hr0f0m3q" path="res://Resources/TextMerges/PostItMerge.tres" id="7_jptpv"]
+[ext_resource type="Material" uid="uid://n2pdlsp60tvl" path="res://Materials/OfficeCarpet.tres" id="7_qxhf8"]
 [ext_resource type="Script" uid="uid://ccas1aib0ahyw" path="res://Scripts/OfficeTowerFlash.gd" id="10_3g47s"]
 [ext_resource type="Resource" uid="uid://c8sj4iftpnxsi" path="res://Resources/TextMerges/MonitorMerge.tres" id="12_l100v"]
 [ext_resource type="PackedScene" uid="uid://bqbjw5s2uqf1w" path="res://Models/Mug.blend" id="14_gldt3"]
@@ -25,6 +26,10 @@
 [ext_resource type="Script" uid="uid://duuvlvulw0uec" path="res://Scripts/Debug/DebugToggleFullbrightt.gd" id="17_pkeyt"]
 [ext_resource type="Script" uid="uid://dv1o1f4iqjn70" path="res://Scripts/DecalCorrupt.gd" id="19_wwh7d"]
 [ext_resource type="Resource" uid="uid://d2vb0icl2q0y6" path="res://Resources/TextMerges/MugMerge.tres" id="20_mdu65"]
+[ext_resource type="PackedScene" uid="uid://duefwf4y3yknl" path="res://Models/Window.blend" id="26_vfnhs"]
+[ext_resource type="Material" uid="uid://dyh7upiq6qao" path="res://Materials/WoodFrame.tres" id="27_37xsv"]
+[ext_resource type="Material" uid="uid://b85jx3s5jm1iv" path="res://Materials/PlasticWindow.tres" id="28_qxhf8"]
+[ext_resource type="Material" uid="uid://cu1tg07pnasfm" path="res://Materials/Building.tres" id="30_kuh34"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_4f0fq"]
 radius = 0.25
@@ -55,9 +60,14 @@ size = Vector3(0.2, 0.1, 0.3)
 [sub_resource type="BoxShape3D" id="BoxShape3D_l100v"]
 size = Vector3(0.19958496, 0.105163574, 0.31958008)
 
-[sub_resource type="BoxMesh" id="BoxMesh_4f0fq"]
-flip_faces = true
-size = Vector3(6, 6, 10)
+[sub_resource type="QuadMesh" id="QuadMesh_kuh34"]
+size = Vector2(8, 10)
+
+[sub_resource type="QuadMesh" id="QuadMesh_37xsv"]
+size = Vector2(8, 6)
+
+[sub_resource type="QuadMesh" id="QuadMesh_qxhf8"]
+size = Vector2(10, 6)
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_um8f5"]
 viewport_path = NodePath("GameInput")
@@ -106,11 +116,25 @@ albedo_color = Color(0, 0, 0, 1)
 metallic_specular = 0.4
 roughness = 0.0
 
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_qxhf8"]
+sky_top_color = Color(0.0806789, 0.10591217, 0.1395222, 1)
+sky_horizon_color = Color(0, 0, 0, 1)
+ground_bottom_color = Color(0, 0, 0, 1)
+ground_horizon_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Sky" id="Sky_kuh34"]
+sky_material = SubResource("ProceduralSkyMaterial_qxhf8")
+
 [sub_resource type="Environment" id="Environment_4f0fq"]
-background_mode = 1
+background_mode = 2
+sky = SubResource("Sky_kuh34")
 ambient_light_source = 2
-ambient_light_color = Color(0.80784315, 1, 1, 1)
+ambient_light_color = Color(4.6205523e-06, 0.65048313, 0.65864336, 1)
 ambient_light_energy = 0.01
+
+[sub_resource type="BoxMesh" id="BoxMesh_qxhf8"]
+size = Vector3(10, 40, 10)
+subdivide_width = 2
 
 [node name="Main" type="Node3D" groups=["Office"]]
 script = ExtResource("1_mdu65")
@@ -130,7 +154,7 @@ mesh = SubResource("SphereMesh_4f0fq")
 skeleton = NodePath("../..")
 script = ExtResource("2_t43tj")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="LevelGeometry"]
+[node name="Mousepad" type="MeshInstance3D" parent="LevelGeometry"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.054608315, 0.59517366, -1.6459932)
 gi_mode = 2
 mesh = SubResource("CylinderMesh_3g47s")
@@ -203,12 +227,36 @@ script = ExtResource("6_i4f5g")
 textMerger = ExtResource("6_kp12w")
 metadata/_custom_type_script = "uid://hs8qfe16l3ys"
 
-[node name="Walls" type="MeshInstance3D" parent="LevelGeometry"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 1.0797148)
-material_override = ExtResource("4_l100v")
-cast_shadow = 0
+[node name="Floor" type="MeshInstance3D" parent="LevelGeometry"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 1, -1.5, 1.0797148)
+material_override = ExtResource("7_qxhf8")
+cast_shadow = 2
 gi_mode = 2
-mesh = SubResource("BoxMesh_4f0fq")
+mesh = SubResource("QuadMesh_kuh34")
+skeleton = NodePath("../..")
+
+[node name="Ceiling" type="MeshInstance3D" parent="LevelGeometry"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 1, 4.5, 1.0797148)
+material_override = ExtResource("4_l100v")
+cast_shadow = 2
+gi_mode = 2
+mesh = SubResource("QuadMesh_kuh34")
+skeleton = NodePath("../..")
+
+[node name="LeftWall" type="MeshInstance3D" parent="LevelGeometry"]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 1, 1.5, 6.079715)
+material_override = ExtResource("4_l100v")
+cast_shadow = 2
+gi_mode = 2
+mesh = SubResource("QuadMesh_37xsv")
+skeleton = NodePath("../..")
+
+[node name="Backwall" type="MeshInstance3D" parent="LevelGeometry"]
+transform = Transform3D(-8.940697e-08, 0, 1.0000001, 0, 1, 0, -1.0000001, 0, -8.940697e-08, -3, 1.5, 1.0797148)
+material_override = ExtResource("4_l100v")
+cast_shadow = 2
+gi_mode = 2
+mesh = SubResource("QuadMesh_qxhf8")
 skeleton = NodePath("../..")
 
 [node name="PostIt" type="Sprite3D" parent="LevelGeometry"]
@@ -271,7 +319,7 @@ textMerger = ExtResource("12_l100v")
 [node name="Cam" type="Camera3D" parent="." node_paths=PackedStringArray("physScreen")]
 transform = Transform3D(-4.371139e-08, 0, 0.99999994, 0, 0.99999994, 0, -1, 0, -4.3711385e-08, 2.2, 2.2, 0)
 fov = 60.0
-far = 10.0
+far = 100.0
 script = ExtResource("4_0d164")
 physScreen = NodePath("../BasicPC/PcScreen/PCScreen")
 
@@ -294,8 +342,8 @@ environment = SubResource("Environment_4f0fq")
 script = ExtResource("17_pkeyt")
 
 [node name="VoxelGI" type="VoxelGI" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.029449463, 1.4814453, 1.0965576)
-size = Vector3(6.5, 6.5, 11)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0514221, 1.4814453, 1.0965576)
+size = Vector3(9, 6.5, 11)
 data = ExtResource("4_32u8q")
 
 [node name="Mug" parent="." node_paths=PackedStringArray("targetDecal") instance=ExtResource("14_gldt3")]
@@ -401,6 +449,50 @@ grow_horizontal = 0
 grow_vertical = 2
 mouse_filter = 1
 
+[node name="Window" parent="." instance=ExtResource("26_vfnhs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.10405922, 2.383328, -3.870958)
+
+[node name="WoodFrame" parent="Window" index="0"]
+material_override = ExtResource("27_37xsv")
+cast_shadow = 2
+gi_mode = 2
+
+[node name="PlasticRim" parent="Window" index="1"]
+material_override = ExtResource("28_qxhf8")
+cast_shadow = 2
+gi_mode = 2
+
+[node name="WindowExternals" parent="Window" index="2"]
+visible = false
+cast_shadow = 2
+gi_mode = 2
+
+[node name="WindowWall" parent="Window" index="3"]
+material_override = ExtResource("4_l100v")
+cast_shadow = 2
+gi_mode = 2
+
+[node name="Moonlight" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.91876477, -0.082480706, -0.3860935, -0.20419538, 0.9362501, 0.28590208, 0.33789867, 0.34151527, -0.8770358, 0, 0, 0)
+light_color = Color(0.08100002, 0.43334988, 0.81, 1)
+light_energy = 0.02
+shadow_enabled = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -41, 0, -61)
+material_override = ExtResource("30_kuh34")
+mesh = SubResource("BoxMesh_qxhf8")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 4.1624985, -61)
+material_override = ExtResource("30_kuh34")
+mesh = SubResource("BoxMesh_qxhf8")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22, -7.8375015, -61)
+material_override = ExtResource("30_kuh34")
+mesh = SubResource("BoxMesh_qxhf8")
+
 [connection signal="timeout" from="Timer" to="." method="timer_bump"]
 [connection signal="input_event" from="LevelGeometry/Tower/PowerButton/Clickbox" to="LevelGeometry/Tower/PowerButton" method="mouse_event"]
 [connection signal="input_event" from="BasicPC/PcScreen/PCScreen/StaticBody3D" to="BasicPC/PcScreen/PCScreen" method="mouse_input"]
@@ -414,3 +506,4 @@ mouse_filter = 1
 [editable path="BasicPC"]
 [editable path="BasicPC/PcScreen"]
 [editable path="Mug"]
+[editable path="Window"]

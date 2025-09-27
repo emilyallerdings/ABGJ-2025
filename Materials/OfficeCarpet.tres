@@ -1,0 +1,11 @@
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://n2pdlsp60tvl"]
+
+[ext_resource type="Texture2D" uid="uid://bdo6wolyr0d3y" path="res://Textures/Carpet.png" id="1_svd81"]
+[ext_resource type="Texture2D" uid="uid://b46q4yko00766" path="res://Textures/CarpetNormal.png" id="2_hmfms"]
+
+[resource]
+albedo_texture = ExtResource("1_svd81")
+normal_enabled = true
+normal_texture = ExtResource("2_hmfms")
+uv1_scale = Vector3(2, 2, 2)
+uv1_triplanar = true

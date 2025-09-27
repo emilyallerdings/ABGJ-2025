@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://cu1tg07pnasfm"]
+
+[ext_resource type="Texture2D" uid="uid://ilhq8alv386" path="res://Textures/Building.png" id="1_kuuj1"]
+
+[resource]
+albedo_texture = ExtResource("1_kuuj1")
+emission_enabled = true
+emission_energy_multiplier = 0.2
+emission_texture = ExtResource("1_kuuj1")
+uv1_scale = Vector3(2, 2, 2)
