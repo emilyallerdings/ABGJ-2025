@@ -1,18 +1,19 @@
-[gd_scene load_steps=9 format=3 uid="uid://3e3fqavddmny"]
+[gd_scene load_steps=13 format=3 uid="uid://3e3fqavddmny"]
 
 [ext_resource type="StyleBox" uid="uid://r5nij8ldsx1i" path="res://2D_UI/ui_toolbar_background_stylebox.tres" id="1_ly68p"]
+[ext_resource type="Script" uid="uid://dlrsko4w846ua" path="res://2D_UI/main_screen.gd" id="1_n7qqh"]
 [ext_resource type="FontFile" uid="uid://vguog20e0lcl" path="res://2D_UI/W95Font/W95font-Bold.otf" id="2_jsu5s"]
 [ext_resource type="StyleBox" uid="uid://cl470k7s2bc8v" path="res://2D_UI/ui_background_stylebox.tres" id="3_dhqo6"]
 [ext_resource type="Texture2D" uid="uid://b1xn0yd2m5srx" path="res://2D_UI/test_logo.png" id="4_dhqo6"]
-[ext_resource type="Texture2D" uid="uid://csjm3trmctugw" path="res://2D_UI/ui_background_indent.png" id="5_ie24v"]
+[ext_resource type="StyleBox" uid="uid://vnckdwvpsh33" path="res://2D_UI/ui_background_pressed_stylebox.tres" id="4_h6wl3"]
+[ext_resource type="StyleBox" uid="uid://dlxlriogbab3f" path="res://2D_UI/ui_background_indent_stylebox.tres" id="5_ie24v"]
 [ext_resource type="Texture2D" uid="uid://bqbwmvp0i6k3l" path="res://2D_UI/audio_logo.png" id="6_ie24v"]
+[ext_resource type="FontFile" uid="uid://sjviyev1g2i2" path="res://2D_UI/W95Font/W95font.otf" id="8_do24l"]
+[ext_resource type="Texture2D" uid="uid://cuyfrn0lyr4xq" path="res://2D_UI/cursor.png" id="8_viisi"]
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_h6wl3"]
-texture = ExtResource("5_ie24v")
-texture_margin_left = 2.0
-texture_margin_top = 2.0
-texture_margin_right = 2.0
-texture_margin_bottom = 2.0
+[sub_resource type="LabelSettings" id="LabelSettings_wxaqd"]
+font = ExtResource("8_do24l")
+font_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_dhqo6"]
 font = ExtResource("2_jsu5s")
@@ -32,6 +33,7 @@ offset_right = 320.0
 offset_bottom = 240.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_n7qqh")
 
 [node name="Bg" type="ColorRect" parent="."]
 layout_mode = 1
@@ -63,12 +65,18 @@ texture_filter = 1
 layout_mode = 0
 offset_left = 2.0
 offset_top = 4.0
-offset_right = 94.0
+offset_right = 119.0
 offset_bottom = 32.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_jsu5s")
 theme_override_font_sizes/font_size = 16
 theme_override_styles/normal = ExtResource("3_dhqo6")
+theme_override_styles/pressed = ExtResource("4_h6wl3")
+theme_override_styles/hover = ExtResource("3_dhqo6")
 text = "AudSec Co."
 icon = ExtResource("4_dhqo6")
 
@@ -79,7 +87,19 @@ offset_left = 563.0
 offset_top = 4.0
 offset_right = 638.0
 offset_bottom = 32.0
-theme_override_styles/panel = SubResource("StyleBoxTexture_h6wl3")
+theme_override_styles/panel = ExtResource("5_ie24v")
+
+[node name="Label" type="Label" parent="Toolbar/Time"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "1:40 AM"
+label_settings = SubResource("LabelSettings_wxaqd")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Window" type="Panel" parent="."]
 texture_filter = 1
@@ -129,3 +149,17 @@ offset_right = 234.0
 offset_bottom = 18.0
 text = "Audio Identification Program"
 label_settings = SubResource("LabelSettings_dhqo6")
+
+[node name="Cursor" type="TextureRect" parent="."]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("8_viisi")
+expand_mode = 4
+stretch_mode = 2
