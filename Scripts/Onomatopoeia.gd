@@ -27,5 +27,4 @@ static func process_text(inString : String) -> String:
 	for eachChar in inString:
 		if lastChar != eachChar:
 			outString += eachChar
-		lastChar = eachChar
 	return outString
