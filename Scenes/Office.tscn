@@ -51,6 +51,7 @@ texture_filter = 0
 [sub_resource type="Environment" id="Environment_4f0fq"]
 background_mode = 1
 ambient_light_source = 2
+ambient_light_color = Color(1, 1, 1, 1)
 
 [node name="Main" type="Node3D"]
 
@@ -113,10 +114,11 @@ transform = Transform3D(1.8, 0, 0, 0, 1.8, 0, 0, 0, 1.8, -1.5, 2.301, 0)
 
 [node name="PcScreen" parent="BasicPC" instance=ExtResource("6_0u7kn")]
 
-[node name="PCScreen" parent="BasicPC/PcScreen" index="0" node_paths=PackedStringArray("subviewport")]
+[node name="PCScreen" parent="BasicPC/PcScreen" index="0" node_paths=PackedStringArray("subviewport", "moveMouse")]
 surface_material_override/0 = SubResource("StandardMaterial3D_ccyme")
 script = ExtResource("7_chwbs")
 subviewport = NodePath("../../../GameInput")
+moveMouse = NodePath("../../../LevelGeometry/Mouse")
 
 [node name="Cam" type="Camera3D" parent="."]
 transform = Transform3D(-4.371139e-08, 0, 0.99999994, 0, 0.99999994, 0, -1, 0, -4.3711385e-08, 2.2, 2.2, 0)
@@ -134,6 +136,7 @@ disable_3d = true
 size = Vector2i(640, 480)
 
 [node name="MainScreen" parent="GameInput" instance=ExtResource("6_gnkyl")]
+script = null
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.23557025, 3.1893559, 2.7285345)
