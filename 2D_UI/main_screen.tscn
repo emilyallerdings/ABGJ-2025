@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://3e3fqavddmny"]
+[gd_scene load_steps=24 format=3 uid="uid://3e3fqavddmny"]
 
 [ext_resource type="StyleBox" uid="uid://r5nij8ldsx1i" path="res://2D_UI/ui_toolbar_background_stylebox.tres" id="1_ly68p"]
 [ext_resource type="Script" uid="uid://dlrsko4w846ua" path="res://2D_UI/main_screen.gd" id="1_n7qqh"]
@@ -11,6 +11,7 @@
 [ext_resource type="FontFile" uid="uid://sjviyev1g2i2" path="res://2D_UI/W95Font/W95font.otf" id="8_do24l"]
 [ext_resource type="Texture2D" uid="uid://cuyfrn0lyr4xq" path="res://2D_UI/cursor.png" id="8_viisi"]
 [ext_resource type="Script" uid="uid://cia0at3r5vy8l" path="res://2D_UI/label.gd" id="9_wxaqd"]
+[ext_resource type="Texture2D" uid="uid://btf6ww6eswlxu" path="res://2D_UI/ui_text_input_background.png" id="11_7je2u"]
 [ext_resource type="Texture2D" uid="uid://2cub3uos43c1" path="res://2D_UI/ui_aud_bar.png" id="12_neqlk"]
 [ext_resource type="Script" uid="uid://onho6kfbkc62" path="res://2D_UI/media_bar.gd" id="13_deflx"]
 [ext_resource type="Resource" uid="uid://c7nad47mbe4a7" path="res://Resources/SoundGroups/LeafCrunch.tres" id="14_3gcfg"]
@@ -27,8 +28,23 @@ font_color = Color(0, 0, 0, 1)
 font = ExtResource("2_jsu5s")
 font_size = 13
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_s156s"]
+texture = ExtResource("11_7je2u")
+texture_margin_left = 2.0
+texture_margin_top = 2.0
+texture_margin_right = 2.0
+texture_margin_bottom = 2.0
+expand_margin_left = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+
 [sub_resource type="LabelSettings" id="LabelSettings_3gcfg"]
 font = ExtResource("8_do24l")
+font_size = 13
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_7je2u"]
+font = ExtResource("2_jsu5s")
 font_size = 13
 font_color = Color(0, 0, 0, 1)
 
@@ -48,6 +64,9 @@ offset_bottom = 240.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_n7qqh")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
 
 [node name="Bg" type="ColorRect" parent="."]
 layout_mode = 1
@@ -74,7 +93,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = ExtResource("1_ly68p")
 
-[node name="Button" type="Button" parent="Toolbar"]
+[node name="StartButton" type="Button" parent="Toolbar"]
 texture_filter = 1
 layout_mode = 0
 offset_left = 2.0
@@ -133,7 +152,7 @@ grow_vertical = 2
 theme_override_styles/panel = ExtResource("3_dhqo6")
 
 [node name="TopBar" type="ColorRect" parent="Window"]
-custom_minimum_size = Vector2(18, 0)
+custom_minimum_size = Vector2(18, 18)
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
@@ -165,7 +184,91 @@ offset_bottom = 20.0
 text = "Audio Identification Program"
 label_settings = SubResource("LabelSettings_dhqo6")
 
-[node name="MediaBar" type="TextureRect" parent="."]
+[node name="AudioProcessing" type="Control" parent="Window"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SubmitBtn" type="Button" parent="Window/AudioProcessing"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -34.25
+offset_top = -42.0
+offset_right = 34.25
+offset_bottom = -18.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_jsu5s")
+theme_override_font_sizes/font_size = 13
+theme_override_styles/normal = ExtResource("3_dhqo6")
+theme_override_styles/pressed = ExtResource("4_h6wl3")
+theme_override_styles/hover = ExtResource("3_dhqo6")
+text = "Submit"
+
+[node name="LineEdit" type="LineEdit" parent="Window/AudioProcessing"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -113.25
+offset_top = -75.0
+offset_right = 113.25
+offset_bottom = -50.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_default_cursor_shape = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_placeholder_color = Color(0.09620453, 0.09620487, 0.096204616, 0.6)
+theme_override_colors/caret_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("8_do24l")
+theme_override_font_sizes/font_size = 13
+theme_override_styles/normal = SubResource("StyleBoxTexture_s156s")
+placeholder_text = "..."
+max_length = 25
+caret_blink = true
+
+[node name="AudioIcon" type="Panel" parent="Window/AudioProcessing"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -52.0
+offset_top = -115.89499
+offset_right = 52.0
+offset_bottom = -20.545197
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = ExtResource("3_dhqo6")
+
+[node name="TextureRect" type="TextureRect" parent="Window/AudioProcessing/AudioIcon"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("16_3gcfg")
+
+[node name="MediaBar" type="TextureRect" parent="Window/AudioProcessing"]
 texture_filter = 1
 layout_mode = 1
 anchors_preset = 8
@@ -174,22 +277,22 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -125.0
-offset_top = -20.0
+offset_top = -12.0
 offset_right = 125.0
-offset_bottom = 20.0
+offset_bottom = 28.000488
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("12_neqlk")
 script = ExtResource("13_deflx")
 current_media = ExtResource("14_3gcfg")
 
-[node name="MediaHandle" type="Sprite2D" parent="MediaBar"]
+[node name="MediaHandle" type="Sprite2D" parent="Window/AudioProcessing/MediaBar"]
 texture_filter = 1
 position = Vector2(237, 18)
 texture = ExtResource("14_4tn6p")
 offset = Vector2(0.5, 0.5)
 
-[node name="CurTimeLabel" type="Label" parent="MediaBar"]
+[node name="CurTimeLabel" type="Label" parent="Window/AudioProcessing/MediaBar"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -197,9 +300,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -39.0
-offset_top = 2.0
+offset_top = 5.6450005
 offset_right = -4.0
-offset_bottom = 24.0
+offset_bottom = 27.645023
 grow_horizontal = 2
 grow_vertical = 2
 text = "10.0"
@@ -207,7 +310,7 @@ label_settings = SubResource("LabelSettings_3gcfg")
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="Slash" type="Label" parent="MediaBar"]
+[node name="Slash" type="Label" parent="Window/AudioProcessing/MediaBar"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -215,9 +318,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -3.0
-offset_top = 2.0
+offset_top = 5.6450005
 offset_right = 4.0
-offset_bottom = 24.0
+offset_bottom = 27.645023
 grow_horizontal = 2
 grow_vertical = 2
 text = "/"
@@ -225,7 +328,7 @@ label_settings = SubResource("LabelSettings_3gcfg")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TotalTimeLabel" type="Label" parent="MediaBar"]
+[node name="TotalTimeLabel" type="Label" parent="Window/AudioProcessing/MediaBar"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -233,18 +336,16 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = 4.0
-offset_top = 2.0
+offset_top = 5.6450005
 offset_right = 39.0
-offset_bottom = 24.0
+offset_bottom = 27.645023
 grow_horizontal = 2
 grow_vertical = 2
 text = "10.0"
 label_settings = SubResource("LabelSettings_3gcfg")
 vertical_alignment = 1
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="MediaBar"]
-
-[node name="PlayMediaBtn" type="Button" parent="MediaBar"]
+[node name="PlayMediaBtn" type="Button" parent="Window/AudioProcessing/MediaBar"]
 texture_filter = 1
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 1
@@ -254,9 +355,9 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -16.0
-offset_top = 3.540001
+offset_top = 7.9995117
 offset_right = 16.25
-offset_bottom = 35.54
+offset_bottom = 39.99955
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -273,6 +374,56 @@ icon = ExtResource("15_5h0q2")
 icon_alignment = 1
 expand_icon = true
 
+[node name="Label" type="Label" parent="Window/AudioProcessing"]
+layout_mode = 0
+offset_left = 154.0
+offset_top = 270.0
+offset_right = 266.0
+offset_bottom = 284.0
+text = "Enter Audio Label"
+label_settings = SubResource("LabelSettings_7je2u")
+
+[node name="ErrorPopupWindow" type="Panel" parent="."]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -138.0
+offset_top = -44.0
+offset_right = 154.0
+offset_bottom = 55.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = ExtResource("3_dhqo6")
+
+[node name="TopBar" type="ColorRect" parent="ErrorPopupWindow"]
+custom_minimum_size = Vector2(18, 18)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+pivot_offset = Vector2(0, 0.975)
+color = Color(0, 0, 0.50980395, 1)
+
+[node name="TextureRect" type="TextureRect" parent="ErrorPopupWindow/TopBar"]
+layout_mode = 0
+offset_left = 2.0
+offset_right = 19.0
+offset_bottom = 17.0
+expand_mode = 2
+
+[node name="Label" type="Label" parent="ErrorPopupWindow/TopBar"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 2.0
+offset_right = 213.0
+offset_bottom = 19.0
+text = "Error With Input"
+label_settings = SubResource("LabelSettings_dhqo6")
+
 [node name="Cursor" type="TextureRect" parent="."]
 z_index = 10
 texture_filter = 1
@@ -288,31 +439,6 @@ texture = ExtResource("8_viisi")
 expand_mode = 4
 stretch_mode = 2
 
-[node name="AudioIcon" type="Panel" parent="."]
-texture_filter = 1
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -52.0
-offset_top = -115.895
-offset_right = 52.0
-offset_bottom = -20.545197
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_styles/panel = ExtResource("3_dhqo6")
-
-[node name="TextureRect" type="TextureRect" parent="AudioIcon"]
-texture_filter = 1
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("16_3gcfg")
-
-[connection signal="finished" from="MediaBar/AudioStreamPlayer" to="MediaBar" method="_on_audio_stream_player_finished"]
-[connection signal="pressed" from="MediaBar/PlayMediaBtn" to="MediaBar" method="_on_play_media_btn_pressed"]
+[connection signal="finished" from="AudioStreamPlayer" to="Window/AudioProcessing/MediaBar" method="_on_audio_stream_player_finished"]
+[connection signal="pressed" from="Window/AudioProcessing/SubmitBtn" to="." method="_on_submit_btn_pressed"]
+[connection signal="pressed" from="Window/AudioProcessing/MediaBar/PlayMediaBtn" to="Window/AudioProcessing/MediaBar" method="_on_play_media_btn_pressed"]

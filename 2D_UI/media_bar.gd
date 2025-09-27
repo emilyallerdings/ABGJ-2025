@@ -3,7 +3,7 @@ extends TextureRect
 const MEDIA_PAUSE_ICON = preload("uid://b6v46201xxdan")
 const MEDIA_PLAY_ICON = preload("uid://by47crqs18b72")
 
-@onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
+@onready var audio_stream_player: AudioStreamPlayer = %AudioStreamPlayer
 @export var current_media:SoundGroup
 @onready var media_handle: Sprite2D = $MediaHandle
 
