@@ -1,6 +1,7 @@
 extends Camera3D
 class_name PlayCam
 
+@export var physScreen : PhysicalScreen
 @export var typeTiltEnabled : bool = true
 
 ##The rotation when you're typing
@@ -9,6 +10,7 @@ class_name PlayCam
 ##The rotation when you're watching
 @export var staticRot : float = 0.0
 @export var staticFov : float = 60.0
+@export var focusedFov : float = 40.0
 
 var lastTypedCooldown : float = 0
 
@@ -23,6 +25,8 @@ func tilt_when_typing(delta: float) -> void:
 		lastTypedCooldown -= delta
 		targetRot = typingRot
 		targetFov = typingFov
+	elif physScreen.mouseFocused:
+		targetFov = focusedFov
 	rotation_degrees.x = lerpf(rotation_degrees.x, targetRot, delta * 10)
 	fov = lerpf(fov, targetFov, delta * 10)
 

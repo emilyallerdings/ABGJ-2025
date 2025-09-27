@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://2tmp6fu334qg"]
+[gd_scene load_steps=21 format=3 uid="uid://2tmp6fu334qg"]
 
 [ext_resource type="PackedScene" uid="uid://c3xwy2s3ckihp" path="res://Resources/WorldKeyboard.tscn" id="1_0d164"]
 [ext_resource type="PackedScene" uid="uid://giyx4wkbs4f1" path="res://Models/BasicPC.blend" id="1_um8f5"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://btmy4mr5pxj2f" path="res://Models/PcScreen.blend" id="6_0u7kn"]
 [ext_resource type="PackedScene" uid="uid://3e3fqavddmny" path="res://2D_UI/main_screen.tscn" id="6_gnkyl"]
 [ext_resource type="Script" uid="uid://30bc51xwx0i2" path="res://Scripts/PhysicalScreen.gd" id="7_chwbs"]
+[ext_resource type="Script" uid="uid://ccas1aib0ahyw" path="res://Scripts/OfficeTowerFlash.gd" id="10_3g47s"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_4f0fq"]
 radius = 0.25
@@ -52,6 +53,7 @@ texture_filter = 0
 background_mode = 1
 ambient_light_source = 2
 ambient_light_color = Color(1, 1, 1, 1)
+ambient_light_energy = 0.01
 
 [node name="Main" type="Node3D"]
 
@@ -61,7 +63,7 @@ ambient_light_color = Color(1, 1, 1, 1)
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -0.25, 0.674, 1.1)
 
 [node name="Mouse" type="MeshInstance3D" parent="LevelGeometry"]
-transform = Transform3D(1, 0, 0, 0, 0.7, 0, 0, 0, 0.75, 0.03703952, 0.5656718, -1.6459932)
+transform = Transform3D(1, 0, 0, 0, 0.7, 0, 0, 0, 0.75, -0.054608315, 0.5656718, -1.6459932)
 gi_mode = 2
 mesh = SubResource("SphereMesh_4f0fq")
 skeleton = NodePath("../..")
@@ -120,16 +122,12 @@ script = ExtResource("7_chwbs")
 subviewport = NodePath("../../../GameInput")
 moveMouse = NodePath("../../../LevelGeometry/Mouse")
 
-[node name="Cam" type="Camera3D" parent="."]
+[node name="Cam" type="Camera3D" parent="." node_paths=PackedStringArray("physScreen")]
 transform = Transform3D(-4.371139e-08, 0, 0.99999994, 0, 0.99999994, 0, -1, 0, -4.3711385e-08, 2.2, 2.2, 0)
 fov = 60.0
 far = 10.0
 script = ExtResource("4_0d164")
-typeTiltEnabled = null
-typingRot = null
-typingFov = null
-staticRot = null
-staticFov = null
+physScreen = NodePath("../BasicPC/PcScreen/PCScreen")
 
 [node name="GameInput" type="SubViewport" parent="."]
 disable_3d = true
@@ -142,6 +140,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.23557025, 3.1893559, 2.728
 visible = false
 light_color = Color(1, 0, 0, 1)
 light_energy = 0.05
+script = ExtResource("10_3g47s")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_4f0fq")

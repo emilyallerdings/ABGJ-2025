@@ -1,7 +1,9 @@
 extends MeshInstance3D
+class_name PhysicalScreen
 
 @export var subviewport : SubViewport
 @export var moveMouse : OfficeMouse
+var mouseFocused : bool = false
 
 const RESOLUTION = Vector2(640, 480)
 
@@ -22,7 +24,9 @@ func mouse_input(_camera: Node, event: InputEvent, event_position: Vector3, _nor
 	subviewport.push_input(event, true)
 
 func mouse_entered() -> void:
+	mouseFocused = true
 	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
 
 func mouse_exited() -> void:
+	mouseFocused = false
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
