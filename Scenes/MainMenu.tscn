@@ -1,4 +1,7 @@
-[gd_scene format=3 uid="uid://cvesfiaojmsh6"]
+[gd_scene load_steps=3 format=3 uid="uid://cvesfiaojmsh6"]
+
+[ext_resource type="Script" uid="uid://pqrg084a1u4w" path="res://Scripts/MainMenu.gd" id="1_tt5f1"]
+[ext_resource type="PackedScene" uid="uid://2tmp6fu334qg" path="res://Scenes/Office.tscn" id="2_853f1"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -7,3 +10,122 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_tt5f1")
+mainGame = ExtResource("2_853f1")
+
+[node name="Main" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ButtonVbox" type="VBoxContainer" parent="Main"]
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -66.0
+offset_right = 66.0
+offset_bottom = -86.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 2
+
+[node name="Play" type="Button" parent="Main/ButtonVbox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Play"
+
+[node name="Settings" type="Button" parent="Main/ButtonVbox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Settings"
+
+[node name="Credits" type="Button" parent="Main/ButtonVbox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Credits"
+
+[node name="Exit" type="Button" parent="Main/ButtonVbox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Exit"
+
+[node name="Settings" type="TextureRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ButtonVbox" type="VBoxContainer" parent="Settings"]
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -66.0
+offset_right = 66.0
+offset_bottom = -86.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 2
+
+[node name="Settings" type="Button" parent="Settings/ButtonVbox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Settings"
+
+[node name="Back" type="Button" parent="Settings/ButtonVbox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Back"
+
+[node name="Credits" type="TextureRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ButtonVbox" type="VBoxContainer" parent="Credits"]
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -66.0
+offset_right = 66.0
+offset_bottom = -86.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 2
+
+[node name="Back" type="Button" parent="Credits/ButtonVbox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Back"
+
+[connection signal="pressed" from="Main/ButtonVbox/Play" to="." method="play_pressed"]
+[connection signal="pressed" from="Main/ButtonVbox/Settings" to="Main" method="hide"]
+[connection signal="pressed" from="Main/ButtonVbox/Settings" to="Settings" method="show"]
+[connection signal="pressed" from="Main/ButtonVbox/Credits" to="Main" method="hide"]
+[connection signal="pressed" from="Main/ButtonVbox/Credits" to="Credits" method="show"]
+[connection signal="pressed" from="Main/ButtonVbox/Exit" to="." method="exit_pressed"]
+[connection signal="pressed" from="Settings/ButtonVbox/Back" to="Main" method="show"]
+[connection signal="pressed" from="Settings/ButtonVbox/Back" to="Settings" method="hide"]
+[connection signal="pressed" from="Credits/ButtonVbox/Back" to="Main" method="show"]
+[connection signal="pressed" from="Credits/ButtonVbox/Back" to="Credits" method="hide"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://2tmp6fu334qg"]
+[gd_scene load_steps=42 format=3 uid="uid://2tmp6fu334qg"]
 
 [ext_resource type="PackedScene" uid="uid://c3xwy2s3ckihp" path="res://Resources/WorldKeyboard.tscn" id="1_0d164"]
 [ext_resource type="Script" uid="uid://cxc75gjqku8hw" path="res://Scripts/Office.gd" id="1_mdu65"]
@@ -22,6 +22,7 @@
 [ext_resource type="Material" uid="uid://0qtwb0ig7aet" path="res://Materials/CupMaterial.tres" id="15_6b8ke"]
 [ext_resource type="Script" uid="uid://6x4s6aub74qg" path="res://Scripts/OfficeMug.gd" id="15_k0xf6"]
 [ext_resource type="Texture2D" uid="uid://byrqm1uohudqb" path="res://icon.svg" id="17_2uv6j"]
+[ext_resource type="Script" uid="uid://duuvlvulw0uec" path="res://Scripts/Debug/DebugToggleFullbrightt.gd" id="17_pkeyt"]
 [ext_resource type="Script" uid="uid://dv1o1f4iqjn70" path="res://Scripts/DecalCorrupt.gd" id="19_wwh7d"]
 [ext_resource type="Resource" uid="uid://d2vb0icl2q0y6" path="res://Resources/TextMerges/MugMerge.tres" id="20_mdu65"]
 
@@ -108,7 +109,8 @@ roughness = 0.0
 [sub_resource type="Environment" id="Environment_4f0fq"]
 background_mode = 1
 ambient_light_source = 2
-ambient_light_color = Color(1, 1, 1, 1)
+ambient_light_color = Color(0.80784315, 1, 1, 1)
+ambient_light_energy = 0.01
 
 [node name="Main" type="Node3D" groups=["Office"]]
 script = ExtResource("1_mdu65")
@@ -289,6 +291,7 @@ script = ExtResource("10_3g47s")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_4f0fq")
+script = ExtResource("17_pkeyt")
 
 [node name="VoxelGI" type="VoxelGI" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.029449463, 1.4814453, 1.0965576)
