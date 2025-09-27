@@ -4,5 +4,5 @@
 
 [resource]
 script = ExtResource("1_3bvdw")
-startText = "Normal Text"
+startText = "Normal"
 metadata/_custom_type_script = "uid://d28hdpyp8wekl"

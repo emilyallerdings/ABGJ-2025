@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="TextMerger" load_steps=2 format=3 uid="uid://c8sj4iftpnxsi"]
+
+[ext_resource type="Script" uid="uid://d28hdpyp8wekl" path="res://Scripts/TextMerger.gd" id="1_h2ihs"]
+
+[resource]
+script = ExtResource("1_h2ihs")
+startText = "Gill"
+minCorruption = 0.25
+metadata/_custom_type_script = "uid://d28hdpyp8wekl"

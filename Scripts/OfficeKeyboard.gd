@@ -60,6 +60,8 @@ func _ready() -> void:
 	keyCorruptOrder.shuffle()
 
 func _input(event: InputEvent) -> void:
+	if not Office.PoweredOn:
+		return
 	if event is InputEventKey and event.is_pressed():
 		if OfficeKeyboard.KEYS.has(event.keycode):
 			keyLookup[event.keycode].press()
@@ -68,4 +70,4 @@ func corrupt_keys(lerpAmount : float):
 	var keysToCorrupt := int(keyCorruptOrder.size() * lerpAmount)
 	for eachKey in keysToCorrupt:
 		var keyToUse = Office.CorruptText[eachKey % Office.CorruptText.length()]
-		keyLookup[keyCorruptOrder[eachKey]].set_key(keyToUse)
+		keyLookup[keyCorruptOrder[eachKey]].set_key(keyToUse.to_upper())

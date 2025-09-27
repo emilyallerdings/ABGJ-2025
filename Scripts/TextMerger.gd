@@ -1,9 +1,10 @@
-extends Resource
+extends Corruptable
 class_name TextMerger
 
 @export_multiline var startText : String
 
 func mix_strings(lerpProgress : float) -> String:
+	lerpProgress = filter_corruption(lerpProgress)
 	var toAssign : String
 	var corruptedText : String = Office.CorruptText
 	for eachSpace in startText.count(" "):

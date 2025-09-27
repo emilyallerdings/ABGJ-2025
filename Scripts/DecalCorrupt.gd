@@ -7,8 +7,8 @@ class_name DecalCorrupt
 @export var targetViewport : SubViewport
 
 func _ready() -> void:
-		get_tree().get_first_node_in_group("Office").new_corruption_level.connect(update_decal)
-	
+	get_tree().get_first_node_in_group("Office").new_corruption_level.connect(update_decal)
+
 func update_decal(lerpAmount : float):
 	#Text Fade
 	if textMerger != null:

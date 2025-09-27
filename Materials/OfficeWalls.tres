@@ -1,0 +1,11 @@
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://doif1g51s2da7"]
+
+[ext_resource type="Texture2D" uid="uid://dkph6nb1r3npo" path="res://Textures/WallOff.png" id="1_irpji"]
+[ext_resource type="Texture2D" uid="uid://c6obaj57reroy" path="res://Textures/WallOffNormal.png" id="2_biwsd"]
+
+[resource]
+albedo_texture = ExtResource("1_irpji")
+normal_enabled = true
+normal_texture = ExtResource("2_biwsd")
+uv1_scale = Vector3(4, 4, 4)
+uv1_triplanar = true
