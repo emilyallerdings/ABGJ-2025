@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://2tmp6fu334qg"]
+[gd_scene load_steps=25 format=3 uid="uid://2tmp6fu334qg"]
 
 [ext_resource type="PackedScene" uid="uid://c3xwy2s3ckihp" path="res://Resources/WorldKeyboard.tscn" id="1_0d164"]
 [ext_resource type="PackedScene" uid="uid://giyx4wkbs4f1" path="res://Models/BasicPC.blend" id="1_um8f5"]
@@ -7,8 +7,10 @@
 [ext_resource type="Script" uid="uid://ck8s0ixkgnfrd" path="res://Scripts/3dCam.gd" id="4_0d164"]
 [ext_resource type="VoxelGIData" uid="uid://b0arf755jcb5a" path="res://Lightmaps/Office.VoxelGI_data.res" id="4_32u8q"]
 [ext_resource type="Texture2D" uid="uid://c6obaj57reroy" path="res://Textures/WallOffNormal.png" id="4_k8msm"]
+[ext_resource type="Texture2D" uid="uid://c40sms6bf5yvl" path="res://Sprites/PostIt.png" id="5_541ak"]
 [ext_resource type="PackedScene" uid="uid://btmy4mr5pxj2f" path="res://Models/PcScreen.blend" id="6_0u7kn"]
 [ext_resource type="PackedScene" uid="uid://3e3fqavddmny" path="res://2D_UI/main_screen.tscn" id="6_gnkyl"]
+[ext_resource type="Script" uid="uid://hs8qfe16l3ys" path="res://Scripts/PostIt.gd" id="6_i4f5g"]
 [ext_resource type="Script" uid="uid://30bc51xwx0i2" path="res://Scripts/PhysicalScreen.gd" id="7_chwbs"]
 [ext_resource type="Script" uid="uid://ccas1aib0ahyw" path="res://Scripts/OfficeTowerFlash.gd" id="10_3g47s"]
 
@@ -16,6 +18,14 @@
 radius = 0.25
 height = 0.25
 is_hemisphere = true
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_3g47s"]
+top_radius = 0.6
+bottom_radius = 0.6
+height = 0.05
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_541ak"]
+albedo_color = Color(0.13319641, 0.13319641, 0.13319638, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_um8f5"]
 size = Vector3(3.5, 0.2, 7)
@@ -52,22 +62,27 @@ texture_filter = 0
 [sub_resource type="Environment" id="Environment_4f0fq"]
 background_mode = 1
 ambient_light_source = 2
-ambient_light_color = Color(1, 1, 1, 1)
-ambient_light_energy = 0.01
+ambient_light_color = Color(0.09366939, 0.09366938, 0.09366935, 1)
 
 [node name="Main" type="Node3D"]
 
 [node name="LevelGeometry" type="Node3D" parent="."]
 
 [node name="Keyboard" parent="LevelGeometry" instance=ExtResource("1_0d164")]
-transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -0.25, 0.674, 1.1)
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -0.25, 0.674, 1.2874612)
 
 [node name="Mouse" type="MeshInstance3D" parent="LevelGeometry"]
-transform = Transform3D(1, 0, 0, 0, 0.7, 0, 0, 0, 0.75, -0.054608315, 0.5656718, -1.6459932)
+transform = Transform3D(1, 0, 0, 0, 0.7, 0, 0, 0, 0.75, -0.054608315, 0.6182737, -1.6459932)
 gi_mode = 2
 mesh = SubResource("SphereMesh_4f0fq")
 skeleton = NodePath("../..")
 script = ExtResource("2_t43tj")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="LevelGeometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.054608315, 0.59517366, -1.6459932)
+gi_mode = 2
+mesh = SubResource("CylinderMesh_3g47s")
+surface_material_override/0 = SubResource("StandardMaterial3D_541ak")
 
 [node name="Table" type="MeshInstance3D" parent="LevelGeometry"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2375202, 0.4699874, 0.5004437)
@@ -110,6 +125,27 @@ material_override = SubResource("StandardMaterial3D_k8msm")
 gi_mode = 2
 mesh = SubResource("BoxMesh_4f0fq")
 skeleton = NodePath("../..")
+
+[node name="PostIt" type="Sprite3D" parent="LevelGeometry"]
+transform = Transform3D(-4.371139e-08, 0, 1, -0.25881904, 0.9659258, -1.131334e-08, -0.9659258, -0.25881904, -4.222196e-08, -2.9964035, 3, -2.8377998)
+pixel_size = 0.005
+shaded = true
+double_sided = false
+alpha_cut = 1
+texture = ExtResource("5_541ak")
+script = ExtResource("6_i4f5g")
+startText = "Banana"
+endText = "Phone"
+
+[node name="PostItText" type="Label3D" parent="LevelGeometry/PostIt"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0015852451)
+shaded = true
+double_sided = false
+alpha_cut = 1
+modulate = Color(0, 0, 0, 1)
+text = "ERR"
+font_size = 16
+outline_size = 0
 
 [node name="BasicPC" parent="." instance=ExtResource("1_um8f5")]
 transform = Transform3D(1.8, 0, 0, 0, 1.8, 0, 0, 0, 1.8, -1.5, 2.301, 0)
