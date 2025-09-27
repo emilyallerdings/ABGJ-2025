@@ -1,11 +1,10 @@
-[gd_scene load_steps=18 format=3 uid="uid://2tmp6fu334qg"]
+[gd_scene load_steps=17 format=3 uid="uid://2tmp6fu334qg"]
 
 [ext_resource type="PackedScene" uid="uid://giyx4wkbs4f1" path="res://Models/BasicPC.blend" id="1_um8f5"]
 [ext_resource type="Texture2D" uid="uid://dkph6nb1r3npo" path="res://Textures/WallOff.png" id="3_4f0fq"]
 [ext_resource type="Script" uid="uid://ck8s0ixkgnfrd" path="res://Scripts/3dCam.gd" id="4_0d164"]
 [ext_resource type="VoxelGIData" uid="uid://b0arf755jcb5a" path="res://Lightmaps/Office.VoxelGI_data.res" id="4_32u8q"]
 [ext_resource type="Texture2D" uid="uid://c6obaj57reroy" path="res://Textures/WallOffNormal.png" id="4_k8msm"]
-[ext_resource type="PackedScene" uid="uid://3e3fqavddmny" path="res://2D_UI/main_screen.tscn" id="5_0d164"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_ccyme"]
 size = Vector3(1, 0.2, 3)
@@ -118,9 +117,14 @@ script = ExtResource("4_0d164")
 
 [node name="GameInput" type="SubViewport" parent="."]
 disable_3d = true
-size = Vector2i(640, 480)
 
-[node name="MainScreen" parent="GameInput" instance=ExtResource("5_0d164")]
+[node name="ColorRect" type="ColorRect" parent="GameInput"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 1, 1)
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.23557025, 3.1893559, 2.7285345)
