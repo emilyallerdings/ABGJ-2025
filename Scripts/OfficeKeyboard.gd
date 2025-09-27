@@ -34,9 +34,16 @@ const KEYS = {
 	KEY_M : "M"
 }
 
+var keyCorruptOrder : Array
+
 var keyLookup : Dictionary
 
 func _ready() -> void:
+	#Corruption
+	get_tree().get_first_node_in_group("Office").new_corruption_level.connect(corrupt_keys)
+	keyCorruptOrder = keyLookup.keys().duplicate()
+	keyCorruptOrder.shuffle()
+	#Key Indexing
 	for keyIndex in KEYS.values().size():
 		var eachKey : String = KEYS.values()[keyIndex]
 		var keyVis : VisualKey = keyPrefab.instantiate()
@@ -55,3 +62,10 @@ func _input(event: InputEvent) -> void:
 	if event is InputEventKey and event.is_pressed():
 		if OfficeKeyboard.KEYS.has(event.keycode):
 			keyLookup[event.keycode].press()
+
+func corrupt_keys(lerpAmount : float):
+	var keysToCorrupt := int(keyCorruptOrder.size() / lerpAmount)
+	for eachKey in keysToCorrupt:
+		var keyToUse = Office.CorruptText[eachKey % Office.CorruptText.length()]
+		print(keyToUse)
+		keyLookup[keyCorruptOrder[eachKey]].set_key(keyToUse)

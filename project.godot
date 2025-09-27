@@ -35,3 +35,7 @@ folder_colors={
 "res://Textures/": "red",
 "res://Video/": "teal"
 }
+
+[global_group]
+
+Office="Root of 3D Space"

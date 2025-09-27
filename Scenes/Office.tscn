@@ -1,6 +1,7 @@
-[gd_scene load_steps=25 format=3 uid="uid://2tmp6fu334qg"]
+[gd_scene load_steps=33 format=3 uid="uid://2tmp6fu334qg"]
 
 [ext_resource type="PackedScene" uid="uid://c3xwy2s3ckihp" path="res://Resources/WorldKeyboard.tscn" id="1_0d164"]
+[ext_resource type="Script" uid="uid://cxc75gjqku8hw" path="res://Scripts/Office.gd" id="1_mdu65"]
 [ext_resource type="PackedScene" uid="uid://giyx4wkbs4f1" path="res://Models/BasicPC.blend" id="1_um8f5"]
 [ext_resource type="Script" uid="uid://8pgamyrptrvo" path="res://Scripts/MouseShift.gd" id="2_t43tj"]
 [ext_resource type="Texture2D" uid="uid://dkph6nb1r3npo" path="res://Textures/WallOff.png" id="3_4f0fq"]
@@ -10,9 +11,16 @@
 [ext_resource type="Texture2D" uid="uid://c40sms6bf5yvl" path="res://Sprites/PostIt.png" id="5_541ak"]
 [ext_resource type="PackedScene" uid="uid://btmy4mr5pxj2f" path="res://Models/PcScreen.blend" id="6_0u7kn"]
 [ext_resource type="PackedScene" uid="uid://3e3fqavddmny" path="res://2D_UI/main_screen.tscn" id="6_gnkyl"]
-[ext_resource type="Script" uid="uid://hs8qfe16l3ys" path="res://Scripts/PostIt.gd" id="6_i4f5g"]
+[ext_resource type="Script" uid="uid://hs8qfe16l3ys" path="res://Scripts/Label3DCorrupt.gd" id="6_i4f5g"]
 [ext_resource type="Script" uid="uid://30bc51xwx0i2" path="res://Scripts/PhysicalScreen.gd" id="7_chwbs"]
+[ext_resource type="Resource" uid="uid://bl2r6hr0f0m3q" path="res://Resources/TextMerges/PostItMerge.tres" id="7_jptpv"]
 [ext_resource type="Script" uid="uid://ccas1aib0ahyw" path="res://Scripts/OfficeTowerFlash.gd" id="10_3g47s"]
+[ext_resource type="PackedScene" uid="uid://bqbjw5s2uqf1w" path="res://Models/Mug.blend" id="14_gldt3"]
+[ext_resource type="Material" uid="uid://0qtwb0ig7aet" path="res://Materials/CupMaterial.tres" id="15_6b8ke"]
+[ext_resource type="Script" uid="uid://6x4s6aub74qg" path="res://Scripts/OfficeMug.gd" id="15_k0xf6"]
+[ext_resource type="Texture2D" uid="uid://byrqm1uohudqb" path="res://icon.svg" id="17_2uv6j"]
+[ext_resource type="Script" uid="uid://dv1o1f4iqjn70" path="res://Scripts/DecalCorrupt.gd" id="19_wwh7d"]
+[ext_resource type="Resource" uid="uid://d2vb0icl2q0y6" path="res://Resources/TextMerges/MugMerge.tres" id="20_mdu65"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_4f0fq"]
 radius = 0.25
@@ -62,9 +70,13 @@ texture_filter = 0
 [sub_resource type="Environment" id="Environment_4f0fq"]
 background_mode = 1
 ambient_light_source = 2
-ambient_light_color = Color(0.09366939, 0.09366938, 0.09366935, 1)
+ambient_light_color = Color(1, 1, 1, 1)
 
-[node name="Main" type="Node3D"]
+[node name="Main" type="Node3D" groups=["Office"]]
+script = ExtResource("1_mdu65")
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
 
 [node name="LevelGeometry" type="Node3D" parent="."]
 
@@ -127,25 +139,26 @@ mesh = SubResource("BoxMesh_4f0fq")
 skeleton = NodePath("../..")
 
 [node name="PostIt" type="Sprite3D" parent="LevelGeometry"]
-transform = Transform3D(-4.371139e-08, 0, 1, -0.25881904, 0.9659258, -1.131334e-08, -0.9659258, -0.25881904, -4.222196e-08, -2.9964035, 3, -2.8377998)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1.0000001, 8.881784e-16, -1.0000001, 0, -4.371139e-08, -2.9964035, 3, -2.8377998)
 pixel_size = 0.005
 shaded = true
 double_sided = false
 alpha_cut = 1
 texture = ExtResource("5_541ak")
-script = ExtResource("6_i4f5g")
-startText = "Banana"
-endText = "Phone"
 
 [node name="PostItText" type="Label3D" parent="LevelGeometry/PostIt"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0015852451)
+transform = Transform3D(1, 0, 3.5527137e-15, 3.1554436e-30, 1, -1.6970292e-30, -3.5527137e-15, 0, 1, 0, -0.033326387, 0.0015852451)
 shaded = true
 double_sided = false
 alpha_cut = 1
 modulate = Color(0, 0, 0, 1)
 text = "ERR"
-font_size = 16
+font_size = 10
 outline_size = 0
+autowrap_mode = 3
+width = 116.0
+script = ExtResource("6_i4f5g")
+textMerger = ExtResource("7_jptpv")
 
 [node name="BasicPC" parent="." instance=ExtResource("1_um8f5")]
 transform = Transform3D(1.8, 0, 0, 0, 1.8, 0, 0, 0, 1.8, -1.5, 2.301, 0)
@@ -186,8 +199,74 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.029449463, 1.4814453, 1.096
 size = Vector3(6.5, 6.5, 11)
 data = ExtResource("4_32u8q")
 
+[node name="Mug" parent="." node_paths=PackedStringArray("targetDecal") instance=ExtResource("14_gldt3")]
+transform = Transform3D(0.14142136, 0, 0.14142136, 0, 0.2, 0, -0.14142136, 0, 0.14142136, 0.046569645, 0.7635156, 2.2856374)
+script = ExtResource("15_k0xf6")
+targetDecal = NodePath("MugDecal")
+
+[node name="Cup" parent="Mug" index="0"]
+material_override = ExtResource("15_6b8ke")
+gi_mode = 2
+
+[node name="MugDecal" type="Decal" parent="Mug" node_paths=PackedStringArray("textures", "targetLabel", "targetViewport")]
+transform = Transform3D(-4.3711363e-08, 0.9999981, 0, 4.3711367e-08, 1.910682e-15, -0.9999995, -0.9999996, -4.371131e-08, -4.3711367e-08, 0.8903944, -0.0046687126, 0)
+size = Vector3(1.6, 0.6, 1.6)
+texture_albedo = ExtResource("17_2uv6j")
+upper_fade = 0.0016008287
+lower_fade = 0.00025504405
+script = ExtResource("19_wwh7d")
+textMerger = ExtResource("20_mdu65")
+textures = [NodePath("MugSubviewport/MugImageA"), NodePath("MugSubviewport/MugImageB")]
+targetLabel = NodePath("MugSubviewport/MugLabel")
+targetViewport = NodePath("MugSubviewport")
+
+[node name="MugSubviewport" type="SubViewport" parent="Mug/MugDecal"]
+disable_3d = true
+transparent_bg = true
+size = Vector2i(128, 128)
+render_target_update_mode = 1
+
+[node name="MugLabel" type="Label" parent="Mug/MugDecal/MugSubviewport"]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -23.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 24
+text = "Loris Ipsum"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MugImageA" type="TextureRect" parent="Mug/MugDecal/MugSubviewport"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -34.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("17_2uv6j")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="MugImageB" type="TextureRect" parent="Mug/MugDecal/MugSubviewport"]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -34.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_4f0fq")
+expand_mode = 1
+stretch_mode = 5
+
+[connection signal="timeout" from="Timer" to="." method="timer_bump"]
 [connection signal="input_event" from="BasicPC/PcScreen/PCScreen/StaticBody3D" to="BasicPC/PcScreen/PCScreen" method="mouse_input"]
 [connection signal="mouse_entered" from="BasicPC/PcScreen/PCScreen/StaticBody3D" to="BasicPC/PcScreen/PCScreen" method="mouse_entered"]
 [connection signal="mouse_exited" from="BasicPC/PcScreen/PCScreen/StaticBody3D" to="BasicPC/PcScreen/PCScreen" method="mouse_exited"]
 
 [editable path="BasicPC/PcScreen"]
+[editable path="Mug"]
