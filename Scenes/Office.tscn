@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://2tmp6fu334qg"]
+[gd_scene load_steps=20 format=3 uid="uid://2tmp6fu334qg"]
 
 [ext_resource type="PackedScene" uid="uid://c3xwy2s3ckihp" path="res://Resources/WorldKeyboard.tscn" id="1_0d164"]
 [ext_resource type="PackedScene" uid="uid://giyx4wkbs4f1" path="res://Models/BasicPC.blend" id="1_um8f5"]
@@ -7,7 +7,9 @@
 [ext_resource type="Script" uid="uid://ck8s0ixkgnfrd" path="res://Scripts/3dCam.gd" id="4_0d164"]
 [ext_resource type="VoxelGIData" uid="uid://b0arf755jcb5a" path="res://Lightmaps/Office.VoxelGI_data.res" id="4_32u8q"]
 [ext_resource type="Texture2D" uid="uid://c6obaj57reroy" path="res://Textures/WallOffNormal.png" id="4_k8msm"]
+[ext_resource type="PackedScene" uid="uid://btmy4mr5pxj2f" path="res://Models/PcScreen.blend" id="6_0u7kn"]
 [ext_resource type="PackedScene" uid="uid://3e3fqavddmny" path="res://2D_UI/main_screen.tscn" id="6_gnkyl"]
+[ext_resource type="Script" uid="uid://30bc51xwx0i2" path="res://Scripts/PhysicalScreen.gd" id="7_chwbs"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_4f0fq"]
 radius = 0.25
@@ -35,9 +37,6 @@ uv1_triplanar = true
 flip_faces = true
 size = Vector3(6, 6, 10)
 
-[sub_resource type="QuadMesh" id="QuadMesh_um8f5"]
-size = Vector2(2, 1.6)
-
 [sub_resource type="ViewportTexture" id="ViewportTexture_um8f5"]
 viewport_path = NodePath("GameInput")
 
@@ -47,6 +46,7 @@ albedo_texture = SubResource("ViewportTexture_um8f5")
 emission_enabled = true
 emission_energy_multiplier = 2.0
 emission_texture = SubResource("ViewportTexture_um8f5")
+texture_filter = 0
 
 [sub_resource type="Environment" id="Environment_4f0fq"]
 background_mode = 1
@@ -61,54 +61,62 @@ transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -0.25, 0.674, 1.1)
 
 [node name="Mouse" type="MeshInstance3D" parent="LevelGeometry"]
 transform = Transform3D(1, 0, 0, 0, 0.7, 0, 0, 0, 0.75, 0.03703952, 0.5656718, -1.6459932)
+gi_mode = 2
 mesh = SubResource("SphereMesh_4f0fq")
 skeleton = NodePath("../..")
 script = ExtResource("2_t43tj")
 
 [node name="Table" type="MeshInstance3D" parent="LevelGeometry"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2375202, 0.4699874, 0.5004437)
+gi_mode = 2
 mesh = SubResource("BoxMesh_um8f5")
 skeleton = NodePath("../..")
 
 [node name="Leg4" type="MeshInstance3D" parent="LevelGeometry/Table"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0742481, -1.0697316, 3.2532024)
+gi_mode = 2
 mesh = SubResource("CylinderMesh_ccyme")
 skeleton = NodePath("../..")
 
 [node name="Leg3" type="MeshInstance3D" parent="LevelGeometry/Table"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3374949, -1.0697316, 3.2532024)
+gi_mode = 2
 mesh = SubResource("CylinderMesh_ccyme")
 skeleton = NodePath("../..")
 
 [node name="Leg2" type="MeshInstance3D" parent="LevelGeometry/Table"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0742481, -1.0697316, -3.1322153)
+gi_mode = 2
 mesh = SubResource("CylinderMesh_ccyme")
 skeleton = NodePath("../..")
 
 [node name="Leg" type="MeshInstance3D" parent="LevelGeometry/Table"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3374949, -1.0697316, -3.1322153)
+gi_mode = 2
 mesh = SubResource("CylinderMesh_ccyme")
 skeleton = NodePath("../..")
 
 [node name="Tower" type="MeshInstance3D" parent="LevelGeometry"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.366435, 2, 3)
+gi_mode = 2
 mesh = SubResource("BoxMesh_k8msm")
 
 [node name="Walls" type="MeshInstance3D" parent="LevelGeometry"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 1.0797148)
 material_override = SubResource("StandardMaterial3D_k8msm")
+gi_mode = 2
 mesh = SubResource("BoxMesh_4f0fq")
 skeleton = NodePath("../..")
 
 [node name="BasicPC" parent="." instance=ExtResource("1_um8f5")]
-transform = Transform3D(1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, -1.5, 2.301, 0)
+transform = Transform3D(1.8, 0, 0, 0, 1.8, 0, 0, 0, 1.8, -1.5, 2.301, 0)
 
-[node name="PcGlow" type="MeshInstance3D" parent="BasicPC"]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0.4216416, 0, 0)
-gi_mode = 2
-mesh = SubResource("QuadMesh_um8f5")
-skeleton = NodePath("../..")
+[node name="PcScreen" parent="BasicPC" instance=ExtResource("6_0u7kn")]
+
+[node name="PCScreen" parent="BasicPC/PcScreen" index="0" node_paths=PackedStringArray("subviewport")]
 surface_material_override/0 = SubResource("StandardMaterial3D_ccyme")
+script = ExtResource("7_chwbs")
+subviewport = NodePath("../../../GameInput")
 
 [node name="Cam" type="Camera3D" parent="."]
 transform = Transform3D(-4.371139e-08, 0, 0.99999994, 0, 0.99999994, 0, -1, 0, -4.3711385e-08, 2.2, 2.2, 0)
@@ -140,3 +148,7 @@ environment = SubResource("Environment_4f0fq")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.029449463, 1.4814453, 1.0965576)
 size = Vector3(6.5, 6.5, 11)
 data = ExtResource("4_32u8q")
+
+[connection signal="input_event" from="BasicPC/PcScreen/PCScreen/StaticBody3D" to="BasicPC/PcScreen/PCScreen" method="mouse_input"]
+
+[editable path="BasicPC/PcScreen"]

@@ -8,4 +8,5 @@ func _ready() -> void:
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
-		print(event.position / get_viewport().get_visible_rect().size)
+		var movePos : Vector2 = event.position / get_viewport().get_visible_rect().size
+		global_position = defaultPos + (Vector3(movePos.y - 0.5, 0, -movePos.x + 0.5) * 0.5)
