@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://3e3fqavddmny"]
+[gd_scene load_steps=9 format=3 uid="uid://3e3fqavddmny"]
 
 [ext_resource type="StyleBox" uid="uid://r5nij8ldsx1i" path="res://2D_UI/ui_toolbar_background_stylebox.tres" id="1_ly68p"]
 [ext_resource type="FontFile" uid="uid://vguog20e0lcl" path="res://2D_UI/W95Font/W95font-Bold.otf" id="2_jsu5s"]
 [ext_resource type="StyleBox" uid="uid://cl470k7s2bc8v" path="res://2D_UI/ui_background_stylebox.tres" id="3_dhqo6"]
 [ext_resource type="Texture2D" uid="uid://b1xn0yd2m5srx" path="res://2D_UI/test_logo.png" id="4_dhqo6"]
 [ext_resource type="Texture2D" uid="uid://csjm3trmctugw" path="res://2D_UI/ui_background_indent.png" id="5_ie24v"]
+[ext_resource type="Texture2D" uid="uid://bqbwmvp0i6k3l" path="res://2D_UI/audio_logo.png" id="6_ie24v"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_h6wl3"]
 texture = ExtResource("5_ie24v")
@@ -112,11 +113,19 @@ grow_horizontal = 2
 pivot_offset = Vector2(0, 0.975)
 color = Color(0, 0, 0.50980395, 1)
 
-[node name="Label" type="Label" parent="Window/TopBar"]
+[node name="TextureRect" type="TextureRect" parent="Window/TopBar"]
 layout_mode = 0
 offset_left = 2.0
+offset_right = 19.0
+offset_bottom = 17.0
+texture = ExtResource("6_ie24v")
+expand_mode = 2
+
+[node name="Label" type="Label" parent="Window/TopBar"]
+layout_mode = 0
+offset_left = 23.0
 offset_top = 1.0
-offset_right = 213.0
+offset_right = 234.0
 offset_bottom = 18.0
 text = "Audio Identification Program"
 label_settings = SubResource("LabelSettings_dhqo6")
