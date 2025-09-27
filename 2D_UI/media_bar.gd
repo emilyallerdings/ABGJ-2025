@@ -1,5 +1,8 @@
 extends TextureRect
 
+const MEDIA_PAUSE_ICON = preload("uid://b6v46201xxdan")
+const MEDIA_PLAY_ICON = preload("uid://by47crqs18b72")
+
 @onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
 @export var current_media:SoundGroup
 @onready var media_handle: Sprite2D = $MediaHandle
@@ -43,7 +46,17 @@ func format_time(time: float) -> String:
 func _on_play_media_btn_pressed() -> void:
 	if !audio_stream_player.playing && !audio_stream_player.stream_paused:
 		audio_stream_player.playing = true
+		$PlayMediaBtn.icon = MEDIA_PAUSE_ICON
 	else:
 		
 		audio_stream_player.stream_paused = !audio_stream_player.stream_paused
+		if audio_stream_player.stream_paused:
+			$PlayMediaBtn.icon = MEDIA_PLAY_ICON
+		else:
+			$PlayMediaBtn.icon = MEDIA_PAUSE_ICON
+	pass # Replace with function body.
+
+
+func _on_audio_stream_player_finished() -> void:
+	$PlayMediaBtn.icon = MEDIA_PLAY_ICON
 	pass # Replace with function body.
