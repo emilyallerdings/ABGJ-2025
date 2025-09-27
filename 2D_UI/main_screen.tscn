@@ -1,8 +1,17 @@
-[gd_scene load_steps=4 format=3 uid="uid://3e3fqavddmny"]
+[gd_scene load_steps=7 format=3 uid="uid://3e3fqavddmny"]
 
 [ext_resource type="StyleBox" uid="uid://r5nij8ldsx1i" path="res://2D_UI/ui_toolbar_background_stylebox.tres" id="1_ly68p"]
 [ext_resource type="FontFile" uid="uid://vguog20e0lcl" path="res://2D_UI/W95Font/W95font-Bold.otf" id="2_jsu5s"]
 [ext_resource type="StyleBox" uid="uid://cl470k7s2bc8v" path="res://2D_UI/ui_background_stylebox.tres" id="3_dhqo6"]
+[ext_resource type="Texture2D" uid="uid://b1xn0yd2m5srx" path="res://2D_UI/test_logo.png" id="4_dhqo6"]
+[ext_resource type="Texture2D" uid="uid://csjm3trmctugw" path="res://2D_UI/ui_background_indent.png" id="5_ie24v"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_h6wl3"]
+texture = ExtResource("5_ie24v")
+texture_margin_left = 2.0
+texture_margin_top = 2.0
+texture_margin_right = 2.0
+texture_margin_bottom = 2.0
 
 [node name="MainScreen" type="Control"]
 clip_contents = true
@@ -44,10 +53,36 @@ texture_filter = 1
 layout_mode = 0
 offset_left = 2.0
 offset_top = 4.0
-offset_right = 60.0
+offset_right = 94.0
 offset_bottom = 32.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_jsu5s")
 theme_override_font_sizes/font_size = 16
 theme_override_styles/normal = ExtResource("3_dhqo6")
-text = "Start"
+text = "AudSec Co."
+icon = ExtResource("4_dhqo6")
+
+[node name="Time" type="Panel" parent="Toolbar"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 563.0
+offset_top = 4.0
+offset_right = 638.0
+offset_bottom = 32.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_h6wl3")
+
+[node name="Window" type="Panel" parent="."]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -266.0
+offset_top = -180.0
+offset_right = 266.0
+offset_bottom = 180.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = ExtResource("3_dhqo6")
