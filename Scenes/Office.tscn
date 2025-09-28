@@ -1,9 +1,8 @@
-[gd_scene load_steps=75 format=4 uid="uid://2tmp6fu334qg"]
+[gd_scene load_steps=76 format=4 uid="uid://2tmp6fu334qg"]
 
 [ext_resource type="PackedScene" uid="uid://c3xwy2s3ckihp" path="res://Resources/WorldKeyboard.tscn" id="1_0d164"]
 [ext_resource type="Script" uid="uid://cxc75gjqku8hw" path="res://Scripts/Office.gd" id="1_mdu65"]
 [ext_resource type="Script" uid="uid://8pgamyrptrvo" path="res://Scripts/MouseShift.gd" id="2_t43tj"]
-[ext_resource type="Texture2D" uid="uid://dkph6nb1r3npo" path="res://Textures/WallOff.png" id="3_4f0fq"]
 [ext_resource type="Script" uid="uid://ck8s0ixkgnfrd" path="res://Scripts/3dCam.gd" id="4_0d164"]
 [ext_resource type="VoxelGIData" uid="uid://b0arf755jcb5a" path="res://Lightmaps/Office.VoxelGI_data.res" id="4_32u8q"]
 [ext_resource type="Material" uid="uid://doif1g51s2da7" path="res://Materials/OfficeWalls.tres" id="4_l100v"]
@@ -34,6 +33,8 @@
 [ext_resource type="Material" uid="uid://b85jx3s5jm1iv" path="res://Materials/PlasticWindow.tres" id="28_qxhf8"]
 [ext_resource type="Material" uid="uid://b8fug60pejtk" path="res://Materials/Water.tres" id="29_2g8g0"]
 [ext_resource type="Material" uid="uid://cu1tg07pnasfm" path="res://Materials/Building.tres" id="30_kuh34"]
+[ext_resource type="Texture2D" uid="uid://b1xn0yd2m5srx" path="res://2D_UI/test_logo.png" id="31_l12lx"]
+[ext_resource type="Texture2D" uid="uid://bqqirfod2y8fk" path="res://2D_UI/warning.png" id="32_1xw62"]
 [ext_resource type="Script" uid="uid://dislijefvq4o8" path="res://Scenes/WindowHazard.gd" id="34_ekxxp"]
 [ext_resource type="Script" uid="uid://kglm3l3ee2bm" path="res://Scripts/Corruptable.gd" id="35_l12lx"]
 
@@ -623,7 +624,7 @@ grow_horizontal = 2
 grow_vertical = 0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 24
-text = "Loris Ipsum"
+text = "AudSec"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -634,7 +635,7 @@ anchor_bottom = 1.0
 offset_bottom = -34.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("17_2uv6j")
+texture = ExtResource("31_l12lx")
 expand_mode = 1
 stretch_mode = 5
 
@@ -646,7 +647,7 @@ anchor_bottom = 1.0
 offset_bottom = -34.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("3_4f0fq")
+texture = ExtResource("32_1xw62")
 expand_mode = 1
 stretch_mode = 5
 

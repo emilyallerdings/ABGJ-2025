@@ -1,25 +1,54 @@
-[gd_scene load_steps=3 format=3 uid="uid://cvesfiaojmsh6"]
+[gd_scene load_steps=8 format=3 uid="uid://cvesfiaojmsh6"]
 
 [ext_resource type="Script" uid="uid://pqrg084a1u4w" path="res://Scripts/MainMenu.gd" id="1_tt5f1"]
 [ext_resource type="PackedScene" uid="uid://2tmp6fu334qg" path="res://Scenes/Office.tscn" id="2_853f1"]
+[ext_resource type="Texture2D" uid="uid://hlywvsdsxkxl" path="res://Textures/TitleSpectrogram.png" id="3_8saeu"]
+[ext_resource type="Theme" uid="uid://bee3p0mwngmj1" path="res://Resources/MainMenuTheme.tres" id="4_ghw46"]
 
-[node name="MainMenu" type="Control"]
-layout_mode = 3
+[sub_resource type="Gradient" id="Gradient_ghw46"]
+offsets = PackedFloat32Array(0, 0.36222222, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1, 0.18047993, 0.13439998, 0.48, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_df05h"]
+gradient = SubResource("Gradient_ghw46")
+fill_from = Vector2(0.5, 0)
+repeat = 2
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_8um5k"]
+blend_mode = 1
+
+[node name="MainMenu" type="TextureRect"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+texture = SubResource("GradientTexture2D_df05h")
+expand_mode = 1
 script = ExtResource("1_tt5f1")
 mainGame = ExtResource("2_853f1")
 
-[node name="Main" type="TextureRect" parent="."]
+[node name="Main" type="Control" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="ErgichosLogo" type="TextureRect" parent="Main"]
+material = SubResource("CanvasItemMaterial_8um5k")
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.076822914
+anchor_right = 1.0
+anchor_bottom = 0.56901044
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_8saeu")
+expand_mode = 1
+stretch_mode = 5
+metadata/_edit_use_anchors_ = true
 
 [node name="ButtonVbox" type="VBoxContainer" parent="Main"]
 custom_minimum_size = Vector2(128, 0)
@@ -38,25 +67,29 @@ alignment = 2
 
 [node name="Play" type="Button" parent="Main/ButtonVbox"]
 layout_mode = 2
+theme = ExtResource("4_ghw46")
 theme_override_font_sizes/font_size = 32
 text = "Play"
 
 [node name="Settings" type="Button" parent="Main/ButtonVbox"]
 layout_mode = 2
+theme = ExtResource("4_ghw46")
 theme_override_font_sizes/font_size = 32
 text = "Settings"
 
 [node name="Credits" type="Button" parent="Main/ButtonVbox"]
 layout_mode = 2
+theme = ExtResource("4_ghw46")
 theme_override_font_sizes/font_size = 32
 text = "Credits"
 
 [node name="Exit" type="Button" parent="Main/ButtonVbox"]
 layout_mode = 2
+theme = ExtResource("4_ghw46")
 theme_override_font_sizes/font_size = 32
 text = "Exit"
 
-[node name="Settings" type="TextureRect" parent="."]
+[node name="Settings" type="Control" parent="."]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -87,10 +120,11 @@ text = "Settings"
 
 [node name="Back" type="Button" parent="Settings/ButtonVbox"]
 layout_mode = 2
+theme = ExtResource("4_ghw46")
 theme_override_font_sizes/font_size = 32
 text = "Back"
 
-[node name="Credits" type="TextureRect" parent="."]
+[node name="Credits" type="Control" parent="."]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -116,8 +150,31 @@ alignment = 2
 
 [node name="Back" type="Button" parent="Credits/ButtonVbox"]
 layout_mode = 2
+theme = ExtResource("4_ghw46")
 theme_override_font_sizes/font_size = 32
 text = "Back"
+
+[node name="Label" type="Label" parent="Credits"]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -207.5
+offset_top = 59.0
+offset_right = 207.5
+offset_bottom = -135.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 24
+text = "A Game By
+Smg065 (3D Office)
+Emilyallerdings (2D Screen)
+
+Flowerwall-CRT Effect by Art-Michel 
+"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="pressed" from="Main/ButtonVbox/Play" to="." method="play_pressed"]
 [connection signal="pressed" from="Main/ButtonVbox/Settings" to="Main" method="hide"]

@@ -28,12 +28,13 @@ func _process(delta: float) -> void:
 func tilt_when_typing(delta: float) -> void:
 	var targetRot := staticRot
 	var targetFov := staticFov
-	if lastTypedCooldown > 0:
-		lastTypedCooldown -= delta
+	lastTypedCooldown -= delta
+	lastTypedCooldown = clampf(lastTypedCooldown, 0, 1)
+	if physScreen.mouseFocused:
+		targetFov = focusedFov
+	if lastTypedCooldown > 0 and not physScreen.mouseFocused:
 		targetRot = typingRot
 		targetFov = typingFov
-	elif physScreen.mouseFocused:
-		targetFov = focusedFov
 	lerp_rot_x(targetRot, delta * 10)
 	lerp_rot_y(90.0, delta * 10)
 	lerp_fov(targetFov, delta * 10)

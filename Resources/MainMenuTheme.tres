@@ -1,0 +1,56 @@
+[gd_resource type="Theme" load_steps=13 format=3 uid="uid://bee3p0mwngmj1"]
+
+[sub_resource type="Gradient" id="Gradient_t6xsm"]
+colors = PackedColorArray(0, 0, 0, 1, 0.105882354, 0.20392157, 0.45490196, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ow54l"]
+gradient = SubResource("Gradient_t6xsm")
+fill_to = Vector2(0, 0.5)
+repeat = 2
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2wkdk"]
+texture = SubResource("GradientTexture2D_ow54l")
+
+[sub_resource type="Gradient" id="Gradient_ghw46"]
+offsets = PackedFloat32Array(0, 0.25, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.27058825, 0.1882353, 0.57254905, 1, 0.78431374, 0.24313726, 0.52156866, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_df05h"]
+gradient = SubResource("Gradient_ghw46")
+fill_to = Vector2(0, 0.5)
+repeat = 2
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8um5k"]
+texture = SubResource("GradientTexture2D_df05h")
+
+[sub_resource type="Gradient" id="Gradient_8saeu"]
+offsets = PackedFloat32Array(0, 0.25, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.1882353, 0.20392157, 0.5294118, 1, 0.5686275, 0.16470589, 0.6509804, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ghw46"]
+gradient = SubResource("Gradient_8saeu")
+fill_to = Vector2(0, 0.5)
+repeat = 2
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_df05h"]
+texture = SubResource("GradientTexture2D_ghw46")
+
+[sub_resource type="Gradient" id="Gradient_8um5k"]
+offsets = PackedFloat32Array(0, 0.25, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.5686275, 0.16470589, 0.6509804, 1, 0.9764706, 0.41960785, 0.27450982, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_xim88"]
+gradient = SubResource("Gradient_8um5k")
+fill_to = Vector2(0, 0.5)
+repeat = 2
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_koqhg"]
+texture = SubResource("GradientTexture2D_xim88")
+
+[resource]
+Button/colors/font_outline_color = Color(0.9764706, 0.41960785, 0.27450982, 0.5019608)
+Button/constants/outline_size = 5
+Button/styles/disabled = SubResource("StyleBoxTexture_2wkdk")
+Button/styles/hover = SubResource("StyleBoxTexture_8um5k")
+Button/styles/normal = SubResource("StyleBoxTexture_df05h")
+Button/styles/pressed = SubResource("StyleBoxTexture_koqhg")

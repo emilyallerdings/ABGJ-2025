@@ -1,9 +1,11 @@
 extends Node3D
 class_name Office
 
-static var CorruptText := "Eggs"
+static var CorruptText := "Ergichos"
 
 static var PoweredOn := true
+
+static var MaxCorruption := 0
 
 ##Emit this to change all office corruption elements
 @warning_ignore("unused_signal")
@@ -15,9 +17,12 @@ signal strike_gained(total_strikes : int)
 
 var progressionLevel : float
 
+func _ready() -> void:
+	MaxCorruption = 0
+
 func timer_bump():
 	progressionLevel += 0.01
-	progressionLevel = clamp(progressionLevel, 0, 1)
+	progressionLevel = clamp(progressionLevel, 0, MaxCorruption)
 	new_corruption_level.emit(progressionLevel)
 
 func power_toggle():
@@ -25,5 +30,6 @@ func power_toggle():
 	new_power_state.emit(PoweredOn)
 
 func gain_strike():
+	MaxCorruption += 0.1
 	Persist.strikes += 1
 	strike_gained.emit(Persist.strikes)
