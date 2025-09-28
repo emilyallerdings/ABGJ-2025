@@ -45,7 +45,7 @@ func setup_media(current_media:SoundGroup):
 	
 	audio_icon.visible = false
 	video_player.visible = false
-	
+	$PlayMediaBtn.icon = MEDIA_PLAY_ICON
 	cur_audio_stream = null
 	cur_video_stream = null
 	cur_time_label.text = "0.00"

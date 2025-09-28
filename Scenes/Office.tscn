@@ -1196,7 +1196,6 @@ script = ExtResource("17_pkeyt")
 
 [node name="VoxelGI" type="VoxelGI" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0514221, 1.4814453, 1.0965576)
-visible = false
 subdiv = 0
 size = Vector3(9, 6.5, 11)
 data = ExtResource("4_32u8q")

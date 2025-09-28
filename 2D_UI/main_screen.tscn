@@ -796,6 +796,7 @@ stretch_mode = 2
 
 [connection signal="finished" from="AudioStreamPlayer" to="Window/AudioProcessing/MediaBar" method="_on_audio_stream_player_finished"]
 [connection signal="pressed" from="Window/AudioProcessing/SubmitBtn" to="." method="_on_submit_btn_pressed"]
+[connection signal="finished" from="Window/AudioProcessing/VideoPlayer/VideoStreamPlayer" to="Window/AudioProcessing/MediaBar" method="_on_audio_stream_player_finished"]
 [connection signal="pressed" from="Window/AudioProcessing/MediaBar/PlayMediaBtn" to="Window/AudioProcessing/MediaBar" method="_on_play_media_btn_pressed"]
 [connection signal="pressed" from="Window/Welcome/NextButton" to="." method="_on_next_button_pressed"]
 [connection signal="loading_finished" from="Window/Loading" to="." method="_on_loading_loading_finished"]
