@@ -81,6 +81,7 @@ value = 0.5
 
 [node name="Fullscreen" type="Button" parent="ButtonVbox"]
 layout_mode = 2
+theme = ExtResource("1_4hxq3")
 theme_override_font_sizes/font_size = 32
 text = "Fullscreen"
 
