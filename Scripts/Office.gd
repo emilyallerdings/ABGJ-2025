@@ -24,7 +24,7 @@ func _ready() -> void:
 	MaxCorruption = 0
 
 func _process(_delta: float) -> void:
-	if Input.is_action_just_pressed("Pause"):
+	if Input.is_action_just_pressed("Pause") and pauseMenu.visible == false:
 		pauseMenu.set_paused(true)
 
 func timer_bump():
@@ -37,6 +37,7 @@ func power_toggle():
 	new_power_state.emit(PoweredOn)
 
 func gain_strike():
+	%StrikeSound.play()
 	MaxCorruption += 0.1
 	Persist.strikes += 1
 	strike_gained.emit(Persist.strikes)

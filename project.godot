@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Ergichos"
-run/main_scene="uid://2tmp6fu334qg"
+run/main_scene="uid://cvesfiaojmsh6"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="uid://bqbwmvp0i6k3l"
 
@@ -70,6 +70,7 @@ common/physics_interpolation=true
 
 [rendering]
 
+textures/vram_compression/import_etc2_astc=true
 lights_and_shadows/directional_shadow/size=1024
 lights_and_shadows/directional_shadow/size.mobile=1024
 global_illumination/gi/use_half_resolution=true

@@ -15,6 +15,12 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if appearing:
 		transparency -= delta * aggression / 10.0
+		if OS.has_feature("web"):
+			if transparency > 0.5:
+				show()
+			else:
+				hide()
+		
 		if not Office.PoweredOn:
 			appearing = false
 			transparency = 1

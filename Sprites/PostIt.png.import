@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://c40sms6bf5yvl"
 path.s3tc="res://.godot/imported/PostIt.png-2a7ce8d7c1123fc18af12e6b3e02a33e.s3tc.ctex"
+path.etc2="res://.godot/imported/PostIt.png-2a7ce8d7c1123fc18af12e6b3e02a33e.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Sprites/PostIt.png"
-dest_files=["res://.godot/imported/PostIt.png-2a7ce8d7c1123fc18af12e6b3e02a33e.s3tc.ctex"]
+dest_files=["res://.godot/imported/PostIt.png-2a7ce8d7c1123fc18af12e6b3e02a33e.s3tc.ctex", "res://.godot/imported/PostIt.png-2a7ce8d7c1123fc18af12e6b3e02a33e.etc2.ctex"]
 
 [params]
 

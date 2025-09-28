@@ -20,15 +20,19 @@ func fullscreen_pressed() -> void:
 func audio_master_value_changed(volume: float) -> void:
 	$ButtonVbox/LabelMaster.text = "Master Volume: %d" % roundi(volume * 100)
 	Persist.set_audo_bus_volume(0, volume)
+	$ButtonVbox/AudioMaster.set_value_no_signal(volume)
 
 func audio_ambience_value_changed(volume: float) -> void:
 	$ButtonVbox/LabelAmbience.text = "Ambience Volume: %d" % roundi(volume * 100)
 	Persist.set_audo_bus_volume(1, volume)
+	$ButtonVbox/AudioAmbience.set_value_no_signal(volume)
 
 func audio_videos_value_changed(volume: float) -> void:
 	$ButtonVbox/LabelVideos.text = "Video Volume: %d" % roundi(volume * 100)
 	Persist.set_audo_bus_volume(2, volume)
+	$ButtonVbox/AudioVideos.set_value_no_signal(volume)
 
 func audio_dialogue_value_changed(volume: float) -> void:
 	$ButtonVbox/LabelDialogue.text = "Dialogue Volume: %d" % roundi(volume * 100)
 	Persist.set_audo_bus_volume(3, volume)
+	$ButtonVbox/AudioDialogue.set_value_no_signal(volume)

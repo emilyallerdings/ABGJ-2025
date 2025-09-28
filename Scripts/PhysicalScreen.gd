@@ -35,7 +35,7 @@ func _input(event: InputEvent) -> void:
 		subviewport.push_input(event, true)
 
 func mouse_entered() -> void:
-	if not Office.PoweredOn:
+	if not Office.PoweredOn or get_tree().paused:
 		return
 	mouseFocused = true
 	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN

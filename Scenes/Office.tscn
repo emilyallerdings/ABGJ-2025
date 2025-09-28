@@ -1,8 +1,9 @@
-[gd_scene load_steps=100 format=4 uid="uid://2tmp6fu334qg"]
+[gd_scene load_steps=102 format=4 uid="uid://2tmp6fu334qg"]
 
 [ext_resource type="PackedScene" uid="uid://c3xwy2s3ckihp" path="res://Resources/WorldKeyboard.tscn" id="1_0d164"]
 [ext_resource type="Script" uid="uid://cxc75gjqku8hw" path="res://Scripts/Office.gd" id="1_mdu65"]
 [ext_resource type="Script" uid="uid://8pgamyrptrvo" path="res://Scripts/MouseShift.gd" id="2_t43tj"]
+[ext_resource type="AudioStream" uid="uid://bwku2vft8lmk0" path="res://Audio/WarningDistort.wav" id="2_ux1wp"]
 [ext_resource type="Script" uid="uid://ck8s0ixkgnfrd" path="res://Scripts/3dCam.gd" id="4_0d164"]
 [ext_resource type="VoxelGIData" uid="uid://b0arf755jcb5a" path="res://Lightmaps/Office.VoxelGI_data.res" id="4_32u8q"]
 [ext_resource type="Material" uid="uid://doif1g51s2da7" path="res://Materials/OfficeWalls.tres" id="4_l100v"]
@@ -10,7 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://c40sms6bf5yvl" path="res://Sprites/PostIt.png" id="5_541ak"]
 [ext_resource type="PackedScene" uid="uid://btmy4mr5pxj2f" path="res://Models/PcScreen.blend" id="6_0u7kn"]
 [ext_resource type="PackedScene" uid="uid://3e3fqavddmny" path="res://2D_UI/main_screen.tscn" id="6_gnkyl"]
-[ext_resource type="Script" path="res://Scripts/Label3DCorrupt.gd" id="6_i4f5g"]
+[ext_resource type="Script" uid="uid://hs8qfe16l3ys" path="res://Scripts/Label3DCorrupt.gd" id="6_i4f5g"]
 [ext_resource type="Resource" uid="uid://ba26qola388cy" path="res://Resources/TextMerges/PowerLight.tres" id="6_kp12w"]
 [ext_resource type="Script" uid="uid://30bc51xwx0i2" path="res://Scripts/PhysicalScreen.gd" id="7_chwbs"]
 [ext_resource type="Resource" uid="uid://bl2r6hr0f0m3q" path="res://Resources/TextMerges/PostItMerge.tres" id="7_jptpv"]
@@ -51,11 +52,12 @@
 [ext_resource type="Material" uid="uid://cu1tg07pnasfm" path="res://Materials/Building.tres" id="30_kuh34"]
 [ext_resource type="Texture2D" uid="uid://b1xn0yd2m5srx" path="res://2D_UI/test_logo.png" id="31_l12lx"]
 [ext_resource type="Texture2D" uid="uid://bqqirfod2y8fk" path="res://2D_UI/warning.png" id="32_1xw62"]
-[ext_resource type="Script" path="res://Scenes/WindowHazard.gd" id="34_ekxxp"]
-[ext_resource type="Script" path="res://Scripts/Corruptable.gd" id="35_l12lx"]
-[ext_resource type="Script" uid="uid://d06v5a2l0dwld" path="res://Scenes/fps_label.gd" id="48_0uysk"]
+[ext_resource type="Script" uid="uid://dislijefvq4o8" path="res://Scenes/WindowHazard.gd" id="34_ekxxp"]
+[ext_resource type="Script" uid="uid://kglm3l3ee2bm" path="res://Scripts/Corruptable.gd" id="35_l12lx"]
+[ext_resource type="Script" path="res://Scenes/fps_label.gd" id="48_0uysk"]
 [ext_resource type="AudioStream" uid="uid://cg0mnjwg87tx" path="res://Audio/pc_idle.ogg" id="49_wela7"]
 [ext_resource type="AudioStream" uid="uid://ctdqomhwthxm" path="res://Audio/pc_shutoff.ogg" id="50_ubd2v"]
+[ext_resource type="PackedScene" uid="uid://bievtbke2errd" path="res://Resources/PauseMenu.tscn" id="51_p55p3"]
 [ext_resource type="AudioStream" uid="uid://dx246ydqfg108" path="res://Audio/pc_turn_on.ogg" id="51_pf50n"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_dkt76"]
@@ -378,10 +380,16 @@ shadow_mesh = SubResource("ArrayMesh_m5ltj")
 size = Vector3(10, 40, 10)
 subdivide_width = 2
 
-[node name="Main" type="Node3D" groups=["Office"]]
+[node name="Main" type="Node3D" node_paths=PackedStringArray("pauseMenu") groups=["Office"]]
 script = ExtResource("1_mdu65")
+pauseMenu = NodePath("PauseMenu")
 
-[node name="Timer" type="Timer" parent="."]
+[node name="StrikeSound" type="AudioStreamPlayer3D" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("2_ux1wp")
+bus = &"Ambience"
+
+[node name="CorruptionTimer" type="Timer" parent="."]
 autostart = true
 
 [node name="LevelGeometry" type="Node3D" parent="."]
@@ -1358,34 +1366,37 @@ light_bake_mode = 1
 shadow_enabled = true
 sky_mode = 1
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="Building1" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -41, 0, -61)
 material_override = ExtResource("30_kuh34")
 mesh = SubResource("BoxMesh_qxhf8")
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+[node name="Building2" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 4.1624985, -61)
 material_override = ExtResource("30_kuh34")
 mesh = SubResource("BoxMesh_qxhf8")
 
-[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+[node name="Building3" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22, -7.8375015, -61)
 material_override = ExtResource("30_kuh34")
 mesh = SubResource("BoxMesh_qxhf8")
 
-[node name="MeshInstance3D4" type="MeshInstance3D" parent="."]
+[node name="Building4" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, -61)
 material_override = ExtResource("30_kuh34")
 mesh = SubResource("BoxMesh_qxhf8")
 
 [node name="FPS" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="FPSLabel" type="Label" parent="FPS"]
 offset_right = 40.0
 offset_bottom = 23.0
 script = ExtResource("48_0uysk")
 
-[connection signal="timeout" from="Timer" to="." method="timer_bump"]
+[node name="PauseMenu" parent="." instance=ExtResource("51_p55p3")]
+
+[connection signal="timeout" from="CorruptionTimer" to="." method="timer_bump"]
 [connection signal="input_event" from="LevelGeometry/Tower/PowerButton/Clickbox" to="LevelGeometry/Tower/PowerButton" method="mouse_event"]
 [connection signal="input_event" from="BasicPC/PcScreen/PCScreen/StaticBody3D" to="BasicPC/PcScreen/PCScreen" method="mouse_input"]
 [connection signal="mouse_entered" from="BasicPC/PcScreen/PCScreen/StaticBody3D" to="BasicPC/PcScreen/PCScreen" method="mouse_entered"]

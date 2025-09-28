@@ -25,7 +25,8 @@ func _ready() -> void:
 func _unhandled_key_input(event: InputEvent) -> void:
 	if event is InputEventKey:
 		if event.pressed and event.keycode == KEY_F1:
-			flowerwall_crt_config_ui.visible = !flowerwall_crt_config_ui.visible
+			if OS.has_feature("debug"):
+				flowerwall_crt_config_ui.visible = !flowerwall_crt_config_ui.visible
 
 func should_enable_dither() -> void:
 	if DITHERING_SHADER.get("shader_parameter/downscaling_strength") > 1.0: 
