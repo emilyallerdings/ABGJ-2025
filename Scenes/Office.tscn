@@ -28,12 +28,12 @@
 [ext_resource type="Texture2D" uid="uid://dbm7vueidx0mv" path="res://Textures/NightSky.png" id="18_qttup"]
 [ext_resource type="Script" uid="uid://dv1o1f4iqjn70" path="res://Scripts/DecalCorrupt.gd" id="19_wwh7d"]
 [ext_resource type="Script" uid="uid://dmk7ono2imeae" path="res://addons/flowerwall_postprocess/scripts/flowerwall_pp_script.gd" id="19_x73e2"]
-[ext_resource type="Material" uid="uid://d358cl5f7l5ki" path="res://addons/flowerwall_postprocess/shaders/dithering_shader.material" id="20_0uysk"]
+[ext_resource type="Material" uid="uid://bbu216tcokhyh" path="res://addons/flowerwall_postprocess/shaders/dithering_shader.material" id="20_0uysk"]
 [ext_resource type="Resource" uid="uid://d2vb0icl2q0y6" path="res://Resources/TextMerges/MugMerge.tres" id="20_mdu65"]
-[ext_resource type="Material" uid="uid://bjrjcmp3wjlta" path="res://addons/flowerwall_postprocess/shaders/blurx_shader.material" id="21_wela7"]
-[ext_resource type="Material" uid="uid://e52ghj10k4qn" path="res://addons/flowerwall_postprocess/shaders/blury_shader.material" id="22_lkspl"]
-[ext_resource type="Material" uid="uid://dkha7rxusuok2" path="res://addons/flowerwall_postprocess/shaders/crt_shader.material" id="23_ubd2v"]
-[ext_resource type="Material" uid="uid://oe6paw4hy8fu" path="res://addons/flowerwall_postprocess/shaders/bloom_shader.material" id="24_pf50n"]
+[ext_resource type="Material" uid="uid://cw8i56a85bd8k" path="res://addons/flowerwall_postprocess/shaders/blurx_shader.material" id="21_wela7"]
+[ext_resource type="Material" uid="uid://2inluedv57nr" path="res://addons/flowerwall_postprocess/shaders/blury_shader.material" id="22_lkspl"]
+[ext_resource type="Material" uid="uid://bwv6mol5yw6mu" path="res://addons/flowerwall_postprocess/shaders/crt_shader.material" id="23_ubd2v"]
+[ext_resource type="Material" uid="uid://cuy3tmwetpuo1" path="res://addons/flowerwall_postprocess/shaders/bloom_shader.material" id="24_pf50n"]
 [ext_resource type="Script" uid="uid://dxlwhj47enyqa" path="res://addons/flowerwall_postprocess/scripts/config ui scripts/fl_pp_presets.gd" id="25_p55p3"]
 [ext_resource type="Script" uid="uid://tog6nmrph15b" path="res://addons/flowerwall_postprocess/scripts/config ui scripts/fl_pp_ui_slider.gd" id="26_pbhic"]
 [ext_resource type="Material" uid="uid://dyh7upiq6qao" path="res://Materials/WoodFrame.tres" id="27_37xsv"]
@@ -540,6 +540,26 @@ script = ExtResource("7_chwbs")
 subviewport = NodePath("../../../GameInput")
 moveMouse = NodePath("../../../LevelGeometry/Mouse")
 offScreen = NodePath("../../OffScreen")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="BasicPC/PcScreen/PCScreen" index="1"]
+transform = Transform3D(0.5555556, 0, 0, 0, 0.55552465, -0.005866137, 0, 0.005866137, 0.55552465, 1.0590217, -0.67039484, 0.87859946)
+light_color = Color(0.79607844, 1, 1, 1)
+light_energy = 0.01
+light_indirect_energy = 0.0
+light_volumetric_fog_energy = 0.0
+light_specular = 0.0
+distance_fade_enabled = true
+omni_range = 1.2580029
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="BasicPC/PcScreen/PCScreen" index="2"]
+transform = Transform3D(0.5555556, 0, 0, 0, 0.55552465, -0.005866137, 0, 0.005866137, 0.55552465, 1.0590217, -0.67039484, 0.1329345)
+light_color = Color(0.79607844, 1, 1, 1)
+light_energy = 0.01
+light_indirect_energy = 0.0
+light_volumetric_fog_energy = 0.0
+light_specular = 0.0
+distance_fade_enabled = true
+omni_range = 1.922
 
 [node name="PC" type="MeshInstance3D" parent="BasicPC/PcScreen"]
 material_override = ExtResource("12_k1f78")
@@ -1085,6 +1105,7 @@ script = ExtResource("17_pkeyt")
 
 [node name="VoxelGI" type="VoxelGI" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0514221, 1.4814453, 1.0965576)
+subdiv = 0
 size = Vector3(9, 6.5, 11)
 data = ExtResource("4_32u8q")
 
