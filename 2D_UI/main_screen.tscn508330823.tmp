@@ -241,7 +241,6 @@ text = "Audio Identification Program"
 label_settings = SubResource("LabelSettings_dhqo6")
 
 [node name="AudioProcessing" type="Control" parent="Window"]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

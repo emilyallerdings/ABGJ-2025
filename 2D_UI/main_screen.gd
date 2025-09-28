@@ -5,6 +5,9 @@ extends Control
 @onready var audio_processing: Control = $Window/AudioProcessing
 
 const LEAF_CRUNCH = preload("uid://c7nad47mbe4a7")
+const CAT_MEOW = preload("uid://ckyx4abm3djr2")
+
+
 
 var current_media:SoundGroup
 
@@ -22,18 +25,34 @@ func set_media(media:SoundGroup):
 
 func _on_submit_btn_pressed() -> void:
 	var guess = %GuessInput.text
-	var pass_result = Persist.pass_guess(current_media.soundName, guess)
-	if !pass_result.passed:
-		%ErrorPopupWindow.visible = true
-	pass # Replace with function body.
+	var passed = false
+	
+	##Normal case for audio/video
+	if current_media.expectedWord.is_empty(): 
+		var pass_result = Persist.pass_guess(current_media.soundName, guess)
+		passed = pass_result.passed
 
+	## Video/Audio that has set word (The test audio)
+	else:
+		for expected_word in current_media.expectedWord:
+			var n_onomato = OnomatopoeiaGuess.new(current_media.soundName, guess)
+			if n_onomato.comparable_guess(expected_word):
+				passed = true
+				break
+			
+	if passed:
+		#TODO go to new audio/video
+		pass
+	else:
+		%ErrorPopupWindow.visible = true
 
 func _on_next_button_pressed() -> void:
 	welcome.visible = false
 	audio_processing.visible = true
-	set_media(LEAF_CRUNCH)
+	set_media(CAT_MEOW)
 	pass # Replace with function body.
 
 
 func _on_ok_btn_pressed() -> void:
+	%ErrorPopupWindow.visible = false
 	pass # Replace with function body.
