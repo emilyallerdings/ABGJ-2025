@@ -24,6 +24,10 @@ func mouse_input(_camera: Node, event: InputEvent, event_position: Vector3, _nor
 		event.position = RESOLUTION * relVec
 	elif event is InputEventMouseButton:
 		event.position = RESOLUTION * relVec
+		
+		if event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
+			$MouseClickSound.play()
+			
 	subviewport.push_input(event, true)
 
 func _input(event: InputEvent) -> void:
