@@ -6,7 +6,7 @@ class_name PhysicalScreen
 @export var offScreen : MeshInstance3D
 var mouseFocused : bool = false
 
-const RESOLUTION = Vector2(640, 480)
+const RESOLUTION = Vector2(1280, 960)
 
 var aabb : AABB
 func _ready() -> void:

@@ -19,3 +19,5 @@ func _process(delta: float) -> void:
 			show()
 		else:
 			hide()
+	else:
+		hide()
