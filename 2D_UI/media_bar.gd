@@ -17,7 +17,8 @@ var media_handle_end = 237.0
 
 var paused_playback_pos:float = 0.0
 
-func setup_media(current_media:SoundGroup = current_media):
+func setup_media(current_media:SoundGroup):
+	self.current_media = current_media
 	cur_audio_stream = current_media.soundFiles.get(0)
 	if !cur_audio_stream:
 		push_error("No audio stream found for media: ", current_media)
@@ -33,8 +34,9 @@ func _process(delta: float) -> void:
 	
 	
 	cur_time_label.text = format_time(audio_stream_player.get_playback_position())
-	var normalized_dur = audio_stream_player.get_playback_position() / cur_audio_stream.get_length()
+
 	if audio_stream_player.playing:
+		var normalized_dur = audio_stream_player.get_playback_position() / cur_audio_stream.get_length()
 		media_handle.position.x = media_handle_start + normalized_dur*media_handle_end
 	
 func format_time(time: float) -> String:

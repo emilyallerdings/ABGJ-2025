@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="SoundGroup" load_steps=7 format=3 uid="uid://c7nad47mbe4a7"]
 
-[ext_resource type="Script" uid="uid://dheo5stt4uiu2" path="res://Scripts/SoundGroup.gd" id="1_8nw3i"]
+[ext_resource type="Script" path="res://Scripts/SoundGroup.gd" id="1_8nw3i"]
 [ext_resource type="AudioStream" uid="uid://6mwcutmcgk4k" path="res://Audio/LeafCrunch1.wav" id="2_fhkv7"]
 [ext_resource type="AudioStream" uid="uid://b3epwat4eg0fd" path="res://Audio/LeafCrunch2.wav" id="3_hprag"]
 [ext_resource type="AudioStream" uid="uid://qvbwe0ji8vyg" path="res://Audio/LeafCrunch3.wav" id="4_og7w6"]
@@ -11,4 +11,4 @@
 script = ExtResource("1_8nw3i")
 soundName = "Leaf Crunch"
 soundFiles = Array[AudioStream]([ExtResource("2_fhkv7"), ExtResource("3_hprag"), ExtResource("4_og7w6"), ExtResource("5_vr1q6"), ExtResource("6_wvnjs")])
-metadata/_custom_type_script = "uid://dheo5stt4uiu2"
+expectedWord = Array[String](["crunch", "cronch"])

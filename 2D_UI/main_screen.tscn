@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://3e3fqavddmny"]
+[gd_scene load_steps=26 format=3 uid="uid://3e3fqavddmny"]
 
 [ext_resource type="StyleBox" uid="uid://r5nij8ldsx1i" path="res://2D_UI/ui_toolbar_background_stylebox.tres" id="1_ly68p"]
 [ext_resource type="Script" uid="uid://dlrsko4w846ua" path="res://2D_UI/main_screen.gd" id="1_n7qqh"]
@@ -14,10 +14,10 @@
 [ext_resource type="Texture2D" uid="uid://btf6ww6eswlxu" path="res://2D_UI/ui_text_input_background.png" id="11_7je2u"]
 [ext_resource type="Texture2D" uid="uid://2cub3uos43c1" path="res://2D_UI/ui_aud_bar.png" id="12_neqlk"]
 [ext_resource type="Script" uid="uid://onho6kfbkc62" path="res://2D_UI/media_bar.gd" id="13_deflx"]
-[ext_resource type="Resource" uid="uid://c7nad47mbe4a7" path="res://Resources/SoundGroups/LeafCrunch.tres" id="14_3gcfg"]
 [ext_resource type="Texture2D" uid="uid://dqhi2sqb5b2r8" path="res://2D_UI/media_bar_handle.png" id="14_4tn6p"]
 [ext_resource type="Texture2D" uid="uid://by47crqs18b72" path="res://2D_UI/media_play_icon.png" id="15_5h0q2"]
 [ext_resource type="Texture2D" uid="uid://csn64pmdujh7x" path="res://2D_UI/audio_media_icon.png" id="16_3gcfg"]
+[ext_resource type="Texture2D" uid="uid://dbuqp8ocnc8mx" path="res://2D_UI/security_cam.png" id="18_s156s"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_wxaqd"]
 font = ExtResource("8_do24l")
@@ -47,6 +47,17 @@ font_color = Color(0, 0, 0, 1)
 font = ExtResource("2_jsu5s")
 font_size = 13
 font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_x2v12"]
+font = ExtResource("8_do24l")
+font_size = 13
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_o5qh7"]
+font = ExtResource("2_jsu5s")
+font_size = 13
+font_color = Color(0, 0, 0, 1)
+shadow_color = Color(0, 0, 0, 0.07450981)
 
 [node name="MainScreen" type="Control"]
 clip_contents = true
@@ -185,6 +196,7 @@ text = "Audio Identification Program"
 label_settings = SubResource("LabelSettings_dhqo6")
 
 [node name="AudioProcessing" type="Control" parent="Window"]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -284,7 +296,6 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("12_neqlk")
 script = ExtResource("13_deflx")
-current_media = ExtResource("14_3gcfg")
 
 [node name="MediaHandle" type="Sprite2D" parent="Window/AudioProcessing/MediaBar"]
 texture_filter = 1
@@ -383,7 +394,114 @@ offset_bottom = 284.0
 text = "Enter Audio Label"
 label_settings = SubResource("LabelSettings_7je2u")
 
+[node name="Welcome" type="Control" parent="Window"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SecCamImagePanel" type="Panel" parent="Window/Welcome"]
+layout_mode = 0
+offset_left = 336.0
+offset_top = 87.0
+offset_right = 510.0
+offset_bottom = 245.0
+theme_override_styles/panel = ExtResource("3_dhqo6")
+
+[node name="SecCamImage" type="TextureRect" parent="Window/Welcome/SecCamImagePanel"]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 3.0
+offset_right = 171.0
+offset_bottom = 155.0
+texture = ExtResource("18_s156s")
+
+[node name="Welcome" type="Label" parent="Window/Welcome"]
+layout_mode = 0
+offset_left = 65.0
+offset_top = 44.0
+offset_right = 134.0
+offset_bottom = 61.0
+scale = Vector2(2, 2)
+text = "Welcome to"
+label_settings = SubResource("LabelSettings_x2v12")
+
+[node name="CompanyTitle" type="Label" parent="Window/Welcome"]
+layout_mode = 0
+offset_left = 195.0
+offset_top = 39.0
+offset_right = 280.0
+offset_bottom = 53.0
+scale = Vector2(2.5, 2.5)
+text = "AudSec Co."
+label_settings = SubResource("LabelSettings_o5qh7")
+
+[node name="CompanyLogo" type="TextureRect" parent="Window/Welcome"]
+layout_mode = 0
+offset_left = 15.0
+offset_top = 30.0
+offset_right = 55.0
+offset_bottom = 70.0
+texture = ExtResource("4_dhqo6")
+
+[node name="Details" type="RichTextLabel" parent="Window/Welcome"]
+layout_mode = 0
+offset_left = 36.0
+offset_top = 88.0
+offset_right = 303.0
+offset_bottom = 288.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("8_do24l")
+theme_override_fonts/bold_font = ExtResource("2_jsu5s")
+theme_override_font_sizes/normal_font_size = 13
+theme_override_font_sizes/bold_font_size = 13
+bbcode_enabled = true
+text = "Here at [b]AudSec Co.[/b] we provide expert services in the analysis of video and audio recordings to ensure prompt detection of  suspicious or criminal activity.
+
+Your role as an [b]Audio Analyzer[/b] is to review recordings and accurately label sounds for proper identification. Each sound should be transcribed exactly as it is perceived, for example, a cat produces “meow.”
+
+Consistency, precision, and reliability are critical. Our clients depend on your work for their safety, compliance, and peace of mind.
+"
+scroll_active = false
+
+[node name="Details2" type="RichTextLabel" parent="Window/Welcome"]
+layout_mode = 0
+offset_left = 35.0
+offset_top = 304.0
+offset_right = 365.0
+offset_bottom = 336.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("8_do24l")
+theme_override_fonts/bold_font = ExtResource("2_jsu5s")
+theme_override_font_sizes/normal_font_size = 13
+theme_override_font_sizes/bold_font_size = 13
+bbcode_enabled = true
+text = "REMINDER: All activity is monitored and deviations will be logged"
+scroll_active = false
+
+[node name="NextButton" type="Button" parent="Window/Welcome"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 446.0
+offset_top = 329.0
+offset_right = 518.0
+offset_bottom = 351.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("8_do24l")
+theme_override_font_sizes/font_size = 13
+theme_override_styles/normal = ExtResource("3_dhqo6")
+theme_override_styles/pressed = ExtResource("4_h6wl3")
+theme_override_styles/hover = ExtResource("3_dhqo6")
+text = "Ready"
+
 [node name="ErrorPopupWindow" type="Panel" parent="."]
+visible = false
 texture_filter = 1
 layout_mode = 1
 anchors_preset = 8
@@ -442,3 +560,4 @@ stretch_mode = 2
 [connection signal="finished" from="AudioStreamPlayer" to="Window/AudioProcessing/MediaBar" method="_on_audio_stream_player_finished"]
 [connection signal="pressed" from="Window/AudioProcessing/SubmitBtn" to="." method="_on_submit_btn_pressed"]
 [connection signal="pressed" from="Window/AudioProcessing/MediaBar/PlayMediaBtn" to="Window/AudioProcessing/MediaBar" method="_on_play_media_btn_pressed"]
+[connection signal="pressed" from="Window/Welcome/NextButton" to="." method="_on_next_button_pressed"]
