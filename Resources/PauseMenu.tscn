@@ -1,0 +1,97 @@
+[gd_scene load_steps=7 format=3 uid="uid://bievtbke2errd"]
+
+[ext_resource type="Script" uid="uid://ctjdu0pusqkb" path="res://Scripts/Pause.gd" id="1_11r65"]
+[ext_resource type="Theme" uid="uid://bee3p0mwngmj1" path="res://Resources/MainMenuTheme.tres" id="3_v7gb8"]
+[ext_resource type="PackedScene" uid="uid://rwck7awfwfbb" path="res://Scenes/Settings.tscn" id="4_4ud3j"]
+
+[sub_resource type="Gradient" id="Gradient_ghw46"]
+offsets = PackedFloat32Array(0, 0.36222222, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1, 0.18047993, 0.13439998, 0.48, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_df05h"]
+gradient = SubResource("Gradient_ghw46")
+fill_from = Vector2(0.5, 0)
+repeat = 2
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_8um5k"]
+blend_mode = 1
+
+[node name="PauseMenu" type="TextureRect"]
+process_mode = 2
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_df05h")
+expand_mode = 1
+script = ExtResource("1_11r65")
+
+[node name="Main" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ErgichosLogo" type="Label" parent="Main"]
+material = SubResource("CanvasItemMaterial_8um5k")
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.076822914
+anchor_right = 1.0
+anchor_bottom = 0.56901044
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 64
+text = "PAUSE"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="ButtonVbox" type="VBoxContainer" parent="Main"]
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -66.0
+offset_right = 66.0
+offset_bottom = -86.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 2
+
+[node name="Resume" type="Button" parent="Main/ButtonVbox"]
+layout_mode = 2
+theme = ExtResource("3_v7gb8")
+theme_override_font_sizes/font_size = 32
+text = "Resume"
+
+[node name="Settings" type="Button" parent="Main/ButtonVbox"]
+layout_mode = 2
+theme = ExtResource("3_v7gb8")
+theme_override_font_sizes/font_size = 32
+text = "Settings"
+
+[node name="Exit" type="Button" parent="Main/ButtonVbox"]
+layout_mode = 2
+theme = ExtResource("3_v7gb8")
+theme_override_font_sizes/font_size = 32
+text = "Title"
+
+[node name="Settings" parent="." instance=ExtResource("4_4ud3j")]
+visible = false
+layout_mode = 1
+
+[connection signal="pressed" from="Main/ButtonVbox/Resume" to="." method="set_paused" binds= [false]]
+[connection signal="pressed" from="Main/ButtonVbox/Settings" to="Main" method="hide"]
+[connection signal="pressed" from="Main/ButtonVbox/Settings" to="Settings" method="show"]
+[connection signal="pressed" from="Main/ButtonVbox/Exit" to="." method="title_pressed"]
+[connection signal="pressed" from="Settings/ButtonVbox/Back" to="Main" method="show"]
+
+[editable path="Settings"]

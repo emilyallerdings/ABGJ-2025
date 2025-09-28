@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://cvesfiaojmsh6"]
+[gd_scene load_steps=9 format=3 uid="uid://cvesfiaojmsh6"]
 
 [ext_resource type="Script" uid="uid://pqrg084a1u4w" path="res://Scripts/MainMenu.gd" id="1_tt5f1"]
 [ext_resource type="PackedScene" uid="uid://2tmp6fu334qg" path="res://Scenes/Office.tscn" id="2_853f1"]
 [ext_resource type="Texture2D" uid="uid://hlywvsdsxkxl" path="res://Textures/TitleSpectrogram.png" id="3_8saeu"]
 [ext_resource type="Theme" uid="uid://bee3p0mwngmj1" path="res://Resources/MainMenuTheme.tres" id="4_ghw46"]
+[ext_resource type="PackedScene" uid="uid://rwck7awfwfbb" path="res://Scenes/Settings.tscn" id="5_df05h"]
 
 [sub_resource type="Gradient" id="Gradient_ghw46"]
 offsets = PackedFloat32Array(0, 0.36222222, 1)
@@ -89,40 +90,9 @@ theme = ExtResource("4_ghw46")
 theme_override_font_sizes/font_size = 32
 text = "Exit"
 
-[node name="Settings" type="Control" parent="."]
+[node name="Settings" parent="." instance=ExtResource("5_df05h")]
 visible = false
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="ButtonVbox" type="VBoxContainer" parent="Settings"]
-custom_minimum_size = Vector2(128, 0)
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -66.0
-offset_right = 66.0
-offset_bottom = -86.0
-grow_horizontal = 2
-grow_vertical = 2
-alignment = 2
-
-[node name="Settings" type="Button" parent="Settings/ButtonVbox"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 32
-text = "Settings"
-
-[node name="Back" type="Button" parent="Settings/ButtonVbox"]
-layout_mode = 2
-theme = ExtResource("4_ghw46")
-theme_override_font_sizes/font_size = 32
-text = "Back"
 
 [node name="Credits" type="Control" parent="."]
 visible = false
@@ -183,6 +153,7 @@ vertical_alignment = 1
 [connection signal="pressed" from="Main/ButtonVbox/Credits" to="Credits" method="show"]
 [connection signal="pressed" from="Main/ButtonVbox/Exit" to="." method="exit_pressed"]
 [connection signal="pressed" from="Settings/ButtonVbox/Back" to="Main" method="show"]
-[connection signal="pressed" from="Settings/ButtonVbox/Back" to="Settings" method="hide"]
 [connection signal="pressed" from="Credits/ButtonVbox/Back" to="Main" method="show"]
 [connection signal="pressed" from="Credits/ButtonVbox/Back" to="Credits" method="hide"]
+
+[editable path="Settings"]

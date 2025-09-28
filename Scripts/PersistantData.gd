@@ -35,3 +35,34 @@ func pass_guess(soundName : String, playerGuess : String) -> PassResult:
 				return PassResult.new(false, "Too close to existing sound : " + guessTable[allGuesses].userGuess)
 		guessTable[soundName] = OnomatopoeiaGuess.new(soundName, playerGuess)
 		return PassResult.new(true, "Saved : " + playerGuess)
+
+func _process(_delta: float) -> void:
+	if Input.is_action_just_pressed("Fullscreen"):
+		toggle_fullscreen()
+
+func toggle_fullscreen():
+	if DisplayServer.window_get_mode() == DisplayServer.WINDOW_MODE_WINDOWED:
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
+	else:
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED) 
+	save_settings()
+
+func set_audo_bus_volume(bus : int, volume : float):
+	AudioServer.set_bus_volume_linear(bus, volume)
+	save_settings()
+
+func save_settings(defaults : bool = false):
+	var configFile = ConfigFile.new()
+	if !defaults:
+		configFile.set_value("Audio", "master", 0.5)
+		configFile.set_value("Audio", "ambience", 0.5)
+		configFile.set_value("Audio", "videos", 0.5)
+		configFile.set_value("Audio", "dialogue", 0.5)
+		configFile.set_value("Fullscreen", "fullscreen", false)
+	else:
+		configFile.set_value("Audio", "master", AudioServer.get_bus_volume_db(0))
+		configFile.set_value("Audio", "ambience", AudioServer.get_bus_volume_db(1))
+		configFile.set_value("Audio", "videos", AudioServer.get_bus_volume_db(2))
+		configFile.set_value("Audio", "dialogue", AudioServer.get_bus_volume_db(3))
+		configFile.set_value("Fullscreen", "fullscreen", DisplayServer.window_get_mode())
+	configFile.save("user://settings.cfg")

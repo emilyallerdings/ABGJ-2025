@@ -1,0 +1,98 @@
+[gd_scene load_steps=3 format=3 uid="uid://rwck7awfwfbb"]
+
+[ext_resource type="Theme" uid="uid://bee3p0mwngmj1" path="res://Resources/MainMenuTheme.tres" id="1_4hxq3"]
+[ext_resource type="Script" uid="uid://dnbs5wjrx2kdg" path="res://Scripts/Settings.gd" id="1_flfri"]
+
+[node name="Settings" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_flfri")
+
+[node name="ButtonVbox" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -66.0
+offset_right = 66.0
+offset_bottom = -86.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 2
+
+[node name="LabelMaster" type="Label" parent="ButtonVbox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "Master"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AudioMaster" type="HSlider" parent="ButtonVbox"]
+layout_mode = 2
+max_value = 1.0
+step = 0.0
+value = 0.5
+
+[node name="LabelAmbience" type="Label" parent="ButtonVbox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "Ambience"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AudioAmbience" type="HSlider" parent="ButtonVbox"]
+layout_mode = 2
+max_value = 1.0
+step = 0.0
+value = 0.5
+
+[node name="LabelVideos" type="Label" parent="ButtonVbox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "Video"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AudioVideos" type="HSlider" parent="ButtonVbox"]
+layout_mode = 2
+max_value = 1.0
+step = 0.0
+value = 0.5
+
+[node name="LabelDialogue" type="Label" parent="ButtonVbox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "Dialogue"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AudioDialogue" type="HSlider" parent="ButtonVbox"]
+layout_mode = 2
+max_value = 1.0
+step = 0.0
+value = 0.5
+
+[node name="Fullscreen" type="Button" parent="ButtonVbox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Fullscreen"
+
+[node name="Back" type="Button" parent="ButtonVbox"]
+layout_mode = 2
+theme = ExtResource("1_4hxq3")
+theme_override_font_sizes/font_size = 32
+text = "Back"
+
+[connection signal="value_changed" from="ButtonVbox/AudioMaster" to="." method="audio_master_value_changed"]
+[connection signal="value_changed" from="ButtonVbox/AudioAmbience" to="." method="audio_ambience_value_changed"]
+[connection signal="value_changed" from="ButtonVbox/AudioVideos" to="." method="audio_videos_value_changed"]
+[connection signal="value_changed" from="ButtonVbox/AudioDialogue" to="." method="audio_dialogue_value_changed"]
+[connection signal="pressed" from="ButtonVbox/Fullscreen" to="." method="fullscreen_pressed"]
+[connection signal="pressed" from="ButtonVbox/Back" to="." method="hide"]

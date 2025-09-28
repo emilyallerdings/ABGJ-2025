@@ -7,6 +7,8 @@ static var PoweredOn := true
 
 static var MaxCorruption := 0.0
 
+@export var pauseMenu : PauseMenu
+
 ##Emit this to change all office corruption elements
 @warning_ignore("unused_signal")
 signal new_corruption_level(outCorrupt : float)
@@ -20,6 +22,10 @@ var progressionLevel : float
 func _ready() -> void:
 	Persist.office = self
 	MaxCorruption = 0
+
+func _process(_delta: float) -> void:
+	if Input.is_action_just_pressed("Pause"):
+		pauseMenu.set_paused(true)
 
 func timer_bump():
 	progressionLevel += 1.0#randf_range(0.05,0.005)
