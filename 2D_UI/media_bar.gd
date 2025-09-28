@@ -73,7 +73,7 @@ func _process(delta: float) -> void:
 			cur_time_label.text = format_time(audio_stream_player.get_playback_position())
 	elif cur_video_stream:
 		if video_stream_player.is_playing():
-
+			print("test")
 			var normalized_dur = video_stream_player.stream_position / video_stream_player.get_stream_length()
 			media_handle.position.x = media_handle_start + normalized_dur*media_handle_end
 			cur_time_label.text = format_time(video_stream_player.stream_position)
