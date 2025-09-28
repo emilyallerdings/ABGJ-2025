@@ -7,5 +7,5 @@
 script = ExtResource("1_jlqq2")
 soundName = "Cat Meow"
 videoFile = ExtResource("2_ibw3b")
-expectedWord = Array[String](["meow", "nyan"])
+expectedWord = Array[String](["meow", "nyan", "mrow", "myow", "mrrrr"])
 metadata/_custom_type_script = "uid://dheo5stt4uiu2"

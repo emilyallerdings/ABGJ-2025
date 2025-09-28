@@ -8,8 +8,10 @@ extends Control
 const TRAIN_RING = preload("uid://b102h31oytc8b")
 const LEAF_CRUNCH = preload("uid://c7nad47mbe4a7")
 const CAT_MEOW = preload("uid://ckyx4abm3djr2")
+const METAL_CLANK = preload("uid://by867wrdfqqh6")
+const CREEPY_SOUND_1 = preload("uid://busjk36fih0dv")
 
-var media_order = [CAT_MEOW, LEAF_CRUNCH, TRAIN_RING]
+var media_order = [CAT_MEOW, LEAF_CRUNCH, TRAIN_RING, METAL_CLANK, CREEPY_SOUND_1]
 var curr_media_idx = 0
 
 var current_media:SoundGroup
@@ -27,6 +29,7 @@ func _ready() -> void:
 	return
 
 func set_media(media:SoundGroup):
+	
 	current_media = media
 	media_bar.setup_media(media)
 
@@ -58,7 +61,7 @@ func _on_submit_btn_pressed() -> void:
 func _on_next_button_pressed() -> void:
 	welcome.visible = false
 	audio_processing.visible = true
-	set_media(CAT_MEOW)
+	set_media(media_order[0])
 	pass # Replace with function body.
 
 
@@ -77,3 +80,5 @@ func _on_loading_loading_finished() -> void:
 func get_new_media():
 	curr_media_idx = min(curr_media_idx + 1, media_order.size()-1)
 	set_media(media_order[curr_media_idx])
+	if curr_media_idx > 2:
+		Office.increase_corruption(0.1)

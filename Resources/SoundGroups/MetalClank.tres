@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="SoundGroup" load_steps=3 format=3 uid="uid://by867wrdfqqh6"]
+
+[ext_resource type="Script" uid="uid://dheo5stt4uiu2" path="res://Scripts/SoundGroup.gd" id="1_uijey"]
+[ext_resource type="VideoStream" uid="uid://pcyn5e22yccb" path="res://2D_UI/Videos/clank_post.ogv" id="2_oosei"]
+
+[resource]
+script = ExtResource("1_uijey")
+soundName = "MetalClank"
+videoFile = ExtResource("2_oosei")
+expectedWord = Array[String](["clank", "clink", "clunk", "chunk", "donk", "clack", "clck", "clkclk", "clunk clunk"])
+metadata/_custom_type_script = "uid://dheo5stt4uiu2"

@@ -6,8 +6,8 @@ signal loading_finished
 
 
 @export var max_width: float = 294
-@export var min_speed: float = 40
-@export var max_speed: float = 80
+@export var min_speed: float = 60
+@export var max_speed: float = 90
 
 var current_width: float = 0
 var target_width: float = 0

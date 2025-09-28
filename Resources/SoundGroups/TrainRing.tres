@@ -7,5 +7,5 @@
 script = ExtResource("1_ac0oe")
 soundName = "TrainVideo"
 videoFile = ExtResource("2_33lr0")
-expectedWord = Array[String](["ring", "ding", "dong", "clang", "bring", "honk", "toot", "bwah", "whoo"])
+expectedWord = Array[String](["ring", "ding", "dong", "clang", "bring", "honk", "toot", "bwah", "whoo", "ding ding", "ding dong"])
 metadata/_custom_type_script = "uid://dheo5stt4uiu2"

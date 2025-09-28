@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="SoundGroup" load_steps=3 format=3 uid="uid://busjk36fih0dv"]
+
+[ext_resource type="Script" uid="uid://dheo5stt4uiu2" path="res://Scripts/SoundGroup.gd" id="1_vi3dy"]
+[ext_resource type="AudioStream" uid="uid://wmvkejt6rk7g" path="res://2D_UI/Videos/creepy_sound_1.ogg" id="2_orlb4"]
+
+[resource]
+script = ExtResource("1_vi3dy")
+soundName = "Creepy1"
+soundFiles = Array[AudioStream]([ExtResource("2_orlb4")])
+metadata/_custom_type_script = "uid://dheo5stt4uiu2"

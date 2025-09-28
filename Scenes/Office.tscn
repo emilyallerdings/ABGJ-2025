@@ -55,7 +55,7 @@
 [ext_resource type="Texture2D" uid="uid://bqqirfod2y8fk" path="res://2D_UI/warning.png" id="32_1xw62"]
 [ext_resource type="Script" uid="uid://dislijefvq4o8" path="res://Scenes/WindowHazard.gd" id="34_ekxxp"]
 [ext_resource type="Script" uid="uid://kglm3l3ee2bm" path="res://Scripts/Corruptable.gd" id="35_l12lx"]
-[ext_resource type="Script" path="res://Scenes/fps_label.gd" id="48_0uysk"]
+[ext_resource type="Script" uid="uid://d06v5a2l0dwld" path="res://Scenes/fps_label.gd" id="48_0uysk"]
 [ext_resource type="AudioStream" uid="uid://cg0mnjwg87tx" path="res://Audio/pc_idle.ogg" id="49_wela7"]
 [ext_resource type="AudioStream" uid="uid://ctdqomhwthxm" path="res://Audio/pc_shutoff.ogg" id="50_ubd2v"]
 [ext_resource type="PackedScene" uid="uid://bievtbke2errd" path="res://Resources/PauseMenu.tscn" id="51_p55p3"]
@@ -1196,6 +1196,7 @@ script = ExtResource("17_pkeyt")
 
 [node name="VoxelGI" type="VoxelGI" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0514221, 1.4814453, 1.0965576)
+visible = false
 subdiv = 0
 size = Vector3(9, 6.5, 11)
 data = ExtResource("4_32u8q")
