@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://3e3fqavddmny"]
+[gd_scene load_steps=29 format=3 uid="uid://3e3fqavddmny"]
 
 [ext_resource type="StyleBox" uid="uid://r5nij8ldsx1i" path="res://2D_UI/ui_toolbar_background_stylebox.tres" id="1_ly68p"]
 [ext_resource type="Script" uid="uid://dlrsko4w846ua" path="res://2D_UI/main_screen.gd" id="1_n7qqh"]
@@ -19,8 +19,6 @@
 [ext_resource type="Texture2D" uid="uid://by47crqs18b72" path="res://2D_UI/media_play_icon.png" id="15_5h0q2"]
 [ext_resource type="Texture2D" uid="uid://csn64pmdujh7x" path="res://2D_UI/audio_media_icon.png" id="16_3gcfg"]
 [ext_resource type="Texture2D" uid="uid://dbuqp8ocnc8mx" path="res://2D_UI/security_cam.png" id="18_s156s"]
-[ext_resource type="Texture2D" uid="uid://bp6fcg8igij4j" path="res://2D_UI/x_button.png" id="19_o5qh7"]
-[ext_resource type="Texture2D" uid="uid://bqqirfod2y8fk" path="res://2D_UI/warning.png" id="20_gigu6"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_wxaqd"]
 font = ExtResource("8_do24l")
@@ -240,7 +238,6 @@ text = "Audio Identification Program"
 label_settings = SubResource("LabelSettings_dhqo6")
 
 [node name="AudioProcessing" type="Control" parent="Window"]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -548,7 +545,7 @@ theme_override_styles/hover = ExtResource("3_dhqo6")
 text = "Ready"
 
 [node name="ErrorPopupWindow" type="Panel" parent="."]
-unique_name_in_owner = true
+visible = false
 texture_filter = 1
 layout_mode = 1
 anchors_preset = 8
@@ -569,13 +566,16 @@ custom_minimum_size = Vector2(18, 18)
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
-offset_left = 3.0
-offset_top = 3.0
-offset_right = -3.0
-offset_bottom = 21.0
 grow_horizontal = 2
 pivot_offset = Vector2(0, 0.975)
 color = Color(0, 0, 0.50980395, 1)
+
+[node name="TextureRect" type="TextureRect" parent="ErrorPopupWindow/TopBar"]
+layout_mode = 0
+offset_left = 2.0
+offset_right = 19.0
+offset_bottom = 17.0
+expand_mode = 2
 
 [node name="Label" type="Label" parent="ErrorPopupWindow/TopBar"]
 layout_mode = 0
@@ -585,88 +585,6 @@ offset_right = 213.0
 offset_bottom = 19.0
 text = "Error With Input"
 label_settings = SubResource("LabelSettings_dhqo6")
-
-[node name="X_Button" type="TextureRect" parent="ErrorPopupWindow/TopBar"]
-layout_mode = 0
-offset_left = 269.0
-offset_top = 1.0
-offset_right = 285.0
-offset_bottom = 17.0
-texture = ExtResource("19_o5qh7")
-
-[node name="OKBtn2" type="Button" parent="ErrorPopupWindow"]
-texture_filter = 1
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = 125.0
-offset_top = -95.0
-offset_right = 141.0
-offset_bottom = -79.0
-grow_horizontal = 2
-grow_vertical = 0
-focus_mode = 0
-focus_behavior_recursive = 1
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
-theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
-theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
-theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("2_jsu5s")
-theme_override_font_sizes/font_size = 11
-theme_override_styles/normal = ExtResource("3_dhqo6")
-theme_override_styles/pressed = ExtResource("4_h6wl3")
-theme_override_styles/hover = ExtResource("3_dhqo6")
-text = "X"
-
-[node name="OKBtn" type="Button" parent="ErrorPopupWindow"]
-texture_filter = 1
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -28.5
-offset_top = -30.0
-offset_right = 28.5
-offset_bottom = -11.0
-grow_horizontal = 2
-grow_vertical = 0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
-theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
-theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
-theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("8_do24l")
-theme_override_font_sizes/font_size = 13
-theme_override_styles/normal = ExtResource("3_dhqo6")
-theme_override_styles/pressed = ExtResource("4_h6wl3")
-theme_override_styles/hover = ExtResource("3_dhqo6")
-text = "OK"
-
-[node name="TextureRect" type="TextureRect" parent="ErrorPopupWindow"]
-layout_mode = 0
-offset_left = 10.0
-offset_top = 30.0
-offset_right = 48.0
-offset_bottom = 68.0
-texture = ExtResource("20_gigu6")
-stretch_mode = 2
-
-[node name="RichTextLabel" type="RichTextLabel" parent="ErrorPopupWindow"]
-layout_mode = 0
-offset_left = 52.0
-offset_top = 29.0
-offset_right = 265.0
-offset_bottom = 61.0
-theme_override_colors/default_color = Color(0, 0, 0, 1)
-theme_override_fonts/normal_font = ExtResource("8_do24l")
-theme_override_font_sizes/normal_font_size = 13
-text = "The label you entered doesn't match the audio! Please correctly label the audio."
 
 [node name="Cursor" type="TextureRect" parent="."]
 z_index = 10
@@ -687,5 +605,3 @@ stretch_mode = 2
 [connection signal="pressed" from="Window/AudioProcessing/SubmitBtn" to="." method="_on_submit_btn_pressed"]
 [connection signal="pressed" from="Window/AudioProcessing/MediaBar/PlayMediaBtn" to="Window/AudioProcessing/MediaBar" method="_on_play_media_btn_pressed"]
 [connection signal="pressed" from="Window/Welcome/NextButton" to="." method="_on_next_button_pressed"]
-[connection signal="pressed" from="ErrorPopupWindow/OKBtn2" to="." method="_on_ok_btn_pressed"]
-[connection signal="pressed" from="ErrorPopupWindow/OKBtn" to="." method="_on_ok_btn_pressed"]
