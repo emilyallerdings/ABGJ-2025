@@ -51,10 +51,10 @@ func power_toggle():
 func gain_strike():
 	%StrikeSound.play()
 	increase_corruption(0.1)
+	Persist.strikes += 1
 	if Persist.strikes >= 3:
 		Persist.strikes = 0
 		MaxCorruption = 0
 		PoweredOn = true
 		get_tree().change_scene_to_file("res://Scenes/GameOver.tscn")
-	Persist.strikes += 1
 	strike_gained.emit(Persist.strikes)
