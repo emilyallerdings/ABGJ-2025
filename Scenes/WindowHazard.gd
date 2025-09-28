@@ -11,20 +11,18 @@ var countdown : float = countdownTime
 
 func _ready() -> void:
 	get_tree().get_first_node_in_group("Office").new_corruption_level.connect(set_aggression)
+	if OS.has_feature("web"):
+		hide()
 
 func _process(delta: float) -> void:
 	if appearing:
 		transparency -= delta * aggression / 10.0
-		if OS.has_feature("web"):
-			if transparency > 0.5:
-				show()
-			else:
-				hide()
-		
 		if not Office.PoweredOn:
 			appearing = false
 			transparency = 1
 			countdown = countdownTime
+			if OS.has_feature("web"):
+				hide()
 		elif transparency <= 0:
 			countdown -= delta
 			if countdown <= 0:
@@ -40,3 +38,5 @@ func try_appear():
 		if randf() < aggression:
 			countdown = countdownTime
 			appearing = true
+			if OS.has_feature("web"):
+				show()
