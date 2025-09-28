@@ -549,6 +549,7 @@ text = "Ready"
 
 [node name="ErrorPopupWindow" type="Panel" parent="."]
 unique_name_in_owner = true
+visible = false
 texture_filter = 1
 layout_mode = 1
 anchors_preset = 8
