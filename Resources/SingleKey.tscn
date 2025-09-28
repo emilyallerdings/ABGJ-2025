@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=4 uid="uid://vx7lkp7s1r1v"]
 
-[ext_resource type="Script" uid="uid://byuldhj1h4lc8" path="res://Scripts/VisualKey.gd" id="2_cdgy7"]
+[ext_resource type="Script" path="res://Scripts/VisualKey.gd" id="2_cdgy7"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cdgy7"]
 albedo_color = Color(0.15007517, 0.15007517, 0.15007517, 1)
@@ -50,7 +50,7 @@ script = ExtResource("2_cdgy7")
 [node name="Cube" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 material_override = SubResource("StandardMaterial3D_cdgy7")
-gi_mode = 2
+gi_mode = 0
 mesh = SubResource("ArrayMesh_hddkm")
 skeleton = NodePath("")
 

@@ -60,6 +60,13 @@ common/physics_interpolation=true
 
 [rendering]
 
-lights_and_shadows/directional_shadow/size=2048
-lights_and_shadows/directional_shadow/soft_shadow_filter_quality=4
+lights_and_shadows/directional_shadow/size=1024
+lights_and_shadows/directional_shadow/size.mobile=1024
 global_illumination/gi/use_half_resolution=true
+lights_and_shadows/positional_shadow/atlas_size=1024
+lights_and_shadows/positional_shadow/atlas_size.mobile=1024
+rendering_device/directional_shadow/size.mobile=1024
+rendering_device/positional_shadow/atlas_size.mobile=1024
+rendering_device/positional_shadow/atlas_size=1024
+rendering_device/directional_shadow/size=1024
+rendering_device/directional_shadow/soft_shadow_filter_quality=2
