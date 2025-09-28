@@ -73,3 +73,7 @@ func cam_right_mouse() -> void:
 func cam_left_exit_mouse() -> void:
 	if leftRightOffset == -1:
 		cam_right_mouse()
+
+func cam_right_exit_mouse() -> void:
+	if leftRightOffset == 1:
+		cam_left_mouse()

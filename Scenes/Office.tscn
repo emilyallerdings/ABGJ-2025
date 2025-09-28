@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=4 uid="uid://2tmp6fu334qg"]
+[gd_scene load_steps=65 format=4 uid="uid://2tmp6fu334qg"]
 
 [ext_resource type="PackedScene" uid="uid://c3xwy2s3ckihp" path="res://Resources/WorldKeyboard.tscn" id="1_0d164"]
 [ext_resource type="Script" uid="uid://cxc75gjqku8hw" path="res://Scripts/Office.gd" id="1_mdu65"]
@@ -17,6 +17,7 @@
 [ext_resource type="Resource" uid="uid://bl2r6hr0f0m3q" path="res://Resources/TextMerges/PostItMerge.tres" id="7_jptpv"]
 [ext_resource type="Material" uid="uid://n2pdlsp60tvl" path="res://Materials/OfficeCarpet.tres" id="7_qxhf8"]
 [ext_resource type="Material" uid="uid://cbdjabu1piqqa" path="res://Materials/CeilingPopcorn.tres" id="8_2g8g0"]
+[ext_resource type="Material" uid="uid://bv0k37rqof4pl" path="res://Materials/TowerMat.tres" id="8_ekxxp"]
 [ext_resource type="Script" uid="uid://ccas1aib0ahyw" path="res://Scripts/OfficeTowerFlash.gd" id="10_3g47s"]
 [ext_resource type="Material" uid="uid://cg5o6lwliq5tv" path="res://Materials/PcMat.tres" id="12_k1f78"]
 [ext_resource type="Resource" uid="uid://c8sj4iftpnxsi" path="res://Resources/TextMerges/MonitorMerge.tres" id="12_l100v"]
@@ -31,7 +32,10 @@
 [ext_resource type="PackedScene" uid="uid://duefwf4y3yknl" path="res://Models/Window.blend" id="26_vfnhs"]
 [ext_resource type="Material" uid="uid://dyh7upiq6qao" path="res://Materials/WoodFrame.tres" id="27_37xsv"]
 [ext_resource type="Material" uid="uid://b85jx3s5jm1iv" path="res://Materials/PlasticWindow.tres" id="28_qxhf8"]
+[ext_resource type="Material" uid="uid://b8fug60pejtk" path="res://Materials/Water.tres" id="29_2g8g0"]
 [ext_resource type="Material" uid="uid://cu1tg07pnasfm" path="res://Materials/Building.tres" id="30_kuh34"]
+[ext_resource type="Script" uid="uid://dislijefvq4o8" path="res://Scenes/WindowHazard.gd" id="34_ol5eu"]
+[ext_resource type="Script" uid="uid://kglm3l3ee2bm" path="res://Scripts/Corruptable.gd" id="35_ekxxp"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_4f0fq"]
 radius = 0.25
@@ -53,6 +57,9 @@ size = Vector3(3.5, 0.2, 7)
 top_radius = 0.25
 bottom_radius = 0.25
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ekxxp"]
+albedo_color = Color(1, 1, 0.84313726, 1)
+
 [sub_resource type="BoxMesh" id="BoxMesh_k8msm"]
 size = Vector3(2, 3, 1.5)
 
@@ -61,6 +68,9 @@ size = Vector3(0.2, 0.1, 0.3)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_l100v"]
 size = Vector3(0.19958496, 0.105163574, 0.31958008)
+
+[sub_resource type="QuadMesh" id="QuadMesh_l12lx"]
+size = Vector2(1.5, 2.5)
 
 [sub_resource type="QuadMesh" id="QuadMesh_kuh34"]
 size = Vector2(8, 10)
@@ -169,6 +179,18 @@ ambient_light_source = 2
 ambient_light_color = Color(4.6205523e-06, 0.65048313, 0.65864336, 1)
 ambient_light_energy = 0.01
 
+[sub_resource type="CylinderMesh" id="CylinderMesh_k1f78"]
+top_radius = 0.9
+bottom_radius = 0.9
+height = 0.1
+radial_segments = 8
+cap_bottom = false
+
+[sub_resource type="Resource" id="Resource_l12lx"]
+script = ExtResource("35_ekxxp")
+minCorruption = 0.25
+metadata/_custom_type_script = "uid://kglm3l3ee2bm"
+
 [sub_resource type="BoxMesh" id="BoxMesh_qxhf8"]
 size = Vector3(10, 40, 10)
 subdivide_width = 2
@@ -199,36 +221,42 @@ surface_material_override/0 = SubResource("StandardMaterial3D_541ak")
 
 [node name="Table" type="MeshInstance3D" parent="LevelGeometry"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2375202, 0.4699874, 0.5004437)
+material_override = ExtResource("27_37xsv")
 gi_mode = 2
 mesh = SubResource("BoxMesh_um8f5")
 skeleton = NodePath("../..")
 
 [node name="Leg4" type="MeshInstance3D" parent="LevelGeometry/Table"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0742481, -1.0697316, 3.2532024)
+material_override = ExtResource("27_37xsv")
 gi_mode = 2
 mesh = SubResource("CylinderMesh_ccyme")
 skeleton = NodePath("../..")
 
 [node name="Leg3" type="MeshInstance3D" parent="LevelGeometry/Table"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3374949, -1.0697316, 3.2532024)
+material_override = ExtResource("27_37xsv")
 gi_mode = 2
 mesh = SubResource("CylinderMesh_ccyme")
 skeleton = NodePath("../..")
 
 [node name="Leg2" type="MeshInstance3D" parent="LevelGeometry/Table"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0742481, -1.0697316, -3.1322153)
+material_override = ExtResource("27_37xsv")
 gi_mode = 2
 mesh = SubResource("CylinderMesh_ccyme")
 skeleton = NodePath("../..")
 
 [node name="Leg" type="MeshInstance3D" parent="LevelGeometry/Table"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3374949, -1.0697316, -3.1322153)
+material_override = ExtResource("27_37xsv")
 gi_mode = 2
 mesh = SubResource("CylinderMesh_ccyme")
 skeleton = NodePath("../..")
 
 [node name="Tower" type="MeshInstance3D" parent="LevelGeometry"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.366435, 2, 3)
+material_override = SubResource("StandardMaterial3D_ekxxp")
 gi_mode = 2
 mesh = SubResource("BoxMesh_k8msm")
 
@@ -263,6 +291,11 @@ width = 100.0
 script = ExtResource("6_i4f5g")
 textMerger = ExtResource("6_kp12w")
 metadata/_custom_type_script = "uid://hs8qfe16l3ys"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="LevelGeometry/Tower"]
+transform = Transform3D(1, 0, 0, 0, -1, -8.742278e-08, 0, 8.742278e-08, -1, 0, 0.04437995, -0.7826662)
+material_override = ExtResource("8_ekxxp")
+mesh = SubResource("QuadMesh_l12lx")
 
 [node name="Floor" type="MeshInstance3D" parent="LevelGeometry"]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 1, -1.5, 1.0797148)
@@ -379,7 +412,7 @@ fov = 60.0
 far = 100.0
 script = ExtResource("4_0d164")
 physScreen = NodePath("../BasicPC/PcScreen/PCScreen")
-focusedFov = 36.0
+focusedFov = 38.0
 
 [node name="GameInput" type="SubViewport" parent="."]
 disable_3d = true
@@ -404,10 +437,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0514221, 1.4814453, 1.09655
 size = Vector3(9, 6.5, 11)
 data = ExtResource("4_32u8q")
 
-[node name="Mug" parent="." node_paths=PackedStringArray("targetDecal") instance=ExtResource("14_gldt3")]
-transform = Transform3D(0.14142136, 0, 0.14142136, 0, 0.2, 0, -0.14142136, 0, 0.14142136, 0.046569645, 0.7635156, 2.2856374)
+[node name="Mug" parent="." node_paths=PackedStringArray("targetDecal", "meshPos") instance=ExtResource("14_gldt3")]
+transform = Transform3D(0.14142136, 0, 0.14142136, 0, 0.2, 0, -0.14142136, 0, 0.14142136, 0.1307309, 0.7635156, 1.9530787)
 script = ExtResource("15_k0xf6")
 targetDecal = NodePath("MugDecal")
+meshPos = NodePath("DrinkFill")
+fillRange = Vector2(0.4, 0.925)
 
 [node name="Cup" parent="Mug" index="0"]
 material_override = ExtResource("15_6b8ke")
@@ -468,6 +503,11 @@ texture = ExtResource("3_4f0fq")
 expand_mode = 1
 stretch_mode = 5
 
+[node name="DrinkFill" type="MeshInstance3D" parent="Mug"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0)
+material_override = ExtResource("29_2g8g0")
+mesh = SubResource("CylinderMesh_k1f78")
+
 [node name="OverworldUi" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 15
@@ -476,6 +516,17 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+
+[node name="CamRightExit" type="Control" parent="OverworldUi"]
+custom_minimum_size = Vector2(64, 0)
+layout_mode = 1
+anchor_left = 0.5
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -64.0
+grow_horizontal = 0
+grow_vertical = 2
+mouse_filter = 1
 
 [node name="CamLeftExit" type="Control" parent="OverworldUi"]
 custom_minimum_size = Vector2(64, 0)
@@ -496,7 +547,7 @@ anchor_bottom = 1.0
 grow_vertical = 2
 mouse_filter = 1
 
-[node name="CamRight" type="Control" parent="OverworldUi"]
+[node name="CamRightEnter" type="Control" parent="OverworldUi"]
 custom_minimum_size = Vector2(64, 0)
 layout_mode = 1
 anchors_preset = 11
@@ -520,10 +571,18 @@ material_override = ExtResource("28_qxhf8")
 cast_shadow = 2
 gi_mode = 2
 
-[node name="WindowExternals" parent="Window" index="2"]
-visible = false
-cast_shadow = 2
+[node name="WindowExternals" parent="Window" index="2" node_paths=PackedStringArray("office")]
+material_override = SubResource("StandardMaterial3D_ccyme")
+transparency = 1.0
+cast_shadow = 0
 gi_mode = 2
+script = ExtResource("34_ol5eu")
+corruptionCutoff = SubResource("Resource_l12lx")
+office = NodePath("../..")
+
+[node name="AggressionRetry" type="Timer" parent="Window/WindowExternals" index="0"]
+wait_time = 20.0
+autostart = true
 
 [node name="WindowWall" parent="Window" index="3"]
 material_override = ExtResource("4_l100v")
@@ -531,11 +590,21 @@ cast_shadow = 2
 gi_mode = 2
 
 [node name="Moonlight" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.2997889, -0.20625545, 0.93144274, -0.06319182, 0.97849816, 0.19633669, -0.9519105, 0, -0.30637652, 0, 0, 0)
+transform = Transform3D(-0.30548826, -0.07609257, 0.9491507, -0.023312937, 0.9971008, 0.07243331, -0.95191056, 3.6055003e-08, -0.30637655, 0, 0, 0)
 light_color = Color(0.08100002, 0.43334988, 0.81, 1)
-light_energy = 0.02
+light_energy = 0.1
 light_bake_mode = 1
 shadow_enabled = true
+shadow_bias = 0.0
+
+[node name="Sublight" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.9985411, -0.01969417, -0.050278634, -0.044542752, 0.8267648, 0.5607817, 0.030524462, 0.5622031, -0.82643574, 0, 0, 0)
+visible = false
+light_color = Color(0.6181022, 0.59112924, 0.99532026, 1)
+light_energy = 0.01
+light_bake_mode = 1
+shadow_enabled = true
+sky_mode = 1
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -41, 0, -61)
@@ -562,10 +631,11 @@ mesh = SubResource("BoxMesh_qxhf8")
 [connection signal="input_event" from="BasicPC/PcScreen/PCScreen/StaticBody3D" to="BasicPC/PcScreen/PCScreen" method="mouse_input"]
 [connection signal="mouse_entered" from="BasicPC/PcScreen/PCScreen/StaticBody3D" to="BasicPC/PcScreen/PCScreen" method="mouse_entered"]
 [connection signal="mouse_exited" from="BasicPC/PcScreen/PCScreen/StaticBody3D" to="BasicPC/PcScreen/PCScreen" method="mouse_exited"]
+[connection signal="mouse_exited" from="OverworldUi/CamRightExit" to="Cam" method="cam_right_exit_mouse"]
 [connection signal="mouse_exited" from="OverworldUi/CamLeftExit" to="Cam" method="cam_left_exit_mouse"]
 [connection signal="mouse_entered" from="OverworldUi/CamLeftEnter" to="Cam" method="cam_left_mouse"]
-[connection signal="mouse_entered" from="OverworldUi/CamRight" to="Cam" method="cam_right_mouse"]
-[connection signal="mouse_exited" from="OverworldUi/CamRight" to="Cam" method="cam_left_mouse"]
+[connection signal="mouse_entered" from="OverworldUi/CamRightEnter" to="Cam" method="cam_right_mouse"]
+[connection signal="timeout" from="Window/WindowExternals/AggressionRetry" to="Window/WindowExternals" method="try_appear"]
 
 [editable path="BasicPC/PcScreen"]
 [editable path="Mug"]

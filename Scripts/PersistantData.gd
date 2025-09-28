@@ -5,6 +5,8 @@ class_name PersistantData
 var guessTable : Dictionary[String, OnomatopoeiaGuess]
 ##The text to display after calling Pass Guess
 var errorText : String = "No Error Assigned"
+##Times the player has messed up
+var strikes : int = 0
 
 ##Contains the result of the check and string associated with it
 class PassResult:

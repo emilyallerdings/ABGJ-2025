@@ -10,6 +10,8 @@ static var PoweredOn := true
 signal new_corruption_level(outCorrupt : float)
 ##Emit this to set the state of power in the office
 signal new_power_state(powerState : bool)
+##Emit this signal when there's a strike
+signal strike_gained(total_strikes : int)
 
 var progressionLevel : float
 
@@ -21,3 +23,7 @@ func timer_bump():
 func power_toggle():
 	PoweredOn = !PoweredOn
 	new_power_state.emit(PoweredOn)
+
+func gain_strike():
+	Persist.strikes += 1
+	strike_gained.emit(Persist.strikes)
