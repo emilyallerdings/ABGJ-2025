@@ -67,16 +67,18 @@ func _process(delta: float) -> void:
 	
 
 	if cur_audio_stream:
+		cur_time_label.text = format_time(audio_stream_player.get_playback_position())
 		if audio_stream_player.playing:
 			var normalized_dur = audio_stream_player.get_playback_position() / cur_audio_stream.get_length()
 			media_handle.position.x = media_handle_start + normalized_dur*media_handle_end
-			cur_time_label.text = format_time(audio_stream_player.get_playback_position())
+			
 	elif cur_video_stream:
+		cur_time_label.text = format_time(video_stream_player.stream_position)
 		if video_stream_player.is_playing():
 			print("test")
 			var normalized_dur = video_stream_player.stream_position / video_stream_player.get_stream_length()
 			media_handle.position.x = media_handle_start + normalized_dur*media_handle_end
-			cur_time_label.text = format_time(video_stream_player.stream_position)
+			
 func format_time(time: float) -> String:
 	var seconds = int(time)
 	var milliseconds = int((time - seconds) * 100)

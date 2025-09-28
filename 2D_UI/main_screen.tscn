@@ -471,7 +471,6 @@ text = "Enter Audio Label"
 label_settings = SubResource("LabelSettings_7je2u")
 
 [node name="Welcome" type="Control" parent="Window"]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -555,7 +554,7 @@ theme_override_fonts/bold_font = ExtResource("2_jsu5s")
 theme_override_font_sizes/normal_font_size = 13
 theme_override_font_sizes/bold_font_size = 13
 bbcode_enabled = true
-text = "REMINDER: All activity is monitored and deviations will be logged"
+text = "REMINDER: All activity is monitored and deviations will be logged."
 scroll_active = false
 
 [node name="NextButton" type="Button" parent="Window/Welcome"]
