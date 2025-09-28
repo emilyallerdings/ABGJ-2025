@@ -1,0 +1,12 @@
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://cbdjabu1piqqa"]
+
+[ext_resource type="Texture2D" uid="uid://bmg8apa3aae4r" path="res://Textures/CeilingPopcorn.png" id="1_f1mk3"]
+[ext_resource type="Texture2D" uid="uid://tnq24oapio76" path="res://Textures/CeilingPopcornNormal.png" id="2_4cmnj"]
+
+[resource]
+albedo_texture = ExtResource("1_f1mk3")
+normal_enabled = true
+normal_scale = 4.0
+normal_texture = ExtResource("2_4cmnj")
+uv1_scale = Vector3(2, 2, 2)
+uv1_triplanar = true

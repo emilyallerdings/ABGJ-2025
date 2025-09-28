@@ -1,8 +1,7 @@
-[gd_scene load_steps=52 format=3 uid="uid://2tmp6fu334qg"]
+[gd_scene load_steps=57 format=4 uid="uid://2tmp6fu334qg"]
 
 [ext_resource type="PackedScene" uid="uid://c3xwy2s3ckihp" path="res://Resources/WorldKeyboard.tscn" id="1_0d164"]
 [ext_resource type="Script" uid="uid://cxc75gjqku8hw" path="res://Scripts/Office.gd" id="1_mdu65"]
-[ext_resource type="PackedScene" uid="uid://giyx4wkbs4f1" path="res://Models/BasicPC.blend" id="1_um8f5"]
 [ext_resource type="Script" uid="uid://8pgamyrptrvo" path="res://Scripts/MouseShift.gd" id="2_t43tj"]
 [ext_resource type="Texture2D" uid="uid://dkph6nb1r3npo" path="res://Textures/WallOff.png" id="3_4f0fq"]
 [ext_resource type="Script" uid="uid://ck8s0ixkgnfrd" path="res://Scripts/3dCam.gd" id="4_0d164"]
@@ -17,13 +16,16 @@
 [ext_resource type="Script" uid="uid://30bc51xwx0i2" path="res://Scripts/PhysicalScreen.gd" id="7_chwbs"]
 [ext_resource type="Resource" uid="uid://bl2r6hr0f0m3q" path="res://Resources/TextMerges/PostItMerge.tres" id="7_jptpv"]
 [ext_resource type="Material" uid="uid://n2pdlsp60tvl" path="res://Materials/OfficeCarpet.tres" id="7_qxhf8"]
+[ext_resource type="Material" uid="uid://cbdjabu1piqqa" path="res://Materials/CeilingPopcorn.tres" id="8_2g8g0"]
 [ext_resource type="Script" uid="uid://ccas1aib0ahyw" path="res://Scripts/OfficeTowerFlash.gd" id="10_3g47s"]
+[ext_resource type="Material" uid="uid://cg5o6lwliq5tv" path="res://Materials/PcMat.tres" id="12_k1f78"]
 [ext_resource type="Resource" uid="uid://c8sj4iftpnxsi" path="res://Resources/TextMerges/MonitorMerge.tres" id="12_l100v"]
 [ext_resource type="PackedScene" uid="uid://bqbjw5s2uqf1w" path="res://Models/Mug.blend" id="14_gldt3"]
 [ext_resource type="Material" uid="uid://0qtwb0ig7aet" path="res://Materials/CupMaterial.tres" id="15_6b8ke"]
 [ext_resource type="Script" uid="uid://6x4s6aub74qg" path="res://Scripts/OfficeMug.gd" id="15_k0xf6"]
 [ext_resource type="Texture2D" uid="uid://byrqm1uohudqb" path="res://icon.svg" id="17_2uv6j"]
 [ext_resource type="Script" uid="uid://duuvlvulw0uec" path="res://Scripts/Debug/DebugToggleFullbrightt.gd" id="17_pkeyt"]
+[ext_resource type="Texture2D" uid="uid://dbm7vueidx0mv" path="res://Textures/NightSky.png" id="18_qttup"]
 [ext_resource type="Script" uid="uid://dv1o1f4iqjn70" path="res://Scripts/DecalCorrupt.gd" id="19_wwh7d"]
 [ext_resource type="Resource" uid="uid://d2vb0icl2q0y6" path="res://Resources/TextMerges/MugMerge.tres" id="20_mdu65"]
 [ext_resource type="PackedScene" uid="uid://duefwf4y3yknl" path="res://Models/Window.blend" id="26_vfnhs"]
@@ -69,16 +71,6 @@ size = Vector2(8, 6)
 [sub_resource type="QuadMesh" id="QuadMesh_qxhf8"]
 size = Vector2(10, 6)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_um8f5"]
-viewport_path = NodePath("GameInput")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ccyme"]
-resource_local_to_scene = true
-albedo_texture = SubResource("ViewportTexture_um8f5")
-emission_enabled = true
-emission_texture = SubResource("ViewportTexture_um8f5")
-texture_filter = 0
-
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6wq8w"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_a0okd"]
@@ -86,11 +78,11 @@ _surfaces = [{
 "aabb": AABB(0.24374999, -0.5875, -0.6666667, 1e-05, 0.99999994, 1.3333334),
 "format": 34896613377,
 "index_count": 6,
-"index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 0, 0, 3, 0, 1, 0),
+"index_data": PackedByteArray("AAABAAIAAAADAAEA"),
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
 "vertex_count": 4,
-"vertex_data": PackedByteArray(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 255, 255, 255, 255, 0, 0, 0, 0, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0, 255, 255, 0, 0)
+"vertex_data": PackedByteArray("AAAAAAAAAAAAAP////8AAAAA//8AAAAAAAAAAP//AAA=")
 }]
 blend_shape_mode = 0
 
@@ -98,15 +90,15 @@ blend_shape_mode = 0
 resource_name = "PcScreen_PCScreen-col"
 _surfaces = [{
 "aabb": AABB(0.24374999, -0.5875, -0.6666667, 1e-05, 0.99999994, 1.3333334),
-"attribute_data": PackedByteArray(254, 255, 255, 255, 0, 0, 0, 0, 255, 255, 0, 0, 0, 0, 255, 255),
+"attribute_data": PackedByteArray("/v///wAAAAD//wAAAAD//w=="),
 "format": 34896613399,
 "index_count": 6,
-"index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 0, 0, 3, 0, 1, 0),
+"index_data": PackedByteArray("AAABAAIAAAADAAEA"),
 "material": SubResource("StandardMaterial3D_6wq8w"),
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
 "vertex_count": 4,
-"vertex_data": PackedByteArray(0, 0, 0, 0, 0, 0, 255, 191, 0, 0, 255, 255, 255, 255, 255, 191, 0, 0, 255, 255, 0, 0, 255, 191, 0, 0, 0, 0, 255, 255, 255, 191, 255, 127, 0, 0, 255, 127, 0, 0, 255, 127, 0, 0, 255, 127, 0, 0)
+"vertex_data": PackedByteArray("AAAAAAAA/78AAP//////vwAA//8AAP+/AAAAAP///7//fwAA/38AAP9/AAD/fwAA")
 }]
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_a0okd")
@@ -116,14 +108,59 @@ albedo_color = Color(0, 0, 0, 1)
 metallic_specular = 0.4
 roughness = 0.0
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_qxhf8"]
-sky_top_color = Color(0.0806789, 0.10591217, 0.1395222, 1)
-sky_horizon_color = Color(0, 0, 0, 1)
-ground_bottom_color = Color(0, 0, 0, 1)
-ground_horizon_color = Color(0, 0, 0, 1)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rd0m1"]
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_yq0ya"]
+_surfaces = [{
+"aabb": AABB(-0.63125, -0.9625, -1.0416666, 1.0625, 1.5, 2.0833333),
+"format": 34359742465,
+"index_count": 126,
+"index_data": PackedByteArray("AAABAAIAAgABAAMABAADAAEAAAAEAAEABAAFAAMABgADAAUAAgADAAYABwAFAAQABgAFAAcABwAEAAAACAACAAYABwAIAAYACQAAAAIAAAAKAAcAAAALAAoACQALAAAABwAKAAwACgALAA0ACgANAAwACQANAAsABwAMAA4ADgAMAA0ABwAOAAgADgANAAkACAAPAAIACQACAA8AEAAIAA4AEQAOAAkAEAAOABEAEgAJAA8AEQAJABIAEwAPAAgAEwAIABAAEgAPABMAEQAUABAAEAAUABUAEAAVABMAEQAWABQAEgAWABEAEwAVABcAEgAXABYAEwAXABIA"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray("MzOjvmZmNr+rqko/mpkhv2hmZj5WVfU+MzOjvpqZCT+rqko/mpkhv2hmZj5WVfW+mpkhv8zMzL5WVfU+mpkhv8zMzL5WVfW+MzOjvpqZCT+rqkq/MzOjvmZmNr+rqkq/zcycPpqZCT+rqkq/zcycPmZmNr+rqko/MzPjvmZmdr9VVYW/MzPjvmZmdr9VVYU/zczcPmZmdr9VVYW/zczcPmZmdr9VVYU/zcycPmZmNr+rqkq/zcycPpqZCT+rqko/zcycPjIz0z6rqiq/zcycPmZmFr+rqiq/zcycPmZmFr+rqio/zcycPjIz0z6rqio/mZl5PjIz0z6rqiq/mZl5PjIz0z6rqio/mZl5PmZmFr+rqiq/mZl5PmZmFr+rqio/")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_unksj"]
+resource_name = "BasicPC_PC"
+_surfaces = [{
+"aabb": AABB(-0.63125, -0.9625, -1.0416666, 1.0625, 1.5, 2.0833333),
+"attribute_data": PackedByteArray("AADAPgAAAAAAACA/AAAAAAAAID8AAAAAAADAPgAAAAAAAMA+AABAPwAAID8AAAA/AAAgPwAAQD8AAMA+AAAAP5qZGT8yM/M+mpkZP8rMjD6amRk/ysyMPpqZGT8yM/M+AADAPgAAgD4AACA/AAAAAAAAID8AAIA+AADAPgAAAAAAAMA+AABAPwAAwD4AAAA/AADAPgAAAD8AAMA+AABAPwAAID8AAAA/AABgPwAAgD4AAGA/AAAAPwAAID8AAIA+AADAPgAAgD8AACA/AABAPwAAID8AAIA/AADAPgAAQD8AAGA/AACAPgAAYD8AAAA/AABgPwAAAD8AAGA/AACAPgAAAD4AAAA/AAAAPgAAgD4AAAA+AACAPgAAAD4AAAA/AAAgPwAAQD8AAMA+AABAPwAAwD4AAEA/AAAgPwAAQD+amRk/MjPzPgAAwD4AAAA/zszMPjIz8z4AAMA+AACAPgAAID8AAAA/zszMPszMjD6amRk/ysyMPgAAID8AAIA+zszMPjIz8z6amRk/MjPzPpqZGT8yM/M+zszMPjIz8z6amRk/ysyMPs7MzD7MzIw+zszMPszMjD6amRk/ysyMPs7MzD7MzIw+zszMPjIz8z7OzMw+MjPzPs7MzD7MzIw+AAAAPgAAAD8AAMA+AACAPgAAwD4AAAA/AAAAPgAAgD4AAAA+AACAPgAAAD4AAAA/AAAAPgAAAD8AAAA+AACAPgAAwD4AAAA/AADAPgAAgD4AAMA+AACAPgAAwD4AAAA/AADAPgAAgD4AAMA+AAAAAAAAwD4AAAAAAADAPgAAgD4="),
+"format": 34359742487,
+"index_count": 126,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACAALAAkADAANAA4ADAAPAA0AEAARABIAEAATABEAFAAVABYAFAAXABUAGAAZABoAGAAbABkAHAAdAB4AHAAfAB0AIAAhACIAIAAjACEAJAAlACYAJAAnACUAKAApACoAKgApACsAKAAsACkAKgArAC0ALgAsACgALQArAC8ALgAvACwALQAvAC4AMAAxADIAMAAzADEANAA1ADYANAA3ADUAOAA5ADoAOAA7ADkAPAA9AD4APAA/AD0AQABBAEIAQABDAEEARABFAEYARABHAEUASABJAEoASABLAEkA"),
+"material": SubResource("StandardMaterial3D_rd0m1"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 76,
+"vertex_data": PackedByteArray("MzOjvmZmNr+rqko/mpkhv2hmZj5WVfU+MzOjvpqZCT+rqko/mpkhv8zMzL5WVfU+MzOjvmZmNr+rqkq/zcycPpqZCT+rqkq/MzOjvpqZCT+rqkq/zcycPmZmNr+rqkq/zcycPjIz0z6rqiq/mZl5PjIz0z6rqio/zcycPjIz0z6rqio/mZl5PjIz0z6rqiq/zcycPmZmNr+rqko/MzOjvpqZCT+rqko/zcycPpqZCT+rqko/MzOjvmZmNr+rqko/MzOjvmZmNr+rqkq/zczcPmZmdr9VVYW/zcycPmZmNr+rqkq/MzPjvmZmdr9VVYW/zcycPpqZCT+rqkq/MzOjvpqZCT+rqko/MzOjvpqZCT+rqkq/zcycPpqZCT+rqko/mpkhv8zMzL5WVfU+mpkhv2hmZj5WVfW+mpkhv2hmZj5WVfU+mpkhv8zMzL5WVfW+MzOjvpqZCT+rqko/mpkhv2hmZj5WVfW+MzOjvpqZCT+rqkq/mpkhv2hmZj5WVfU+MzOjvmZmNr+rqkq/mpkhv8zMzL5WVfU+MzOjvmZmNr+rqko/mpkhv8zMzL5WVfW+MzOjvpqZCT+rqkq/mpkhv8zMzL5WVfW+MzOjvmZmNr+rqkq/mpkhv2hmZj5WVfW+zcycPjIz0z6rqiq/zcycPmZmNr+rqkq/zcycPmZmFr+rqiq/zcycPmZmNr+rqko/zcycPpqZCT+rqkq/zcycPmZmFr+rqio/zcycPjIz0z6rqio/zcycPpqZCT+rqko/zcycPmZmFr+rqiq/mZl5PjIz0z6rqiq/zcycPjIz0z6rqiq/mZl5PmZmFr+rqiq/zcycPjIz0z6rqio/mZl5PmZmFr+rqio/zcycPmZmFr+rqio/mZl5PjIz0z6rqio/zcycPmZmFr+rqio/mZl5PmZmFr+rqiq/zcycPmZmFr+rqiq/mZl5PmZmFr+rqio/MzPjvmZmdr9VVYW/zczcPmZmdr9VVYU/zczcPmZmdr9VVYW/MzPjvmZmdr9VVYU/MzOjvmZmNr+rqko/MzPjvmZmdr9VVYW/MzOjvmZmNr+rqkq/MzPjvmZmdr9VVYU/zcycPmZmNr+rqkq/zczcPmZmdr9VVYU/zcycPmZmNr+rqko/zczcPmZmdr9VVYW/zcycPmZmNr+rqko/MzPjvmZmdr9VVYU/MzOjvmZmNr+rqko/zczcPmZmdr9VVYU//z//f////z//P/9/////P/8//3////8//z//f////z///////3//////////f/////////9//////////3////9/AAD///8//38AAP///z//fwAA////P/9/AAD///8//3//f/9/////f/9//3////9//3//f////3//f/9/////v///////P/+///////8//7///////z//v///////P/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+/AAD/f/9///8AAP9//3///wAA/3//f///AAD/f/9/////P/+/////P/8//7////8//z//v////z//P/+/////P/8//z////8//z//P////z//P/8/////P/8//z////8/AAD/v////z8AAP+/////PwAA/7////8/AAD/v////z////9//38d+f///3/Tjv//////f8ON//////9//3+g+P///3//f5T4////f/9/D/f///9/3pH//////3+7jv///3//f////z//f/9/////P/9//3////8//3//f////z//////////P/////////8//////////z//////////P/9///////8//3///////z//f///////P/9///////8//38AAP///7//fwAA////v/9/AAD///+//38AAP///7+qKqqq////P6oqqqr///8/qiqqqv///z+qKqqq////P1TVqqr///8/VNWqqv///z9U1aqq////P1TVqqr///8//3//v////z//f/+/////P/9//7////8//3//v////z8=")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_yq0ya")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_um8f5"]
+viewport_path = NodePath("GameInput")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ccyme"]
+resource_local_to_scene = true
+albedo_texture = SubResource("ViewportTexture_um8f5")
+metallic = 1.0
+roughness = 0.0
+emission_enabled = true
+emission_texture = SubResource("ViewportTexture_um8f5")
+texture_filter = 0
+
+[sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_kuh34"]
+rayleigh_coefficient = 1.0
+rayleigh_color = Color(0.07510621, 1.4198571e-05, 0.32648003, 1)
+mie_eccentricity = 0.6
+mie_color = Color(0.39, 0.49166656, 1, 1)
+night_sky = ExtResource("18_qttup")
 
 [sub_resource type="Sky" id="Sky_kuh34"]
-sky_material = SubResource("ProceduralSkyMaterial_qxhf8")
+sky_material = SubResource("PhysicalSkyMaterial_kuh34")
 
 [sub_resource type="Environment" id="Environment_4f0fq"]
 background_mode = 2
@@ -237,7 +274,7 @@ skeleton = NodePath("../..")
 
 [node name="Ceiling" type="MeshInstance3D" parent="LevelGeometry"]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 1, 4.5, 1.0797148)
-material_override = ExtResource("4_l100v")
+material_override = ExtResource("8_2g8g0")
 cast_shadow = 2
 gi_mode = 2
 mesh = SubResource("QuadMesh_kuh34")
@@ -259,8 +296,16 @@ gi_mode = 2
 mesh = SubResource("QuadMesh_qxhf8")
 skeleton = NodePath("../..")
 
+[node name="Backwall2" type="MeshInstance3D" parent="LevelGeometry"]
+transform = Transform3D(1.7682976e-07, 0, -1.0000001, 0, 1, 0, 1.0000001, 0, 1.7682976e-07, 5, 1.5, 1.0797148)
+material_override = ExtResource("4_l100v")
+cast_shadow = 2
+gi_mode = 2
+mesh = SubResource("QuadMesh_qxhf8")
+skeleton = NodePath("../..")
+
 [node name="PostIt" type="Sprite3D" parent="LevelGeometry"]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1.0000001, 8.881784e-16, -1.0000001, 0, -4.371139e-08, -2.9964035, 3, -2.8377998)
+transform = Transform3D(-4.3711392e-08, 0, 1, -0.14667003, 0.9891855, -6.411149e-09, -0.9891855, -0.14667003, -4.3238675e-08, -2.9964035, 1.8174121, -2.7014618)
 pixel_size = 0.005
 shaded = true
 double_sided = false
@@ -281,33 +326,45 @@ width = 116.0
 script = ExtResource("6_i4f5g")
 textMerger = ExtResource("7_jptpv")
 
-[node name="BasicPC" parent="." instance=ExtResource("1_um8f5")]
+[node name="BasicPC" type="Node3D" parent="."]
 transform = Transform3D(1.8, 0, 0, 0, 1.8, 0, 0, 0, 1.8, -1.5, 2.301, 0)
 
-[node name="PC" parent="BasicPC" index="0"]
+[node name="OffScreen" type="MeshInstance3D" parent="BasicPC"]
+visible = false
 gi_mode = 2
+mesh = SubResource("ArrayMesh_ki276")
+skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_s8weu")
+
+[node name="PCNoLight" type="MeshInstance3D" parent="BasicPC/OffScreen"]
+material_override = ExtResource("12_k1f78")
+gi_mode = 2
+mesh = SubResource("ArrayMesh_unksj")
+skeleton = NodePath("")
 
 [node name="PcScreen" parent="BasicPC" instance=ExtResource("6_0u7kn")]
 
 [node name="PCScreen" parent="BasicPC/PcScreen" index="0" node_paths=PackedStringArray("subviewport", "moveMouse", "offScreen")]
+gi_mode = 2
 surface_material_override/0 = SubResource("StandardMaterial3D_ccyme")
 script = ExtResource("7_chwbs")
 subviewport = NodePath("../../../GameInput")
 moveMouse = NodePath("../../../LevelGeometry/Mouse")
-offScreen = NodePath("../OffScreen")
+offScreen = NodePath("../../OffScreen")
 
-[node name="OffScreen" type="MeshInstance3D" parent="BasicPC/PcScreen"]
-visible = false
-mesh = SubResource("ArrayMesh_ki276")
+[node name="PC" type="MeshInstance3D" parent="BasicPC/PcScreen"]
+material_override = ExtResource("12_k1f78")
+gi_mode = 2
+mesh = SubResource("ArrayMesh_unksj")
 skeleton = NodePath("")
-surface_material_override/0 = SubResource("StandardMaterial3D_s8weu")
 
 [node name="PCText" type="Label3D" parent="BasicPC"]
 transform = Transform3D(-4.3711395e-08, -6e-45, 1, 3.1554436e-30, 1, -1.6970292e-30, -1, -6e-45, -4.3711395e-08, 0.30743378, -0.64924973, 0.0015852451)
 shaded = true
 double_sided = false
 alpha_cut = 1
-modulate = Color(0.84705883, 0.85882354, 0.85490197, 1)
+modulate = Color(0.6562, 0.68, 0.63240004, 1)
+outline_modulate = Color(0, 0, 0, 0)
 text = "ERR"
 font_size = 10
 outline_size = 0
@@ -322,6 +379,7 @@ fov = 60.0
 far = 100.0
 script = ExtResource("4_0d164")
 physScreen = NodePath("../BasicPC/PcScreen/PCScreen")
+focusedFov = 36.0
 
 [node name="GameInput" type="SubViewport" parent="."]
 disable_3d = true
@@ -450,7 +508,7 @@ grow_vertical = 2
 mouse_filter = 1
 
 [node name="Window" parent="." instance=ExtResource("26_vfnhs")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.10405922, 2.383328, -3.870958)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1040592, 2.383328, -3.870958)
 
 [node name="WoodFrame" parent="Window" index="0"]
 material_override = ExtResource("27_37xsv")
@@ -473,9 +531,10 @@ cast_shadow = 2
 gi_mode = 2
 
 [node name="Moonlight" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.91876477, -0.082480706, -0.3860935, -0.20419538, 0.9362501, 0.28590208, 0.33789867, 0.34151527, -0.8770358, 0, 0, 0)
+transform = Transform3D(-0.2997889, -0.20625545, 0.93144274, -0.06319182, 0.97849816, 0.19633669, -0.9519105, 0, -0.30637652, 0, 0, 0)
 light_color = Color(0.08100002, 0.43334988, 0.81, 1)
 light_energy = 0.02
+light_bake_mode = 1
 shadow_enabled = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
@@ -493,6 +552,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22, -7.8375015, -61)
 material_override = ExtResource("30_kuh34")
 mesh = SubResource("BoxMesh_qxhf8")
 
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, -61)
+material_override = ExtResource("30_kuh34")
+mesh = SubResource("BoxMesh_qxhf8")
+
 [connection signal="timeout" from="Timer" to="." method="timer_bump"]
 [connection signal="input_event" from="LevelGeometry/Tower/PowerButton/Clickbox" to="LevelGeometry/Tower/PowerButton" method="mouse_event"]
 [connection signal="input_event" from="BasicPC/PcScreen/PCScreen/StaticBody3D" to="BasicPC/PcScreen/PCScreen" method="mouse_input"]
@@ -503,7 +567,6 @@ mesh = SubResource("BoxMesh_qxhf8")
 [connection signal="mouse_entered" from="OverworldUi/CamRight" to="Cam" method="cam_right_mouse"]
 [connection signal="mouse_exited" from="OverworldUi/CamRight" to="Cam" method="cam_left_mouse"]
 
-[editable path="BasicPC"]
 [editable path="BasicPC/PcScreen"]
 [editable path="Mug"]
 [editable path="Window"]

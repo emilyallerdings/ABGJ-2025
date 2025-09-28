@@ -5,5 +5,5 @@
 [resource]
 script = ExtResource("1_a3m1o")
 startText = "Power"
-minCorruption = 0.5
+minCorruption = 0.7
 metadata/_custom_type_script = "uid://d28hdpyp8wekl"

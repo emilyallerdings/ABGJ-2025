@@ -26,6 +26,10 @@ func mouse_input(_camera: Node, event: InputEvent, event_position: Vector3, _nor
 		event.position = RESOLUTION * relVec
 	subviewport.push_input(event, true)
 
+func _input(event: InputEvent) -> void:
+	if event is InputEventKey:
+		subviewport.push_input(event, true)
+
 func mouse_entered() -> void:
 	if not Office.PoweredOn:
 		return
