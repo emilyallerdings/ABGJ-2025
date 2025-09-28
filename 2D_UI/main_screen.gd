@@ -5,10 +5,12 @@ extends Control
 @onready var audio_processing: Control = $Window/AudioProcessing
 @onready var loading: Control = $Window/Loading
 
+const TRAIN_RING = preload("uid://b102h31oytc8b")
 const LEAF_CRUNCH = preload("uid://c7nad47mbe4a7")
 const CAT_MEOW = preload("uid://ckyx4abm3djr2")
 
-
+var media_order = [CAT_MEOW, LEAF_CRUNCH, TRAIN_RING]
+var curr_media_idx = 0
 
 var current_media:SoundGroup
 
@@ -17,6 +19,8 @@ func _process(delta: float) -> void:
 
 
 func _ready() -> void:
+	%GuessInput.text = ""
+	curr_media_idx = 0
 	welcome.visible = true
 	loading.visible = false
 	audio_processing.visible = false
@@ -64,7 +68,12 @@ func _on_ok_btn_pressed() -> void:
 
 
 func _on_loading_loading_finished() -> void:
+	%GuessInput.text = ""
 	loading.visible = false
 	audio_processing.visible = true
-	set_media(CAT_MEOW)
+	get_new_media()
 	pass # Replace with function body.
+
+func get_new_media():
+	curr_media_idx = min(curr_media_idx + 1, media_order.size()-1)
+	set_media(media_order[curr_media_idx])

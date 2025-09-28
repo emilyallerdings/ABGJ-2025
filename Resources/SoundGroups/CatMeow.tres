@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="SoundGroup" load_steps=3 format=3 uid="uid://ckyx4abm3djr2"]
 
 [ext_resource type="Script" uid="uid://dheo5stt4uiu2" path="res://Scripts/SoundGroup.gd" id="1_jlqq2"]
-[ext_resource type="VideoStream" uid="uid://uln3e8mkorj6" path="res://2D_UI/catogg.ogv" id="2_ibw3b"]
+[ext_resource type="VideoStream" uid="uid://uln3e8mkorj6" path="res://2D_UI/Videos/catogg.ogv" id="2_ibw3b"]
 
 [resource]
 script = ExtResource("1_jlqq2")
