@@ -16,7 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://2cub3uos43c1" path="res://2D_UI/ui_aud_bar.png" id="12_neqlk"]
 [ext_resource type="Script" uid="uid://onho6kfbkc62" path="res://2D_UI/media_bar.gd" id="13_deflx"]
 [ext_resource type="Texture2D" uid="uid://dqhi2sqb5b2r8" path="res://2D_UI/media_bar_handle.png" id="14_4tn6p"]
-[ext_resource type="VideoStream" uid="uid://uln3e8mkorj6" path="res://2D_UI/catogg.ogv" id="14_gigu6"]
+[ext_resource type="VideoStream" uid="uid://uln3e8mkorj6" path="res://2D_UI/Videos/catogg.ogv" id="14_gigu6"]
 [ext_resource type="Texture2D" uid="uid://by47crqs18b72" path="res://2D_UI/media_play_icon.png" id="15_5h0q2"]
 [ext_resource type="Texture2D" uid="uid://csn64pmdujh7x" path="res://2D_UI/audio_media_icon.png" id="16_3gcfg"]
 [ext_resource type="Texture2D" uid="uid://dbuqp8ocnc8mx" path="res://2D_UI/security_cam.png" id="18_s156s"]

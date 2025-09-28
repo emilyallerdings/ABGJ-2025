@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="SoundGroup" load_steps=3 format=3 uid="uid://b102h31oytc8b"]
+
+[ext_resource type="Script" uid="uid://dheo5stt4uiu2" path="res://Scripts/SoundGroup.gd" id="1_ac0oe"]
+[ext_resource type="VideoStream" uid="uid://drbtw2pq7ap4q" path="res://2D_UI/Videos/train_p.ogv" id="2_33lr0"]
+
+[resource]
+script = ExtResource("1_ac0oe")
+soundName = "TrainVideo"
+videoFile = ExtResource("2_33lr0")
+expectedWord = Array[String](["ring", "ding", "dong", "clang", "bring", "honk", "toot", "bwah", "whoo"])
+metadata/_custom_type_script = "uid://dheo5stt4uiu2"
