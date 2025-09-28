@@ -1,4 +1,4 @@
-[gd_scene load_steps=65 format=4 uid="uid://2tmp6fu334qg"]
+[gd_scene load_steps=66 format=4 uid="uid://2tmp6fu334qg"]
 
 [ext_resource type="PackedScene" uid="uid://c3xwy2s3ckihp" path="res://Resources/WorldKeyboard.tscn" id="1_0d164"]
 [ext_resource type="Script" uid="uid://cxc75gjqku8hw" path="res://Scripts/Office.gd" id="1_mdu65"]
@@ -27,6 +27,7 @@
 [ext_resource type="Texture2D" uid="uid://byrqm1uohudqb" path="res://icon.svg" id="17_2uv6j"]
 [ext_resource type="Script" uid="uid://duuvlvulw0uec" path="res://Scripts/Debug/DebugToggleFullbrightt.gd" id="17_pkeyt"]
 [ext_resource type="Texture2D" uid="uid://dbm7vueidx0mv" path="res://Textures/NightSky.png" id="18_qttup"]
+[ext_resource type="PackedScene" uid="uid://cc1fomjf362h5" path="res://addons/flowerwall_postprocess/scenes/flowerwall_pp.tscn" id="19_l12lx"]
 [ext_resource type="Script" uid="uid://dv1o1f4iqjn70" path="res://Scripts/DecalCorrupt.gd" id="19_wwh7d"]
 [ext_resource type="Resource" uid="uid://d2vb0icl2q0y6" path="res://Resources/TextMerges/MugMerge.tres" id="20_mdu65"]
 [ext_resource type="PackedScene" uid="uid://duefwf4y3yknl" path="res://Models/Window.blend" id="26_vfnhs"]
@@ -416,9 +417,16 @@ focusedFov = 38.0
 
 [node name="GameInput" type="SubViewport" parent="."]
 disable_3d = true
-size = Vector2i(640, 480)
+size = Vector2i(1280, 960)
+
+[node name="flowerwall_pp" parent="GameInput" instance=ExtResource("19_l12lx")]
 
 [node name="MainScreen" parent="GameInput" instance=ExtResource("6_gnkyl")]
+offset_left = -640.0
+offset_top = -480.0
+offset_right = 0.0
+offset_bottom = 0.0
+scale = Vector2(2, 2)
 
 [node name="WarningLight" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.23557025, 3.1893559, 2.7285345)
