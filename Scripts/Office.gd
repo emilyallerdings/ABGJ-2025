@@ -5,7 +5,7 @@ static var CorruptText := "Ergichos"
 
 static var PoweredOn := true
 
-static var MaxCorruption := 0
+static var MaxCorruption := 0.0
 
 ##Emit this to change all office corruption elements
 @warning_ignore("unused_signal")

@@ -4,7 +4,7 @@
 [ext_resource type="Material" uid="uid://cw8i56a85bd8k" path="res://addons/flowerwall_postprocess/shaders/blurx_shader.material" id="3_8710x"]
 [ext_resource type="Material" uid="uid://2inluedv57nr" path="res://addons/flowerwall_postprocess/shaders/blury_shader.material" id="4_a14ly"]
 [ext_resource type="Material" uid="uid://cfea5v1okk4uf" path="res://addons/flowerwall_postprocess/shaders/crt_shader.material" id="5_tr7xh"]
-[ext_resource type="VideoStream" uid="uid://bc2sl5c6edwru" path="res://Video/Glasses.ogv" id="6_bfgkh"]
+[ext_resource type="VideoStream" uid="uid://00sg8tukqofs" path="res://Video/train.ogv" id="6_bfgkh"]
 [ext_resource type="Material" uid="uid://bljlfnrfu8bjj" path="res://addons/flowerwall_postprocess/shaders/bloom_shader.material" id="6_w0gmt"]
 
 [node name="Control" type="Control"]
@@ -101,7 +101,6 @@ ratio = 1.25
 
 [node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="AspectRatioContainer"]
 layout_mode = 2
-audio_track = 1
 stream = ExtResource("6_bfgkh")
 autoplay = true
 expand = true
