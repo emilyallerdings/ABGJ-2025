@@ -1,9 +1,10 @@
-[gd_scene load_steps=102 format=4 uid="uid://2tmp6fu334qg"]
+[gd_scene load_steps=103 format=4 uid="uid://2tmp6fu334qg"]
 
 [ext_resource type="PackedScene" uid="uid://c3xwy2s3ckihp" path="res://Resources/WorldKeyboard.tscn" id="1_0d164"]
 [ext_resource type="Script" uid="uid://cxc75gjqku8hw" path="res://Scripts/Office.gd" id="1_mdu65"]
 [ext_resource type="Script" uid="uid://8pgamyrptrvo" path="res://Scripts/MouseShift.gd" id="2_t43tj"]
 [ext_resource type="AudioStream" uid="uid://bwku2vft8lmk0" path="res://Audio/WarningDistort.wav" id="2_ux1wp"]
+[ext_resource type="AudioStream" uid="uid://bywt85e0nr4kv" path="res://Audio/SpectrogramBackgroundNoise.wav" id="3_2xrxm"]
 [ext_resource type="Script" uid="uid://ck8s0ixkgnfrd" path="res://Scripts/3dCam.gd" id="4_0d164"]
 [ext_resource type="VoxelGIData" uid="uid://b0arf755jcb5a" path="res://Lightmaps/Office.VoxelGI_data.res" id="4_32u8q"]
 [ext_resource type="Material" uid="uid://doif1g51s2da7" path="res://Materials/OfficeWalls.tres" id="4_l100v"]
@@ -388,6 +389,15 @@ pauseMenu = NodePath("PauseMenu")
 unique_name_in_owner = true
 stream = ExtResource("2_ux1wp")
 bus = &"Ambience"
+
+[node name="RandomNoise" type="AudioStreamPlayer3D" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("3_2xrxm")
+bus = &"Ambience"
+
+[node name="TryRandomTimer" type="Timer" parent="RandomNoise"]
+wait_time = 10.0
+autostart = true
 
 [node name="CorruptionTimer" type="Timer" parent="."]
 autostart = true
@@ -1328,7 +1338,7 @@ gi_mode = 0
 mesh = SubResource("ArrayMesh_wkqxc")
 skeleton = NodePath("")
 
-[node name="WindowExternals" type="MeshInstance3D" parent="Window"]
+[node name="WindowExternals" type="MeshInstance3D" parent="Window" node_paths=PackedStringArray("office")]
 material_override = SubResource("StandardMaterial3D_ccyme")
 transparency = 1.0
 cast_shadow = 0
@@ -1337,6 +1347,7 @@ mesh = SubResource("ArrayMesh_yalm1")
 skeleton = NodePath("")
 script = ExtResource("34_ekxxp")
 corruptionCutoff = SubResource("Resource_l12lx")
+office = NodePath("../..")
 
 [node name="AggressionRetry" type="Timer" parent="Window/WindowExternals"]
 wait_time = 20.0
@@ -1396,6 +1407,7 @@ script = ExtResource("48_0uysk")
 
 [node name="PauseMenu" parent="." instance=ExtResource("51_p55p3")]
 
+[connection signal="timeout" from="RandomNoise/TryRandomTimer" to="." method="try_random_noise"]
 [connection signal="timeout" from="CorruptionTimer" to="." method="timer_bump"]
 [connection signal="input_event" from="LevelGeometry/Tower/PowerButton/Clickbox" to="LevelGeometry/Tower/PowerButton" method="mouse_event"]
 [connection signal="input_event" from="BasicPC/PcScreen/PCScreen/StaticBody3D" to="BasicPC/PcScreen/PCScreen" method="mouse_input"]
