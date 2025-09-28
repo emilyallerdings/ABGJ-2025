@@ -1,0 +1,123 @@
+[gd_scene load_steps=8 format=3 uid="uid://ytqknxmtb20j"]
+
+[ext_resource type="Script" uid="uid://bxl3jdx7ou27u" path="res://Scripts/EndScreen.gd" id="1_2ohhu"]
+[ext_resource type="PackedScene" uid="uid://cc1fomjf362h5" path="res://addons/flowerwall_postprocess/scenes/flowerwall_pp.tscn" id="2_jrx8a"]
+[ext_resource type="AudioStream" uid="uid://co6icj5tcvcrh" path="res://Audio/MenuAmbience.wav" id="3_jrx8a"]
+[ext_resource type="Texture2D" uid="uid://hlywvsdsxkxl" path="res://Textures/TitleSpectrogram.png" id="4_3gukv"]
+[ext_resource type="PackedScene" uid="uid://c767cyc0nni5g" path="res://Scenes/Credits.tscn" id="5_jh5rx"]
+
+[sub_resource type="Gradient" id="Gradient_3gukv"]
+offsets = PackedFloat32Array(0, 0.39583334, 1)
+colors = PackedColorArray(0, 0, 0.34117648, 1, 0, 0, 0.049754888, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_jh5rx"]
+gradient = SubResource("Gradient_3gukv")
+fill_to = Vector2(0.55, 0)
+repeat = 2
+
+[node name="EndScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_2ohhu")
+freqMax = 1381.25
+
+[node name="flowerwall_pp" parent="." instance=ExtResource("2_jrx8a")]
+layout_mode = 1
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_jrx8a")
+autoplay = true
+bus = &"Videos"
+
+[node name="ColorRect" type="TextureRect" parent="."]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_jh5rx")
+
+[node name="NowSafeVis" type="ColorRect" parent="."]
+visible = false
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="NowSafeText" type="Label" parent="NowSafeVis"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -22.5
+offset_bottom = 22.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.9538469, 0.5554084, 0, 1)
+theme_override_font_sizes/font_size = 32
+text = "It is now safe to turn off your computer."
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_3gukv")
+stretch_mode = 5
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 6.0
+one_shot = true
+autostart = true
+
+[node name="CreditsAppear" type="Timer" parent="."]
+wait_time = 18.0
+one_shot = true
+autostart = true
+
+[node name="NowSafe" type="Timer" parent="."]
+wait_time = 38.0
+one_shot = true
+autostart = true
+
+[node name="Credits" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Credits" parent="Credits" instance=ExtResource("5_jh5rx")]
+layout_mode = 1
+anchors_preset = 15
+anchor_left = 0.0
+anchor_right = 1.0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 0.0
+offset_bottom = 0.0
+
+[connection signal="finished" from="AudioStreamPlayer" to="." method="go_main_menu"]
+[connection signal="timeout" from="Timer" to="." method="title_appear"]
+[connection signal="timeout" from="CreditsAppear" to="." method="creators_appear"]
+[connection signal="timeout" from="NowSafe" to="." method="now_safe_timeout"]

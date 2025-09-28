@@ -2,6 +2,7 @@ extends Node
 class_name PersistantData
 
 var office:Node3D
+var startOnCredits:=false
 
 ##A table containing all guesses
 var guessTable : Dictionary[String, OnomatopoeiaGuess]
