@@ -13,7 +13,19 @@ func _ready() -> void:
 func mouse_event(_camera: Node, event: InputEvent, _event_position: Vector3, _normal: Vector3, _shape_idx: int) -> void:
 	if event is InputEventMouseButton:
 		if !event.pressed and event.button_index == 1:
+			
+			if office.PoweredOn:
+				$PCIdle.stop()
+				$PCShutdown.play()
+				$PCStartup.stop()
+			else:
+				$PCStartup.play()
+				$PCIdle.play()
+				$PCShutdown.stop()
 			office.power_toggle()
+			
+
+			
 
 func power_fade(isOn : bool):
 	if isOn:

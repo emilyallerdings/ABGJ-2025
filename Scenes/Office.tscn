@@ -1,4 +1,4 @@
-[gd_scene load_steps=89 format=4 uid="uid://2tmp6fu334qg"]
+[gd_scene load_steps=92 format=4 uid="uid://2tmp6fu334qg"]
 
 [ext_resource type="PackedScene" uid="uid://c3xwy2s3ckihp" path="res://Resources/WorldKeyboard.tscn" id="1_0d164"]
 [ext_resource type="Script" uid="uid://cxc75gjqku8hw" path="res://Scripts/Office.gd" id="1_mdu65"]
@@ -6,7 +6,7 @@
 [ext_resource type="Script" uid="uid://ck8s0ixkgnfrd" path="res://Scripts/3dCam.gd" id="4_0d164"]
 [ext_resource type="VoxelGIData" uid="uid://b0arf755jcb5a" path="res://Lightmaps/Office.VoxelGI_data.res" id="4_32u8q"]
 [ext_resource type="Material" uid="uid://doif1g51s2da7" path="res://Materials/OfficeWalls.tres" id="4_l100v"]
-[ext_resource type="Script" path="res://Scripts/PowerButton.gd" id="4_s8weu"]
+[ext_resource type="Script" uid="uid://covcy8mpgvjfl" path="res://Scripts/PowerButton.gd" id="4_s8weu"]
 [ext_resource type="Texture2D" uid="uid://c40sms6bf5yvl" path="res://Sprites/PostIt.png" id="5_541ak"]
 [ext_resource type="PackedScene" uid="uid://btmy4mr5pxj2f" path="res://Models/PcScreen.blend" id="6_0u7kn"]
 [ext_resource type="PackedScene" uid="uid://3e3fqavddmny" path="res://2D_UI/main_screen.tscn" id="6_gnkyl"]
@@ -48,6 +48,9 @@
 [ext_resource type="Script" path="res://Scenes/WindowHazard.gd" id="34_ekxxp"]
 [ext_resource type="Script" path="res://Scripts/Corruptable.gd" id="35_l12lx"]
 [ext_resource type="Script" uid="uid://d06v5a2l0dwld" path="res://Scenes/fps_label.gd" id="48_0uysk"]
+[ext_resource type="AudioStream" uid="uid://cg0mnjwg87tx" path="res://Audio/pc_idle.ogg" id="49_wela7"]
+[ext_resource type="AudioStream" uid="uid://ctdqomhwthxm" path="res://Audio/pc_shutoff.ogg" id="50_ubd2v"]
+[ext_resource type="AudioStream" uid="uid://dx246ydqfg108" path="res://Audio/pc_turn_on.ogg" id="51_pf50n"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_4f0fq"]
 radius = 0.25
@@ -447,6 +450,25 @@ outline_size = 0
 width = 100.0
 script = ExtResource("6_i4f5g")
 textMerger = ExtResource("6_kp12w")
+
+[node name="PCIdle" type="AudioStreamPlayer3D" parent="LevelGeometry/Tower/PowerButton"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.44612455, -0.8537698, 0.4751935)
+stream = ExtResource("49_wela7")
+autoplay = true
+bus = &"Ambience"
+
+[node name="PCShutdown" type="AudioStreamPlayer3D" parent="LevelGeometry/Tower/PowerButton"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.44612455, -0.8537698, 0.4751935)
+stream = ExtResource("50_ubd2v")
+bus = &"Ambience"
+
+[node name="PCStartup" type="AudioStreamPlayer3D" parent="LevelGeometry/Tower/PowerButton"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.44612455, -0.8537698, 0.4751935)
+stream = ExtResource("51_pf50n")
+bus = &"Ambience"
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="LevelGeometry/Tower"]
 transform = Transform3D(1, 0, 0, 0, -1, -8.742278e-08, 0, 8.742278e-08, -1, 0, 0.04437995, -0.7826662)
