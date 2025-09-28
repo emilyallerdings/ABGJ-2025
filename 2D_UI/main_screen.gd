@@ -3,6 +3,7 @@ extends Control
 
 @onready var welcome: Control = $Window/Welcome
 @onready var audio_processing: Control = $Window/AudioProcessing
+@onready var loading: Control = $Window/Loading
 
 const LEAF_CRUNCH = preload("uid://c7nad47mbe4a7")
 const CAT_MEOW = preload("uid://ckyx4abm3djr2")
@@ -17,6 +18,8 @@ func _process(delta: float) -> void:
 
 func _ready() -> void:
 	welcome.visible = true
+	loading.visible = false
+	audio_processing.visible = false
 	return
 
 func set_media(media:SoundGroup):
@@ -41,7 +44,9 @@ func _on_submit_btn_pressed() -> void:
 				break
 			
 	if passed:
-		#TODO go to new audio/video
+		loading.visible = true
+		loading.start_loading()
+		audio_processing.visible = false
 		pass
 	else:
 		%ErrorPopupWindow.visible = true
@@ -55,4 +60,11 @@ func _on_next_button_pressed() -> void:
 
 func _on_ok_btn_pressed() -> void:
 	%ErrorPopupWindow.visible = false
+	pass # Replace with function body.
+
+
+func _on_loading_loading_finished() -> void:
+	loading.visible = false
+	audio_processing.visible = true
+	set_media(CAT_MEOW)
 	pass # Replace with function body.
