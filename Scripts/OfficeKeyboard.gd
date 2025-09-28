@@ -63,6 +63,8 @@ func _ready() -> void:
 	print(get_tree().get_first_node_in_group("Office").new_corruption_level.get_connections())
 
 func _input(event: InputEvent) -> void:
+	if event is InputEventKey:
+		$KeyboardSounds.play()
 	if not Office.PoweredOn:
 		return
 	if event is InputEventKey and event.is_pressed():

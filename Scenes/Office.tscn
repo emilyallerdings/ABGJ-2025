@@ -1,4 +1,4 @@
-[gd_scene load_steps=92 format=4 uid="uid://2tmp6fu334qg"]
+[gd_scene load_steps=98 format=4 uid="uid://2tmp6fu334qg"]
 
 [ext_resource type="PackedScene" uid="uid://c3xwy2s3ckihp" path="res://Resources/WorldKeyboard.tscn" id="1_0d164"]
 [ext_resource type="Script" uid="uid://cxc75gjqku8hw" path="res://Scripts/Office.gd" id="1_mdu65"]
@@ -24,12 +24,17 @@
 [ext_resource type="Material" uid="uid://0qtwb0ig7aet" path="res://Materials/CupMaterial.tres" id="15_6b8ke"]
 [ext_resource type="Script" uid="uid://6x4s6aub74qg" path="res://Scripts/OfficeMug.gd" id="15_k0xf6"]
 [ext_resource type="Texture2D" uid="uid://byrqm1uohudqb" path="res://icon.svg" id="17_2uv6j"]
+[ext_resource type="AudioStream" uid="uid://k8n4od31tj50" path="res://Audio/keyboard_variant/key1.ogg" id="17_i51nk"]
 [ext_resource type="Script" uid="uid://duuvlvulw0uec" path="res://Scripts/Debug/DebugToggleFullbrightt.gd" id="17_pkeyt"]
+[ext_resource type="AudioStream" uid="uid://bcsufx6if4hw" path="res://Audio/keyboard_variant/key2.ogg" id="18_850rm"]
 [ext_resource type="Texture2D" uid="uid://dbm7vueidx0mv" path="res://Textures/NightSky.png" id="18_qttup"]
+[ext_resource type="AudioStream" uid="uid://c7trjo84v78fa" path="res://Audio/keyboard_variant/key3.ogg" id="19_3n1e2"]
 [ext_resource type="Script" uid="uid://dv1o1f4iqjn70" path="res://Scripts/DecalCorrupt.gd" id="19_wwh7d"]
 [ext_resource type="Script" uid="uid://dmk7ono2imeae" path="res://addons/flowerwall_postprocess/scripts/flowerwall_pp_script.gd" id="19_x73e2"]
 [ext_resource type="Material" uid="uid://bbu216tcokhyh" path="res://addons/flowerwall_postprocess/shaders/dithering_shader.material" id="20_0uysk"]
 [ext_resource type="Resource" uid="uid://d2vb0icl2q0y6" path="res://Resources/TextMerges/MugMerge.tres" id="20_mdu65"]
+[ext_resource type="AudioStream" uid="uid://uh22u4ayuip5" path="res://Audio/keyboard_variant/key4.ogg" id="20_ux1wp"]
+[ext_resource type="AudioStream" uid="uid://cplx1bhnvpk1d" path="res://Audio/keyboard_variant/key5.ogg" id="21_2xrxm"]
 [ext_resource type="Material" uid="uid://cw8i56a85bd8k" path="res://addons/flowerwall_postprocess/shaders/blurx_shader.material" id="21_wela7"]
 [ext_resource type="Material" uid="uid://2inluedv57nr" path="res://addons/flowerwall_postprocess/shaders/blury_shader.material" id="22_lkspl"]
 [ext_resource type="Material" uid="uid://bwv6mol5yw6mu" path="res://addons/flowerwall_postprocess/shaders/crt_shader.material" id="23_ubd2v"]
@@ -51,6 +56,16 @@
 [ext_resource type="AudioStream" uid="uid://cg0mnjwg87tx" path="res://Audio/pc_idle.ogg" id="49_wela7"]
 [ext_resource type="AudioStream" uid="uid://ctdqomhwthxm" path="res://Audio/pc_shutoff.ogg" id="50_ubd2v"]
 [ext_resource type="AudioStream" uid="uid://dx246ydqfg108" path="res://Audio/pc_turn_on.ogg" id="51_pf50n"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_dkt76"]
+random_pitch = 1.1
+random_volume_offset_db = 1.0
+streams_count = 5
+stream_0/stream = ExtResource("17_i51nk")
+stream_1/stream = ExtResource("18_850rm")
+stream_2/stream = ExtResource("19_3n1e2")
+stream_3/stream = ExtResource("20_ux1wp")
+stream_4/stream = ExtResource("21_2xrxm")
 
 [sub_resource type="SphereMesh" id="SphereMesh_4f0fq"]
 radius = 0.25
@@ -366,6 +381,14 @@ autostart = true
 
 [node name="Keyboard" parent="LevelGeometry" instance=ExtResource("1_0d164")]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -0.25, 0.674, 1.2874612)
+
+[node name="KeyboardSounds" type="AudioStreamPlayer3D" parent="LevelGeometry/Keyboard"]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 1.25, 1.3702629, -3.609585)
+stream = SubResource("AudioStreamRandomizer_dkt76")
+attenuation_model = 3
+volume_db = -2.0
+max_polyphony = 5
+bus = &"Ambience"
 
 [node name="Mouse" type="MeshInstance3D" parent="LevelGeometry"]
 transform = Transform3D(1, 0, 0, 0, 0.7, 0, 0, 0, 0.75, -0.054608315, 0.6182737, -1.6459932)

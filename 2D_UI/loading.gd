@@ -31,7 +31,9 @@ func set_loading_text(val:int):
 func _process(delta):
 	if stopped:
 		return
-		
+	
+	set_loading_text(ceil((current_width / max_width) * 100))
+	
 	if waiting:
 		waiting_time -= delta
 		if waiting_time <= 0:
