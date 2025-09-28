@@ -18,10 +18,11 @@ signal strike_gained(total_strikes : int)
 var progressionLevel : float
 
 func _ready() -> void:
+	Persist.office = self
 	MaxCorruption = 0
 
 func timer_bump():
-	progressionLevel += 0.01
+	progressionLevel += 1.0#randf_range(0.05,0.005)
 	progressionLevel = clamp(progressionLevel, 0, MaxCorruption)
 	new_corruption_level.emit(progressionLevel)
 

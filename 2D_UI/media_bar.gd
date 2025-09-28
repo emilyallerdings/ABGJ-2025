@@ -24,6 +24,22 @@ var media_handle_end = 237.0
 
 var paused_playback_pos:float = 0.0
 
+func handle_power_change(power:bool):
+	if power:
+		return
+	if cur_audio_stream:
+		audio_stream_player.stream_paused = !audio_stream_player.stream_paused
+		$PlayMediaBtn.icon = MEDIA_PLAY_ICON
+	elif cur_video_stream:	
+		video_stream_player.paused = true
+		$PlayMediaBtn.icon = MEDIA_PLAY_ICON
+	pass
+
+func _ready() -> void:
+	await get_tree().process_frame
+	Persist.office.new_power_state.connect(handle_power_change)
+	print("media player connected to office signals")
+
 func setup_media(current_media:SoundGroup):
 	self.current_media = current_media
 	

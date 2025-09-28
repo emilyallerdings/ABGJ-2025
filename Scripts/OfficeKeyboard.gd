@@ -58,6 +58,9 @@ func _ready() -> void:
 	get_tree().get_first_node_in_group("Office").new_corruption_level.connect(corrupt_keys)
 	keyCorruptOrder = keyLookup.keys().duplicate()
 	keyCorruptOrder.shuffle()
+	
+	await get_tree().process_frame
+	print(get_tree().get_first_node_in_group("Office").new_corruption_level.get_connections())
 
 func _input(event: InputEvent) -> void:
 	if not Office.PoweredOn:
@@ -67,7 +70,7 @@ func _input(event: InputEvent) -> void:
 			keyLookup[event.keycode].press()
 
 func corrupt_keys(lerpAmount : float):
-	var keysToCorrupt := int(keyCorruptOrder.size() * lerpAmount)
+	var keysToCorrupt = min(25, int(keyCorruptOrder.size() * lerpAmount))
 	for eachKey in keysToCorrupt:
 		var keyToUse = Office.CorruptText[eachKey % Office.CorruptText.length()]
 		keyLookup[keyCorruptOrder[eachKey]].set_key(keyToUse.to_upper())

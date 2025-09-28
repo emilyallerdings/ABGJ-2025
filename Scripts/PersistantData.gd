@@ -1,6 +1,8 @@
 extends Node
 class_name PersistantData
 
+var office:Node3D
+
 ##A table containing all guesses
 var guessTable : Dictionary[String, OnomatopoeiaGuess]
 ##The text to display after calling Pass Guess
