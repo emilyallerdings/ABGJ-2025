@@ -400,6 +400,7 @@ wait_time = 10.0
 autostart = true
 
 [node name="CorruptionTimer" type="Timer" parent="."]
+wait_time = 5.0
 autostart = true
 
 [node name="LevelGeometry" type="Node3D" parent="."]

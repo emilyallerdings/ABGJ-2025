@@ -26,14 +26,19 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("Pause") and pauseMenu.visible == false:
 		pauseMenu.set_paused(true)
+	if Input.is_action_just_pressed("IncreaseCorruption") and OS.has_feature("debug"):
+		increase_corruption(0.1)
 
 static func increase_corruption(corruptIncrease : float):
+	print(MaxCorruption)
 	MaxCorruption = clampf(corruptIncrease + MaxCorruption, 0, 1)
+	print(MaxCorruption)
 
 func timer_bump():
-	progressionLevel += 1.0#randf_range(0.05,0.005)
-	progressionLevel = clamp(progressionLevel, 0, MaxCorruption)
-	new_corruption_level.emit(progressionLevel)
+	var initProg = progressionLevel
+	progressionLevel = clamp(progressionLevel + randf_range(0.05,0.005), 0, MaxCorruption)
+	if initProg != progressionLevel:
+		new_corruption_level.emit(progressionLevel)
 
 func try_random_noise():
 	if randi_range(0, 20) == 0:
